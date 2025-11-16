@@ -8,8 +8,6 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon-16x16.png">
     <link rel="manifest" href="/img/site.webmanifest">
-<!--    &lt;!&ndash;- Popper pour les tooltips -&ndash;&gt;-->
-<!--    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="" crossorigin="anonymous"></script>-->
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
@@ -145,48 +143,47 @@
 
     /* === Personnalisation des tabs === */
 
+        /* Container des tabs */
+        .nav-tabs {
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        /* Mode sombre - bordure des tabs */
+        body.dark-mode .nav-tabs {
+            border-bottom-color: #444;
+        }
+
         /* Texte des onglets (body / cv-container) */
         .nav-tabs .nav-link,
         .nav-tabs .nav-link.disabled {
             color: inherit;
-            border-bottom: transparent;
         }
 
         /* Onglet actif */
         .nav-tabs .nav-link.active {
             color: inherit;
-            background-color: inherit;
-            border-bottom: transparent;
+            background-color: #fff;
+            border: 1px solid #dee2e6;
+            border-bottom-color: #fff;
+            margin-bottom: -1px; /* Oui je triche pour retirer la bordure du bas 👀 */
         }
 
-        /* Hover sur onglets inactifs */
+        /* Mode sombre - onglet actif */
+        body.dark-mode .nav-tabs .nav-link.active {
+            background-color: #2a2a2a;
+            border-color: #444;
+            border-bottom-color: #2a2a2a;
+        }
+
+        /* Hover sur mes onglets inactifs */
         .nav-tabs .nav-link:not(.active):hover {
             color: var(--bs-primary);
             background-color: rgba(0, 0, 0, 0.05);
+            border-color: transparent;
         }
 
-        /* Hover onglets inactifs en mode sombre */
+        /* Hover sur mes onglets inactifs - mode sombre */
         body.dark-mode .nav-tabs .nav-link:not(.active):hover {
-            background-color: rgba(255, 255, 255, 0.05);
-        }
-
-        /* === Onglet disabled === */
-        /* État normal de l’onglet "Mes projets personnels" */
-        .nav-tabs .tab-disabled .nav-link {
-            color: inherit; /* texte comme le body */
-            background-color: transparent; /* fond transparent */
-            border-color: transparent; /* contour neutre par défaut */
-        }
-
-        /* Hover spécifique sur "Mes projets personnels" */
-        .nav-tabs .tab-disabled:hover .nav-link {
-            border-color: var(--bs-danger); /* rouge Bootstrap */
-            background-color: rgba(0, 0, 0, 0.05);
-        }
-
-        /* Hover "Mes projets personnels" en mode sombre */
-        body.dark-mode .nav-tabs .tab-disabled:hover .nav-link {
-            border-color: var(--bs-danger);
             background-color: rgba(255, 255, 255, 0.05);
         }
 
