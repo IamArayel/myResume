@@ -438,7 +438,7 @@
             confetti(Object.assign({}, defaults, {
                 particleCount: 1,
                 origin: { x: leftOriginX, y: originY },
-                colors: ['#f7ff00'],
+                colors: ['#F3B603'],
                 scalar: currentScalar, // Utilisation du scalar dynamique
             }));
 
@@ -446,7 +446,15 @@
             confetti(Object.assign({}, defaults, {
                 particleCount: 1,
                 origin: { x: rightOriginX, y: originY },
-                colors: ['#2ce20a'],
+                colors: ['#32E0A8'],
+                scalar: currentScalar, // Utilisation du scalar dynamique
+            }));
+
+            // Tir 3 (Droite)
+            confetti(Object.assign({}, defaults, {
+                particleCount: 1,
+                origin: { x: rightOriginX, y: originY },
+                colors: ['#2E2E4D'],
                 scalar: currentScalar, // Utilisation du scalar dynamique
             }));
 
