@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="fr">
+<html lang="fr" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="utf-8">
     <title>CV d'Anthony DEGEILH</title>
@@ -107,11 +107,12 @@
              role="tabpanel"
              aria-labelledby="tab-recherche-btn">
             <div class="row g-0 p-5">
-                <p>Initialement issu d'une formation en Génie Électrotechnique, j'ai su concrétiser ma reconversion en obtenant avec succès ma certification de <a href="https://afpar.re/formations/developpeurse-web-et-web-mobile" class="text-nowrap d-inline-block"><strong>Développeur Web et Web Mobile</strong></a> (Bac+2) auprès de l'AFPAR de Saint-François à la fin du mois de Juillet 2025.</p>
+                <p>Initialement issu d'une formation en Génie Électrotechnique, j'ai su concrétiser ma reconversion en obtenant <span id="confettis" style="cursor: pointer">avec succès</span> ma certification de <a href="https://afpar.re/formations/developpeurse-web-et-web-mobile" class="text-nowrap d-inline-block"><strong>Développeur Web et Web Mobile</strong></a> (Bac+2) auprès de l'AFPAR de Saint-François à la fin du mois de Juillet 2025.</p>
                 <p>Actuellement en formation <a href="https://expernet-campus.re/formation/cda-bac4/" class="text-nowrap d-inline-block"><strong>Concepteur Développeur d'Applications</strong></a> (Bac+4) avec le <strong> Campus Expernet</strong> au Port, je suis à la recherche d'une entreprise capable de m'accueillir, de <strong>transmettre son savoir et ses connaissances</strong> sur le métier de développeur web.</p>
-                <p>En contrepartie, je mets à votre service mon expérience professionnelle, et fournis <strong>sérieux</strong>, <strong>rigueur</strong> et <strong>implication</strong>. Je suis <strong>curieux</strong>, <strong>avide d'apprendre</strong> et de réussir à <strong>concrétiser les projets</strong> que nous pourrions mener ensemble au fil des mois et des années à venir.</p>
-                <div>Contenu recherche entreprise</div>
-                <div>Contenu recherche entreprise</div>
+                <p>En contrepartie, je m'engage à mettre à votre service mon expérience professionnelle, et à fournir <strong>sérieux</strong>, <strong>rigueur</strong> et mon <strong>entière implication</strong>. Je suis <strong>curieux</strong>, <strong>avide d'apprendre</strong> et de réussir à <strong>concrétiser les projets</strong> que nous pourrions mener ensemble au fil des mois et des années à venir.</p>
+                <p>Sans langue de bois, je sais que certaines entreprises peuvent se montrer réticentes à embaucher une personne de plus de 30 ans, mais un contrat de professionnalisation permet de dépasser les contraires relatives au contrat d'apprentissage, et vous permettrait de bénéficier de mon expérience du monde professionnel tout en formant un des futurs membres actifs de l'avenir numérique de l'Île de la Réunion.</p>
+                <p>N'hésitez pas à jeter un œil à mon C.V., à me contacter par mail ou via LinkedIn, et tâchons d'organiser au plus tôt un entretien au cours duquel je répondrai au mieux à vos questions et saurai vous démontrer mon sérieux.</p>
+                <div>Vous pouvez également contacter Madame <a href="mailto:e.nerina@expernet.re?subject=Contrat%20d'alternance%20pour%20monsieur%20Anthony%20DEGEILH%20(CDA9)&body=">Emma NERINA</a>, notre conseillère en formation chez Expernet, qui saura répondre aux diverses questions administratives relatives à la prise d'un alternant.</div>
             </div>
         </div>
 
@@ -121,7 +122,7 @@
              id="tab-cv"
              role="tabpanel"
              aria-labelledby="tab-cv-btn">
-            <div class="row g-0 border border-top-0">
+            <div class="row g-0">
 
                 <!-- COLONNE GAUCHE (mes infos) -->
                 <aside class="col-12 col-lg-3 cv-left p-4 border-end border-dark-subtle">
@@ -358,6 +359,89 @@
             new bootstrap.Tooltip(tooltipTriggerEl);
         });
     });
+</script>
+
+<!--Confettis (développé par l'équipe de Google/Chrome DevRel)-->
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+<!--réglages du fichier js 'canvas-confetti'-->
+<script>
+    // 1. Ciblage de l'élément HTML
+    const motConfetti = document.getElementById('confettis');
+
+    // 2. Initialisation des variables pour les confettis
+    let animationFrameId = null;
+    const duration = 0.75 * 1000; // 2 secondes de confettis
+    const defaults = {
+        startVelocity: 10,
+        spread: 360, // Angle maximal de dispersion des confettis
+        ticks: 60,
+        zIndex: 99999,
+        shapes: ['star']
+    };
+
+    // 3. Fonction pour lancer les confettis en continu
+    function launchConfetti() {
+        // Si l'animation est déjà lancée, ne rien faire
+        if (animationFrameId) return;
+
+        // Fonction qui tire les confettis jusqu'à ce que la durée soit écoulée
+        const animationEnd = Date.now() + duration;
+
+        function frame() {
+            const timeLeft = animationEnd - Date.now();
+            // Le scalar est utilisé pour diminuer progressivement la quantité
+            const currentScalar = Math.max(0.3, timeLeft / duration);
+
+            // Calcul de la position de l'élément
+            const rect = motConfetti.getBoundingClientRect();
+
+            // Position de l'origine (Normalisée entre 0 et 1)
+            const leftOriginX = rect.left / window.innerWidth;
+            const rightOriginX = rect.right / window.innerWidth;
+            // Place l'origine au centre vertical de l'élément
+            const originY = (rect.top + rect.height / 2) / window.innerHeight;
+
+            // Tir 1 (Gauche)
+            confetti(Object.assign({}, defaults, {
+                particleCount: 1,
+                origin: { x: leftOriginX, y: originY },
+                colors: ['#f7ff00'],
+                scalar: currentScalar, // Utilisation du scalar dynamique
+            }));
+
+            // Tir 2 (Droite)
+            confetti(Object.assign({}, defaults, {
+                particleCount: 1,
+                origin: { x: rightOriginX, y: originY },
+                colors: ['#2ce20a'],
+                scalar: currentScalar, // Utilisation du scalar dynamique
+            }));
+
+            // Continuer l'animation si le temps n'est pas écoulé
+            if (timeLeft > 0) {
+                animationFrameId = requestAnimationFrame(frame);
+            } else {
+                animationFrameId = null;
+            }
+        }
+
+        animationFrameId = requestAnimationFrame(frame);
+    }
+
+    // 4. Fonction pour arrêter/réinitialiser l'animation (bad case)
+    function stopConfetti() {
+        if (animationFrameId) {
+            cancelAnimationFrame(animationFrameId);
+            animationFrameId = null;
+        }
+    }
+
+    // 5. Ajoute l'écouteur d'événement au survol (mouseover)
+    motConfetti.addEventListener('mouseover', launchConfetti);
+
+    // (Optionnel) Ajoute l'écouteur d'événement lorsque la souris quitte (mouseout)
+    motConfetti.addEventListener('mouseout', stopConfetti);
 </script>
 
 <script>
