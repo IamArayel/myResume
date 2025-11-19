@@ -68,7 +68,6 @@ body.dark-mode .cv-left {
 .cv-header {
     background: #fff;
     padding: 2rem;
-    border-bottom: 2px solid #dee2e6;
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 body.dark-mode .cv-header {
