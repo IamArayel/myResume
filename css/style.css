@@ -170,3 +170,48 @@ body.dark-mode .nav-tabs .nav-link.active {
 body.dark-mode .nav-tabs .nav-link:not(.active):hover {
     background-color: rgba(255, 255, 255, 0.05);
 }
+
+/* === Tabs Bootstrap : affichage empilé sur la version mobile === */
+@media (max-width: 596px) {
+
+    /* On autorise le retour à la ligne et on centre le contenu */
+    .nav-tabs .nav-link,
+    .nav-tabs .nav-link.disabled {
+        white-space: normal;          /* override du nowrap Bootstrap */
+        display: flex;
+        flex-direction: column;       /* icône au-dessus du texte */
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        gap: 0.25rem;
+        font-size: 0.9rem;
+        padding-top: 0.5rem;
+        /*padding-bottom: 0.5rem;*/
+    }
+
+    /* Les items prennent 100 % de largeur => 1 onglet par ligne */
+    .nav-tabs.nav-justified {
+        flex-wrap: wrap;
+    }
+
+    .nav-tabs.nav-justified .nav-item {
+        flex: 0 0 100%;
+    }
+
+    /* Pour éviter l'effet de bordure "mangée" en stack */
+    .nav-tabs .nav-link.active {
+        margin-bottom: 0;
+        border-bottom-color: #dee2e6;
+    }
+
+    .nav-tabs .nav-link:not(.active) {
+        margin-bottom: 0;
+        border-bottom-color: #444;
+    }
+
+    /* Légère réduction de la taille des SVG sur mobile */
+    .nav-tabs .nav-link svg {
+        width: 18px;
+        height: 18px;
+    }
+}
