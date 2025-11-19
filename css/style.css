@@ -204,14 +204,31 @@ body.dark-mode .nav-tabs .nav-link:not(.active):hover {
         border-bottom-color: #dee2e6;
     }
 
-    .nav-tabs .nav-link:not(.active) {
-        margin-bottom: 0;
-        border-bottom-color: #444;
-    }
-
     /* Légère réduction de la taille des SVG sur mobile */
     .nav-tabs .nav-link svg {
         width: 18px;
         height: 18px;
+    }
+}
+
+/* === Tabs Bootstrap : mise en forme fine des labels de tabs sur très petit écran === */
+@media (max-width: 480px) {
+
+    /* Pour les tabs marqués .tab-multiline :
+       - chaque ligne de texte devient un bloc => 2 lignes de texte sous l'icône */
+    .tab-multiline .tab-text-line1,
+    .tab-multiline .tab-text-line2 {
+        display: block;
+    }
+
+    /* Optionnel : légère réduction de la taille de police pour éviter les retours intempestifs */
+    .tab-multiline .tab-text {
+        font-size: 0.85rem;
+        line-height: 1.1;
+    }
+
+    /* Optionnel : un petit espace entre icône et bloc texte si besoin */
+    .tab-multiline {
+        gap: 0.15rem;
     }
 }
