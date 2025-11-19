@@ -28,6 +28,19 @@ body.dark-mode .cv-container {
     color: #e0e0e0;
     box-shadow: 0 0.5rem 1.5rem rgba(0,0,0,.3);
 }
+
+/* Animation douce des tabs */
+.nav-tabs .nav-item .nav-link {
+    transition: transform .2s ease-in-out, box-shadow .2s ease-in-out;
+}
+
+/* Effet de "lift" au survol de l'onglet */
+.nav-tabs .nav-item:hover .nav-link {
+    transform: translate3d(0, -.125rem, 0);
+    box-shadow: 0 .25rem .5rem rgba(0, 0, 0, .08);
+}
+
+
 .cv-left {
     background: #f0f3f7;
     min-height: 100%;
@@ -68,12 +81,10 @@ body.dark-mode .cv-left {
 .cv-header {
     background: #fff;
     padding: 2rem;
-    border-bottom: 2px solid #dee2e6;
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 body.dark-mode .cv-header {
     background: #2a2a2a;
-    border-bottom-color: #444;
 }
 
 /* Toggle mode sombre */
@@ -151,7 +162,7 @@ body.dark-mode .nav-tabs {
     background-color: #fff;
     border: 1px solid #dee2e6;
     border-bottom-color: #fff;
-    margin-bottom: -1px; /* Oui je triche pour retirer la bordure du bas 👀 */
+    margin-bottom: -1px; /* Oui je triche pour retirer la bordure du bas, pourquoi tu fouines ? 👀 */
 }
 
 /* Mode sombre - onglet actif */
@@ -163,7 +174,7 @@ body.dark-mode .nav-tabs .nav-link.active {
 
 /* Hover sur mes onglets inactifs */
 .nav-tabs .nav-link:not(.active):hover {
-    color: var(--bs-primary);
+    color: #6EA8FEFF;
     background-color: rgba(0, 0, 0, 0.05);
     border-color: transparent;
 }
@@ -171,4 +182,60 @@ body.dark-mode .nav-tabs .nav-link.active {
 /* Hover sur mes onglets inactifs - mode sombre */
 body.dark-mode .nav-tabs .nav-link:not(.active):hover {
     background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* === Tabs Bootstrap : affichage empilé sur la version mobile === */
+@media (max-width: 596px) {
+
+    /* On autorise le retour à la ligne et on centre le contenu */
+    .nav-tabs .nav-link,
+    .nav-tabs .nav-link.disabled {
+        white-space: normal;          /* override du nowrap Bootstrap */
+        display: flex;
+        flex-direction: column;       /* icône au-dessus du texte */
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        gap: 0.25rem;
+        font-size: 0.9rem;
+        padding-top: 0.5rem;
+        /*padding-bottom: 0.5rem;*/
+    }
+
+    /* Les items prennent 100 % de largeur => 1 onglet par ligne */
+    .nav-tabs.nav-justified {
+        flex-wrap: wrap;
+    }
+
+    .nav-tabs.nav-justified .nav-item {
+        flex: 0 0 100%;
+    }
+
+    /* Légère réduction de la taille des SVG sur mobile */
+    .nav-tabs .nav-link svg {
+        width: 18px;
+        height: 18px;
+    }
+}
+
+/* === Tabs Bootstrap : mise en forme fine des labels de tabs sur très petit écran === */
+@media (max-width: 480px) {
+
+    /* Pour les tabs marqués .tab-multiline :
+       - chaque ligne de texte devient un bloc => 2 lignes de texte sous l'icône */
+    .tab-multiline .tab-text-line1,
+    .tab-multiline .tab-text-line2 {
+        display: block;
+    }
+
+    /* Optionnel : légère réduction de la taille de police pour éviter les retours intempestifs */
+    .tab-multiline .tab-text {
+        font-size: 0.85rem;
+        line-height: 1.1;
+    }
+
+    /* Optionnel : un petit espace entre icône et bloc texte si besoin */
+    .tab-multiline {
+        gap: 0.15rem;
+    }
 }
