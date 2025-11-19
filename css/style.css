@@ -198,12 +198,6 @@ body.dark-mode .nav-tabs .nav-link:not(.active):hover {
         flex: 0 0 100%;
     }
 
-    /* Pour éviter l'effet de bordure "mangée" en stack */
-    .nav-tabs .nav-link.active {
-        margin-bottom: 0;
-        border-bottom-color: #dee2e6;
-    }
-
     /* Légère réduction de la taille des SVG sur mobile */
     .nav-tabs .nav-link svg {
         width: 18px;
