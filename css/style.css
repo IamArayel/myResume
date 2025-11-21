@@ -1,54 +1,171 @@
 body {
-    background: #f5f5f5;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    background:
+            radial-gradient(circle at 0% 0%, #e2e8f0 0, #f5f5f5 45%, #f5f5f5 100%);
+    transition: background 0.5s ease, color 0.3s ease;
 }
+
 body.dark-mode {
-    background: #1a1a1a;
+    background:
+            radial-gradient(circle at 100% 0%, #020617 0, #020617 40%, #000000 100%);
     color: #e0e0e0;
 }
+
 h1 {
     font-weight: bold;
     font-size: x-large;
     letter-spacing: .02rem;
 }
-h2, h3 {
+
+h2,
+h3 {
     font-weight: bold;
     font-size: larger;
     /*text-decoration: underline;*/
 }
+
+/* === Container principal : matériau LiquidGlass === */
 .cv-container {
+    /* Variables LiquidGlass (mode clair par défaut) */
+    --lg-highlight: rgba(255, 255, 255, 0.95);
+    --lg-tint-1: rgba(59, 130, 246, 0.45);
+    --lg-tint-2: rgba(45, 212, 191, 0.45);
+    --lg-bg-base: rgba(255, 255, 255, 0.18);
+    --lg-border: rgba(255, 255, 255, 0.80);
+    --lg-tilt-x: 0deg;
+    --lg-tilt-y: 0deg;
+    --lg-translate-y: 0px;
+    --lg-spec-x: 20%;
+    --lg-spec-y: 0%;
+
+    position: relative;
     max-width: 1200px;
     margin: 2rem auto;
-    background: rgba(255, 255, 255, 0.9);
-    box-shadow: 0 0.5rem 1.5rem rgba(0,0,0,.08);
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-body.dark-mode .cv-container {
-    background: rgba(42, 42, 42, 0.9);
-    color: #e0e0e0;
-    box-shadow: 0 0.5rem 1.5rem rgba(0,0,0,.3);
+    border-radius: 1.75rem;
+    border: 1px solid var(--lg-border);
+
+    /* Multi-couches : highlight spéculaire + teintes + base */
+    background:
+            radial-gradient(circle at var(--lg-spec-x) var(--lg-spec-y),
+            var(--lg-highlight) 0,
+            rgba(255, 255, 255, 0.35) 26%,
+            transparent 60%),
+            radial-gradient(circle at 0% 100%, var(--lg-tint-1) 0, transparent 55%),
+            radial-gradient(circle at 100% 0%, var(--lg-tint-2) 0, transparent 55%),
+            linear-gradient(
+                    135deg,
+                    rgba(255, 255, 255, 0.55),
+                    var(--lg-bg-base)
+            );
+    background-clip: padding-box;
+
+    box-shadow:
+            0 0 0 1px rgba(255, 255, 255, 0.20),
+            0 34px 80px rgba(15, 23, 42, 0.45);
+
+    backdrop-filter: blur(26px) saturate(1.8);
+    -webkit-backdrop-filter: blur(26px) saturate(1.8);
+
+    overflow: hidden;
+
+    /* Légère perspective + tilt pilotés par les variables */
+    transform:
+            perspective(1200px)
+            rotateX(var(--lg-tilt-x))
+            rotateY(var(--lg-tilt-y))
+            translate3d(0, var(--lg-translate-y), 0);
+
+    transition:
+            transform 0.25s ease,
+            box-shadow 0.35s ease,
+            background 0.35s ease,
+            border-color 0.35s ease;
 }
 
-/* Animation douce des tabs */
+/* Léger “lift” au survol (complément du tilt) */
+.cv-container:hover {
+    --lg-translate-y: -4px;
+}
+
+/* Reflets de verre (rim light) */
+.cv-container::before {
+    content: "";
+    position: absolute;
+    inset: -30%;
+    background:
+            radial-gradient(circle at 10% 0%,
+            rgba(255, 255, 255, 0.85),
+            transparent 55%),
+            radial-gradient(circle at 90% 100%,
+            rgba(255, 255, 255, 0.45),
+            transparent 55%);
+    mix-blend-mode: screen;
+    opacity: 0.9;
+    pointer-events: none;
+}
+
+/* Grain très léger pour casser l’effet plastique */
+.cv-container::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.18;
+    mix-blend-mode: soft-light;
+    background-image: repeating-linear-gradient(
+            45deg,
+            rgba(255, 255, 255, 0.15) 0,
+            rgba(255, 255, 255, 0.15) 1px,
+            transparent 1px,
+            transparent 3px
+    );
+}
+
+/* Variante LiquidGlass en dark mode */
+body.dark-mode .cv-container {
+    --lg-highlight: rgba(255, 255, 255, 0.80);
+    --lg-tint-1: rgba(59, 130, 246, 0.75);
+    --lg-tint-2: rgba(129, 140, 248, 0.70);
+    --lg-bg-base: rgba(15, 23, 42, 0.92);
+    --lg-border: rgba(148, 163, 184, 0.85);
+
+    color: #e5e7eb;
+    box-shadow:
+            0 0 0 1px rgba(15, 23, 42, 1),
+            0 40px 95px rgba(0, 0, 0, 0.90);
+}
+
+/* Animation douce des tabs (effet de "lift" au survol de l'onglet) */
 .nav-tabs .nav-item .nav-link {
     transition: transform .2s ease-in-out, box-shadow .2s ease-in-out;
 }
 
-/* Effet de "lift" au survol de l'onglet */
 .nav-tabs .nav-item:hover .nav-link {
     transform: translate3d(0, -.125rem, 0);
     box-shadow: 0 .25rem .5rem rgba(0, 0, 0, .08);
 }
 
-
+/* Colonne gauche */
 .cv-left {
-    background: transparent;
+    background: linear-gradient(
+            180deg,
+            rgba(255, 255, 255, 0.78),
+            rgba(255, 255, 255, 0.10)
+    );
     min-height: 100%;
-    transition: background-color 0.3s ease;
+    border-radius: 1.25rem 0 0 1.25rem;
+    backdrop-filter: blur(18px) saturate(1.3);
+    -webkit-backdrop-filter: blur(18px) saturate(1.3);
+    transition: background 0.3s ease;
 }
+
 body.dark-mode .cv-left {
-    background: transparent;
+    background: linear-gradient(
+            180deg,
+            rgba(15, 23, 42, 0.96),
+            rgba(15, 23, 42, 0.55)
+    );
 }
+
 .photo-wrapper {
     width: 140px;
     height: 140px;
@@ -56,6 +173,7 @@ body.dark-mode .cv-left {
     overflow: hidden;
     background: #d9d9d9;
 }
+
 .section-title-sm {
     font-size: .85rem;
     text-transform: uppercase;
@@ -63,15 +181,18 @@ body.dark-mode .cv-left {
     font-weight: 600;
     margin-bottom: .5rem;
 }
+
 .cv-main-title {
     font-weight: 700;
     letter-spacing: .02rem;
 }
+
 @media (min-width: 992px) {
     .cv-left {
         min-height: 100%;
     }
 }
+
 .photo-offset-top {
     object-position: 65% 25%;
     transform: scale(1.2);
@@ -79,12 +200,28 @@ body.dark-mode .cv-left {
 
 /* Section en-tête unifiée */
 .cv-header {
-    background: transparent;
+    background: linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.85),
+            rgba(255, 255, 255, 0.20)
+    );
+    border-radius: 1.25rem;
     padding: 2rem;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.70);
+    box-shadow: 0 18px 40px rgba(15, 23, 42, 0.22);
+    backdrop-filter: blur(22px) saturate(1.4);
+    -webkit-backdrop-filter: blur(22px) saturate(1.4);
+    transition: background 0.3s ease, box-shadow 0.3s ease;
 }
+
 body.dark-mode .cv-header {
-    background: transparent;
+    background: linear-gradient(
+            135deg,
+            rgba(15, 23, 42, 0.96),
+            rgba(15, 23, 42, 0.70)
+    );
+    border-color: rgba(148, 163, 184, 0.85);
+    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.75);
 }
 
 /* Toggle mode sombre */
@@ -94,6 +231,7 @@ body.dark-mode .cv-header {
     right: 1rem;
     z-index: 1000;
 }
+
 .theme-toggle-btn {
     width: 50px;
     height: 50px;
@@ -106,77 +244,110 @@ body.dark-mode .cv-header {
     justify-content: center;
     font-size: 1.5rem;
     transition: all 0.3s ease;
-    box-shadow: 0 2px 5px rgba(0,0,0,.1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, .1);
 }
+
 body.dark-mode .theme-toggle-btn {
     background: #2a2a2a;
     border-color: #444;
     color: #ffd700;
 }
+
 .theme-toggle-btn:hover {
     transform: scale(1.1);
-    box-shadow: 0 3px 8px rgba(0,0,0,.2);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, .2);
 }
 
 /* Ajustements pour le mode sombre */
 body.dark-mode .text-dark {
     color: #e0e0e0 !important;
 }
+
 body.dark-mode .link-primary {
     color: #6ea8fe !important;
 }
+
 body.dark-mode .border-dark-subtle {
     border-color: #444 !important;
 }
+
 body.dark-mode .btn-outline-secondary {
     color: #e0e0e0;
     border-color: #6c757d;
 }
+
 body.dark-mode .btn-outline-secondary:hover {
     background-color: #6c757d;
     border-color: #6c757d;
     color: #fff;
 }
 
-/* === Personnalisation des tabs === */
-
-/* Container des tabs */
+/* === Barre d’onglets façon contrôle LiquidGlass === */
 .nav-tabs {
-    border-bottom: 1px solid #dee2e6;
+    border-bottom: none;
+    border-radius: 999px;
+    padding: 0.25rem;
+    margin: 0 1rem;
+    background:
+            radial-gradient(circle at 0% 0%, rgba(255, 255, 255, 0.80), transparent 55%),
+            linear-gradient(135deg, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.18));
+    backdrop-filter: blur(18px) saturate(1.4);
+    -webkit-backdrop-filter: blur(18px) saturate(1.4);
+    box-shadow:
+            0 0 0 1px rgba(255, 255, 255, 0.65),
+            0 18px 35px rgba(15, 23, 42, 0.20);
 }
 
-/* Mode sombre - bordure des tabs */
 body.dark-mode .nav-tabs {
-    border-bottom-color: #444;
+    background:
+            radial-gradient(circle at 0% 0%, rgba(148, 163, 184, 0.65), transparent 55%),
+            linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(15, 23, 42, 0.70));
+    box-shadow:
+            0 0 0 1px rgba(15, 23, 42, 1),
+            0 20px 40px rgba(0, 0, 0, 0.75);
 }
 
-/* Texte des onglets (body / cv-container) */
+/* Onglets : pill glass */
 .nav-tabs .nav-link,
 .nav-tabs .nav-link.disabled {
     color: inherit;
+    border-radius: 999px;
+    border: 0;
 }
 
-/* Onglet actif */
+/* Onglet actif : pastille de verre plus “gonflée” */
 .nav-tabs .nav-link.active {
-    color: inherit;
-    background-color: transparent;
-    border: 1px solid #dee2e6;
-    border-bottom-color: transparent;
-    margin-bottom: -1px; /* Oui je triche pour retirer la bordure du bas, pourquoi tu fouines ? 👀 */
+    color: #0f172a;
+    background:
+            radial-gradient(circle at 50% 0%,
+            rgba(255, 255, 255, 0.95),
+            rgba(255, 255, 255, 0.65));
+    box-shadow:
+            0 8px 18px rgba(15, 23, 42, 0.22),
+            0 0 0 1px rgba(255, 255, 255, 0.65);
 }
 
-/* Mode sombre - onglet actif */
 body.dark-mode .nav-tabs .nav-link.active {
-    background-color: transparent;
-    border-color: #444;
-    border-bottom-color: transparent;
+    color: #e5e7eb;
+    background:
+            radial-gradient(circle at 50% 0%,
+            rgba(30, 64, 175, 0.95),
+            rgba(15, 23, 42, 0.90));
+    box-shadow:
+            0 8px 18px rgba(0, 0, 0, 0.80),
+            0 0 0 1px rgba(15, 23, 42, 1);
+}
+
+/* Onglets inactifs : transparents dans la barre de verre */
+.nav-tabs .nav-link:not(.active) {
+    background: transparent;
+    border: 0;
 }
 
 /* Hover sur mes onglets inactifs */
 .nav-tabs .nav-link:not(.active):hover {
     color: #6EA8FEFF;
     background-color: rgba(0, 0, 0, 0.05);
-    border-color: transparent;
 }
 
 /* Hover sur mes onglets inactifs - mode sombre */
@@ -190,16 +361,15 @@ body.dark-mode .nav-tabs .nav-link:not(.active):hover {
     /* On autorise le retour à la ligne et on centre le contenu */
     .nav-tabs .nav-link,
     .nav-tabs .nav-link.disabled {
-        white-space: normal;          /* override du nowrap Bootstrap */
+        white-space: normal;
         display: flex;
-        flex-direction: column;       /* icône au-dessus du texte */
+        flex-direction: column;
         align-items: center;
         justify-content: center;
         text-align: center;
         gap: 0.25rem;
         font-size: 0.9rem;
         padding-top: 0.5rem;
-        /*padding-bottom: 0.5rem;*/
     }
 
     /* Les items prennent 100 % de largeur => 1 onglet par ligne */
@@ -239,8 +409,8 @@ body.dark-mode .nav-tabs .nav-link:not(.active):hover {
         gap: 0.15rem;
     }
 }
-/*===================== Gestion des particules */
-/*mode clair*/
+
+/* Particules en fond */
 #particles-js {
     position: fixed;
     width: 100%;
@@ -248,12 +418,15 @@ body.dark-mode .nav-tabs .nav-link:not(.active):hover {
     top: 0;
     left: 0;
     z-index: -1;
-    background-color: #f8f9fa;
+    background:
+            radial-gradient(circle at 0% 0%, #dbeafe 0, #f8f9fa 35%, #eef2ff 100%);
 }
-/*mode sombre*/
+
 body.dark-mode #particles-js {
-    background-color: #1a1a1a;
+    background:
+            radial-gradient(circle at 0% 0%, #020617 0, #020617 40%, #0b1120 75%, #020617 100%);
 }
+
 .content-wrapper {
     position: relative;
     z-index: 1;
@@ -262,7 +435,35 @@ body.dark-mode #particles-js {
     border-radius: 10px;
     animation: fadeIn 1s ease-in-out;
 }
+
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-20px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Contenu des tabs sur panneau LiquidGlass interne */
+.cv-container .tab-pane {
+    background: radial-gradient(
+            circle at 50% 0%,
+            rgba(255, 255, 255, 0.78),
+            rgba(255, 255, 255, 0.10)
+    );
+    border-radius: 1rem;
+    backdrop-filter: blur(18px) saturate(1.4);
+    -webkit-backdrop-filter: blur(18px) saturate(1.4);
+}
+
+body.dark-mode .cv-container .tab-pane {
+    background: radial-gradient(
+            circle at 50% 0%,
+            rgba(15, 23, 42, 0.96),
+            rgba(15, 23, 42, 0.55)
+    );
 }
