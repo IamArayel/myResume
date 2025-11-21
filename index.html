@@ -129,6 +129,22 @@
                 <p class="fs-5">Anthony DÉGEILH</p>
             </div>
 
+            <!-- Timeline de la formation -->
+            <section id="formation-timeline" class="mb-4">
+                <h2 class="h5 ms-1">Évolution du planning de la formation</h2>
+
+                <div class="timeline-wrapper mt-3" aria-live="polite" aria-label="Timeline de la formation">
+                    <div class="timeline-track" role="presentation">
+                        <div class="timeline-events" aria-hidden="false"></div>
+                        <div class="timeline-today" aria-hidden="true" title="Date du jour"></div>
+                    </div>
+                    <div id="timeline-tooltip" role="tooltip" aria-hidden="true" class="visually-hidden"></div>
+                </div>
+
+                <p class="small text-muted mt-2">Survolez un segment pour afficher le détail. La ligne rouge indique la date d'aujourd'hui.</p>
+            </section>
+
+            <!-- Carte Google Maps -->
             <div class="w-75 mx-auto p-3 d-flex flex-column flex-lg-row align-items-center justify-content-center">
                 <div class="map-container mb-3 mb-lg-0 me-lg-4 w-100">
                     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4419.936231574673!2d55.31402597601216!3d-20.94700307078378!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x218287d819ee1123%3A0x2c89c58203c3d27d!2sExpernet%20Campus%20Informatique%20et%20Marketing%20Digital!5e1!3m2!1sfr!2sfr!4v1763404500242!5m2!1sfr!2sfr"
@@ -142,6 +158,7 @@
                     </iframe>
                 </div>
 
+                <!-- Logo Expernet -->
                 <div class="content-right d-flex flex-column align-items-center text-center w-100">
                     <img src="img/Logo-Expernet.png"
                          alt="Logo Campus Expernet"
@@ -574,7 +591,6 @@
     });
 </script>
 
-</script>
 <!--Particles en fond.js-->
 <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 <script>
@@ -696,5 +712,239 @@
     updateParticlesTheme(document.body.classList.contains('dark-mode'));
     }
 </script>
+
+<!-- ATTENTION ! On respire un grand coup avant de plonger dans le code, c'est indigeste ! -->
+<script>
+    (function () {
+        // ======= Données (les mêmes que précédemment) =======
+        const formationTimeline = [
+            { start: '2025-10-20', end: '2025-10-24', title: 'Développement Web côté client', desc: '1 semaine — Développement Web côté client', kind: 'module' },
+            { start: '2025-10-27', end: '2025-11-14', title: 'Entreprise', desc: 'ENTREPRISE (3 semaines)', kind: 'entreprise' },
+            { start: '2025-11-17', end: '2025-11-28', title: 'Développement Web côté serveur (PHP & Symfony)', desc: '2 semaines — Développement Web côté serveur avec PHP et Symfony', kind: 'module' },
+            { start: '2025-12-01', end: '2026-01-09', title: 'Entreprise', desc: 'ENTREPRISE (6 semaines)', kind: 'entreprise' },
+            { start: '2026-01-12', end: '2026-01-16', title: 'Conduite de projet', desc: '1 semaine — Conduite de projet', kind: 'module' },
+            { start: '2026-01-19', end: '2026-01-23', title: 'Développement Web côté serveur (PHP & Symfony)', desc: '1 semaine — Développement Web côté serveur avec PHP et Symfony', kind: 'module' },
+            { start: '2026-01-26', end: '2026-02-13', title: 'Entreprise', desc: 'ENTREPRISE (3 semaines)', kind: 'entreprise' },
+            { start: '2026-02-16', end: '2026-02-20', title: "Introduction à l'IA / Python", desc: '1 semaine — Introduction à l’IA/Python', kind: 'module' },
+            { start: '2026-02-23', end: '2026-03-13', title: 'Entreprise', desc: 'ENTREPRISE (3 semaines)', kind: 'entreprise' },
+            { start: '2026-03-16', end: '2026-03-20', title: 'Le langage de requête SQL', desc: '1 semaine — Le langage de requête SQL', kind: 'module' },
+            { start: '2026-03-23', end: '2026-03-27', title: 'Procédures stockées avec PL-SQL', desc: '1 semaine — Procédures stockées avec PL-SQL', kind: 'module' },
+            { start: '2026-03-30', end: '2026-04-17', title: 'Entreprise', desc: 'ENTREPRISE (3 semaines)', kind: 'entreprise' },
+            { start: '2026-04-20', end: '2026-05-01', title: 'SPRING BOOT', desc: '2 semaines — SPRING BOOT', kind: 'module' },
+            { start: '2026-05-04', end: '2026-05-07', title: 'EXPERNET HACKATHON', desc: '4 jours — EXPERNET HACKATHON', kind: 'module' },
+            { start: '2026-05-11', end: '2026-06-19', title: 'Entreprise', desc: 'ENTREPRISE (6 semaines)', kind: 'entreprise' },
+            { start: '2026-06-22', end: '2026-07-03', title: 'MSP 1 : Développer une application sécurisée', desc: '2 semaines — MSP 1 : Développer une application sécurisée', kind: 'module' },
+            { start: '2026-07-06', end: '2026-08-07', title: 'Entreprise', desc: 'ENTREPRISE (5 semaines)', kind: 'entreprise' },
+            { start: '2026-08-10', end: '2026-08-21', title: 'Je ne sais pas', desc: 'Je ne sais pas.', kind: 'module' },
+            { start: '2026-08-24', end: '2026-09-25', title: 'Entreprise', desc: 'ENTREPRISE (5 semaines)', kind: 'entreprise' },
+            { start: '2026-09-28', end: '2026-10-09', title: 'DEVOPS', desc: '2 semaines — DEVOPS', kind: 'module' },
+            { start: '2026-10-12', end: '2026-11-20', title: 'Entreprise', desc: 'ENTREPRISE (6 semaines)', kind: 'entreprise' },
+            { start: '2026-11-23', end: '2026-12-11', title: 'MSP 2 : Concevoir et développer une application sécurisée', desc: '3 semaines — MSP 2 : Concevoir et développer une application sécurisée organisée en couches', kind: 'module' },
+            { start: '2026-12-14', end: '2027-01-22', title: 'Entreprise', desc: 'ENTREPRISE (5 semaines)', kind: 'entreprise' },
+            { start: '2027-01-18', end: '2027-01-29', title: 'SPRING BOOT / SPRING SECURITE', desc: '2 semaines — SPRING BOOT/SPRING SECURITE', kind: 'module' },
+            { start: '2027-02-01', end: '2027-03-05', title: 'Entreprise', desc: 'ENTREPRISE (5 semaines)', kind: 'entreprise' },
+            { start: '2027-03-08', end: '2027-03-12', title: 'SPRING SECURITE', desc: '1 semaine — SPRING SECURITE', kind: 'module' },
+            { start: '2027-03-15', end: '2027-03-19', title: 'FLUTTER', desc: '1 semaine — FLUTTER', kind: 'module' },
+            { start: '2027-03-22', end: '2027-04-16', title: 'Entreprise', desc: 'ENTREPRISE (5 semaines)', kind: 'entreprise' },
+            { start: '2027-04-12', end: '2027-04-16', title: 'HACKING ETHIQUE', desc: '1 semaine — HACKING ETHIQUE', kind: 'module' },
+            { start: '2027-04-19', end: '2027-05-14', title: 'Entreprise', desc: 'ENTREPRISE (3 semaines)', kind: 'entreprise' },
+            { start: '2027-05-17', end: '2027-05-21', title: 'ANGLAIS', desc: '4 jours — ANGLAIS', kind: 'module' },
+            { start: '2027-05-24', end: '2027-06-11', title: 'Entreprise', desc: 'ENTREPRISE (4 semaines)', kind: 'entreprise' },
+            { start: '2027-06-14', end: '2027-06-25', title: "Développement d'une application mobile avec Android", desc: "2 semaines — Développement d'une application mobile avec Android", kind: 'module' },
+            { start: '2027-06-28', end: '2027-07-16', title: 'Entreprise', desc: 'ENTREPRISE (3 semaines)', kind: 'entreprise' },
+            { start: '2027-07-19', end: '2027-07-30', title: "MSP 3 : Préparer le déploiement d’une application sécurisée", desc: "2 semaines — MSP 3 : Préparer le déploiement d’une application sécurisée", kind: 'module' },
+            { start: '2027-08-02', end: '2027-08-20', title: 'Entreprise', desc: 'ENTREPRISE (3 semaines)', kind: 'entreprise' },
+            { start: '2027-08-23', end: '2027-08-27', title: 'EXAMEN BLANC', desc: '1 semaine — EXAMEN BLANC', kind: 'module' },
+            { start: '2027-08-30', end: '2027-09-03', title: 'Entreprise', desc: 'ENTREPRISE (1 semaine)', kind: 'entreprise' },
+            { start: '2027-09-06', end: '2027-09-10', title: 'EXAMEN FINAL – PRESENTATION DU TP', desc: 'EXAMEN FINAL – PRESENTATION DU TP', kind: 'module' },
+            { start: '2027-09-13', end: '2027-10-01', title: 'Entreprise (fin de contrat)', desc: 'ENTREPRISE (3 semaines) — Fin de contrat', kind: 'entreprise' }
+        ];
+
+        // ======= Utils =======
+        function isoToDate(s) {
+            const [y, m, d] = s.split('-').map(Number);
+            return new Date(y, m - 1, d, 12, 0, 0);
+        }
+        function clamp(v, a, b) { return Math.max(a, Math.min(b, v)); }
+
+        // DOM references
+        const containerEvents = document.querySelector('.timeline-events');
+        const tooltip = document.getElementById('timeline-tooltip');
+        const timelineTodayEl = document.querySelector('.timeline-today');
+        const timelineWrapper = document.querySelector('.timeline-wrapper');
+        const track = document.querySelector('.timeline-track');
+
+        if (!containerEvents || !tooltip || !timelineTodayEl || !timelineWrapper || !track) return;
+
+        // compute global start / end (ms)
+        const starts = formationTimeline.map(e => isoToDate(e.start).getTime());
+        const ends = formationTimeline.map(e => isoToDate(e.end).getTime());
+        const globalStartMs = Math.min(...starts);
+        const globalEndMs = Math.max(...ends);
+        const totalMs = globalEndMs - globalStartMs;
+        const totalDays = Math.ceil(totalMs / (24*3600*1000)) + 1;
+
+        // responsive px per day (will be recalculated on resize)
+        function computePxPerDay() {
+            // base scale: more pixels on desktop, less on mobile
+            const w = window.innerWidth;
+            if (w < 480) return 10;      // mobile small
+            if (w < 900) return 9;       // tablet
+            return 12;                   // desktop
+        }
+
+        // build the rail width in px and set the elements
+        let pxPerDay = computePxPerDay();
+        function buildTimeline() {
+            // clear previous
+            containerEvents.innerHTML = '';
+
+            pxPerDay = computePxPerDay();
+            const railWidth = Math.max(900, Math.round(totalDays * pxPerDay)); // minimal width
+            containerEvents.style.width = railWidth + 'px';
+
+            // position today's line
+            const today = new Date(); // live date
+            const todayMs = today.getTime();
+            if (todayMs < globalStartMs || todayMs > globalEndMs) {
+                timelineTodayEl.style.display = 'none';
+            } else {
+                timelineTodayEl.style.display = 'block';
+                const leftPx = ((todayMs - globalStartMs) / totalMs) * railWidth;
+                timelineTodayEl.style.left = leftPx + 'px';
+            }
+
+            // create events
+            formationTimeline.forEach((ev, idx) => {
+                const sMs = isoToDate(ev.start).getTime();
+                const eMs = isoToDate(ev.end).getTime();
+                const leftPx = ((sMs - globalStartMs) / totalMs) * railWidth;
+                const rightPx = ((eMs - globalStartMs) / totalMs) * railWidth;
+                const widthPx = Math.max(20, rightPx - leftPx);
+
+                const el = document.createElement('div');
+                el.className = 'timeline-event ' + (ev.kind === 'entreprise' ? 'type-entreprise' : 'type-module');
+                el.classList.add(idx % 2 === 0 ? 'row-top' : 'row-bottom');
+
+                el.style.left = leftPx + 'px';
+                el.style.width = widthPx + 'px';
+                el.setAttribute('tabindex', '0');
+                el.setAttribute('role', 'button');
+                el.setAttribute('aria-label', ev.title + ' — ' + ev.desc);
+
+                const label = document.createElement('div');
+                label.className = 'label';
+                label.textContent = ev.title;
+                el.appendChild(label);
+
+                // metadata
+                el.dataset.title = ev.title;
+                el.dataset.desc = ev.desc;
+                el.dataset.start = ev.start;
+                el.dataset.end = ev.end;
+
+                // events for tooltip
+                function showTooltip(evt) {
+                    tooltip.classList.remove('visually-hidden');
+                    tooltip.setAttribute('aria-hidden', 'false');
+                    tooltip.innerHTML = '<strong>' + ev.title + '</strong><div style="margin-top:.35rem;font-size:.95rem;opacity:.95;">' + ev.desc + '</div>' +
+                        '<div style="margin-top:.35rem;font-size:.82rem;opacity:.7;">' + ev.start + ' → ' + ev.end + '</div>';
+
+                    let leftPos;
+                    if (evt && evt.clientX) {
+                        leftPos = evt.clientX + 14;
+                    } else {
+                        const rect = el.getBoundingClientRect();
+                        leftPos = rect.left + rect.width / 2;
+                    }
+                    const topPos = (evt && evt.clientY) ? evt.clientY + 14 : (window.scrollY + el.getBoundingClientRect().top - 10);
+
+                    tooltip.style.left = clamp(leftPos, 8, window.innerWidth - 8 - 340) + 'px';
+                    tooltip.style.top = Math.max(8, topPos) + 'px';
+                    tooltip.style.opacity = '1';
+                    tooltip.style.transform = 'translateY(0)';
+                }
+
+                function hideTooltip() {
+                    tooltip.classList.add('visually-hidden');
+                    tooltip.setAttribute('aria-hidden', 'true');
+                    tooltip.style.opacity = '0';
+                    tooltip.style.transform = 'translateY(-6px)';
+                }
+
+                el.addEventListener('pointerenter', showTooltip);
+                el.addEventListener('pointermove', showTooltip);
+                el.addEventListener('pointerleave', hideTooltip);
+                el.addEventListener('focus', function () { showTooltip(); });
+                el.addEventListener('blur', hideTooltip);
+                el.addEventListener('click', function () {
+                    if (el.classList.contains('persist')) {
+                        el.classList.remove('persist'); hideTooltip();
+                    } else {
+                        document.querySelectorAll('.timeline-event.persist').forEach(x => x.classList.remove('persist'));
+                        el.classList.add('persist'); showTooltip();
+                    }
+                });
+
+                containerEvents.appendChild(el);
+
+                // mark current if today in range
+                if (todayMs >= sMs && todayMs <= eMs) {
+                    el.classList.add('current');
+                }
+            });
+
+            // inject current badge: find the section title h2 inside #formation-timeline
+            const section = document.getElementById('formation-timeline');
+            if (section) {
+                const titleH2 = section.querySelector('h2.h5');
+                if (titleH2) {
+                    // remove existing badge
+                    const prev = titleH2.querySelector('.timeline-current-badge');
+                    if (prev) prev.remove();
+
+                    // find first event that contains today
+                    const currentEv = formationTimeline.find(ev => {
+                        const s = isoToDate(ev.start).getTime();
+                        const e = isoToDate(ev.end).getTime();
+                        return (todayMs >= s && todayMs <= e);
+                    });
+
+                    if (currentEv) {
+                        const badge = document.createElement('span');
+                        badge.className = 'timeline-current-badge';
+                        badge.textContent = 'Actuellement : ' + currentEv.title;
+                        titleH2.appendChild(badge);
+                    }
+                }
+            }
+        }
+
+        // initial build
+        buildTimeline();
+
+        // rebuild on resize (debounced)
+        let resizeTimer = null;
+        window.addEventListener('resize', function () {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(function () {
+                buildTimeline();
+            }, 140);
+        });
+
+        // allow keyboard users to escape any persisted tooltip by pressing Escape
+        window.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') {
+                document.querySelectorAll('.timeline-event.persist').forEach(x => x.classList.remove('persist'));
+                if (tooltip) {
+                    tooltip.classList.add('visually-hidden');
+                    tooltip.setAttribute('aria-hidden', 'true');
+                }
+            }
+        });
+    })();
+</script>
+<!-- J'avais prévenu... -->
+
 </body>
 </html>
