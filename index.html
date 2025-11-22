@@ -998,15 +998,16 @@
 <!-- Script pour les compteurs -->
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        const namespace = 'anthonydegeilh-cv'; // Votre identifiant unique
+        const slug = 'anthonydegeilh'; // Votre slug d'API
 
         // --- Compteur de visites ---
         const visitorCountElement = document.getElementById('visitor-count');
-        const visitsKey = 'visits';
+        const visitsKey = 'visiteursuniques';
         const visitedFlag = 'hasVisited';
+        const visitsUrl = `https://api.counterapi.dev/v2/${slug}/${visitsKey}`;
 
         function getVisitorCount() {
-            fetch(`https://api.counterapi.dev/v1/${namespace}/${visitsKey}/`)
+            fetch(visitsUrl)
                 .then(res => res.json())
                 .then(data => {
                     if (visitorCountElement) visitorCountElement.textContent = data.count || 0;
@@ -1018,7 +1019,7 @@
         }
 
         if (localStorage.getItem(visitedFlag) !== 'true') {
-            fetch(`https://api.counterapi.dev/v1/${namespace}/${visitsKey}/up`)
+            fetch(`${visitsUrl}/up`)
                 .then(res => res.json())
                 .then(data => {
                     if (visitorCountElement) visitorCountElement.textContent = data.count;
@@ -1035,10 +1036,11 @@
         // --- Compteur de clics sur le CV ---
         const downloadBtn = document.getElementById('download-cv-btn');
         const downloadCountElement = document.getElementById('cv-download-count');
-        const cvDownloadsKey = 'cv-downloads';
+        const cvDownloadsKey = 'cvdownloads';
+        const cvDownloadsUrl = `https://api.counterapi.dev/v2/${slug}/${cvDownloadsKey}`;
 
         function getDownloadCount() {
-            fetch(`https://api.counterapi.dev/v1/${namespace}/${cvDownloadsKey}/`)
+            fetch(cvDownloadsUrl)
                 .then(res => res.json())
                 .then(data => {
                     if (downloadCountElement) downloadCountElement.textContent = data.count || 0;
@@ -1054,7 +1056,7 @@
 
         if (downloadBtn) {
             downloadBtn.addEventListener('click', function() {
-                fetch(`https://api.counterapi.dev/v1/${namespace}/${cvDownloadsKey}/up`)
+                fetch(`${cvDownloadsUrl}/up`)
                     .then(res => res.json())
                     .then(data => {
                         console.log(`CV téléchargé ${data.count} fois.`);
