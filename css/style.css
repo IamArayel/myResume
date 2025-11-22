@@ -270,7 +270,7 @@ body.dark-mode #particles-js {
 /*==================== Gestion de la timeline */
 :root {
     --tl-bg: #ffffff;
-    --tl-track: #e9eef6;
+    --tl-track: #8c0000;
     --tl-expernet: #009BDE; /* bleu demandé */
     --tl-enterprise: #F5C84C; /* jaune neutre demandé */
     --tl-event-text-dark: #042033;
@@ -309,20 +309,8 @@ body.dark-mode {
     border-radius: 0.5rem;
     background: transparent;
     padding: 1rem 0.5rem;
-}
-
-/* central baseline */
-.timeline-track::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 50%;
-    height: 6px;
-    transform: translateY(-50%);
-    background: linear-gradient(90deg, var(--tl-track), rgba(0,0,0,0.04));
-    border-radius: 6px;
-    z-index: 1;
+    width: 100%; /* <-- MODIFICATION: Occupe 100% de son parent .timeline-wrapper */
+    margin: 0;
 }
 
 /* Events container becomes the wide rail */
@@ -332,6 +320,20 @@ body.dark-mode {
     z-index: 2;
     min-width: 800px; /* fallback; JS will override width according to timeline span */
     pointer-events: none;
+}
+
+/* central baseline - MODIFICATION: Appliquée à .timeline-events au lieu de .timeline-track */
+.timeline-events::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    height: 6px;
+    transform: translateY(-50%);
+    background: linear-gradient(90deg, #8C0000FF, #008b17);
+    border-radius: 6px;
+    z-index: 1;
 }
 
 /* one event segment (rectangular style) */
@@ -355,6 +357,7 @@ body.dark-mode {
     pointer-events: auto;
     transition: transform .15s ease, box-shadow .15s ease, opacity .15s ease;
     border: 1px solid rgba(0,0,0,0.04);
+    z-index: 5; /* S'assure que les événements sont au-dessus de la barre ::after */
 }
 
 /* Top row vs bottom row for readability (modules top, entreprise bottom) */
@@ -362,7 +365,7 @@ body.dark-mode {
     transform: translateY(-140%);
 }
 .timeline-event.row-bottom {
-    transform: translateY(12%);
+    transform: translateY(40%);
 }
 
 /* Colors: Expernet (haut) and Entreprise (bas) */
@@ -465,7 +468,7 @@ body.dark-mode .timeline-current-badge {
     .timeline-track { height: 180px; }
     .timeline-event { font-size: .82rem; height: 44px; padding: 8px 10px; border-radius: 10px; }
     .timeline-event.row-top { transform: translateY(-180%); }
-    .timeline-event.row-bottom { transform: translateY(20%); }
+    .timeline-event.row-bottom { transform: translateY(80%); }
 }
 
 
