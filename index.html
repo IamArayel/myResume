@@ -998,11 +998,11 @@
 
         // Fonction pour récupérer et afficher le compteur
         function getCount() {
-            fetch(`https://api.countapi.xyz/get/${namespace}/${key}`)
+            fetch(`https://api.counterapi.dev/v1/${namespace}/${key}/`)
                 .then(res => res.json())
                 .then(data => {
                     if (countElement) {
-                        countElement.textContent = data.value || 0;
+                        countElement.textContent = data.count || 0;
                     }
                 })
                 .catch(err => {
@@ -1016,11 +1016,11 @@
         // Vérifier si le visiteur a déjà été compté
         if (localStorage.getItem(visitedFlag) !== 'true') {
             // Si non, incrémenter le compteur
-            fetch(`https://api.countapi.xyz/hit/${namespace}/${key}`)
+            fetch(`https://api.counterapi.dev/v1/${namespace}/${key}/up`)
                 .then(res => res.json())
                 .then(data => {
                     if (countElement) {
-                        countElement.textContent = data.value;
+                        countElement.textContent = data.count;
                     }
                     // Marquer le visiteur comme compté dans le localStorage
                     localStorage.setItem(visitedFlag, 'true');
