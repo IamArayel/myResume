@@ -182,7 +182,7 @@
 
                     <!-- Numéro de téléphone du campus -->
                     <div class="text-dark">
-                        <p><a href="tel:+262262219045" class="text-decoration-none text-white " title="Appeler Expernet">
+                        <p><a href="tel:+262262219045" class="text-decoration-none text-dark" title="Appeler Expernet">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone-fill mx-1" viewBox="0 0 16 16">
                                 <path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z"/>
                             </svg> 02.62.21.90.45</a></p>
@@ -428,6 +428,11 @@
     <span class="p-2">
         Copyright &copy; <script>document.write(new Date().getFullYear())</script>
         <a class="text-dark" href="https://anthonydegeilh.fr/">Anthony DÉGEILH</a>
+    </span> -
+
+    <!-- Compteur de visites -->
+    <span id="visitor-counter" class="p-2">
+        <i class="fa-solid fa-eye"></i> Visiteurs uniques : <span id="visitor-count">...</span>
     </span>
 </footer>
 
@@ -970,8 +975,56 @@
         });
     })();
 </script>
-
 <!-- J'avais prévenu... -->
 
+
+<!-- Script pour le compteur de visites -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const countElement = document.getElementById('visitor-count');
+        const namespace = 'anthonydegeilh-cv'; // Clé unique pour votre site
+        const key = 'visits';
+        const visitedFlag = 'hasVisited';
+
+        // Fonction pour récupérer et afficher le compteur
+        function getCount() {
+            fetch(`https://api.countapi.xyz/get/${namespace}/${key}`)
+                .then(res => res.json())
+                .then(data => {
+                    if (countElement) {
+                        countElement.textContent = data.value || 0;
+                    }
+                })
+                .catch(err => {
+                    console.error("Erreur lors de la récupération du compteur :", err);
+                    if (countElement) {
+                        countElement.textContent = 'N/A';
+                    }
+                });
+        }
+
+        // Vérifier si le visiteur a déjà été compté
+        if (localStorage.getItem(visitedFlag) !== 'true') {
+            // Si non, incrémenter le compteur
+            fetch(`https://api.countapi.xyz/hit/${namespace}/${key}`)
+                .then(res => res.json())
+                .then(data => {
+                    if (countElement) {
+                        countElement.textContent = data.value;
+                    }
+                    // Marquer le visiteur comme compté dans le localStorage
+                    localStorage.setItem(visitedFlag, 'true');
+                })
+                .catch(err => {
+                    console.error("Erreur lors de l'incrémentation du compteur :", err);
+                    // Tenter d'afficher le compteur même si l'incrémentation échoue
+                    getCount();
+                });
+        } else {
+            // Si le visiteur a déjà été compté, juste afficher le compteur
+            getCount();
+        }
+    });
+</script>
 </body>
 </html>
