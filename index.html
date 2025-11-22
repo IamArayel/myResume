@@ -877,20 +877,30 @@
                     tooltip.innerHTML = '<strong>' + ev.title + '</strong><div style="margin-top:.35rem;font-size:.95rem;opacity:.95;">' + ev.desc + '</div>' +
                         '<div style="margin-top:.35rem;font-size:.82rem;opacity:.7;">' + formatDateDMY(ev.start) + ' → ' + formatDateDMY(ev.end) + '</div>';
 
-                    let leftPos;
-                    if (evt && evt.clientX) {
-                        leftPos = evt.clientX + 14;
-                    } else {
-                        const rect = el.getBoundingClientRect();
-                        leftPos = rect.left + rect.width / 2;
-                    }
-                    const topPos = (evt && evt.clientY) ? evt.clientY + 14 : (window.scrollY + el.getBoundingClientRect().top - 10);
+                    const isTopRow = el.classList.contains('row-top');
+                    const rect = el.getBoundingClientRect();
+                    const tooltipRect = tooltip.getBoundingClientRect();
 
-                    tooltip.style.left = clamp(leftPos, 8, window.innerWidth - 8 - 340) + 'px';
-                    tooltip.style.top = Math.max(8, topPos) + 'px';
+                    // Positionnement horizontal
+                    let leftPos = rect.left + (rect.width / 2) - (tooltipRect.width / 2);
+                    leftPos = clamp(leftPos, 8, window.innerWidth - tooltipRect.width - 8);
+
+                    // Positionnement vertical
+                    let topPos;
+                    if (isTopRow) {
+                        // Afficher en dessous pour la rangée du haut
+                        topPos = rect.bottom + 8;
+                    } else {
+                        // Afficher au-dessus pour la rangée du bas
+                        topPos = rect.top - tooltipRect.height - 8;
+                    }
+
+                    tooltip.style.left = leftPos + 'px';
+                    tooltip.style.top = topPos + 'px';
                     tooltip.style.opacity = '1';
                     tooltip.style.transform = 'translateY(0)';
                 }
+
 
                 function hideTooltip() {
                     tooltip.classList.add('visually-hidden');
