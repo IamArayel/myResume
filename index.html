@@ -993,63 +993,124 @@
 <!-- J'avais prévenu... -->
 
 
-<!-- Script pour les compteurs -->
+<!-- Script pour les compteurs (corrigé v2) -->
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // --- URLs de vos compteurs publics ---
-        const visitsUrl = 'https://api.counterapi.dev/v2/anthonydegeilh/visiteursuniques';
-        const downloadsUrl = 'https://api.counterapi.dev/v2/anthonydegeilh/cvdownloads';
+document.addEventListener('DOMContentLoaded', function() {
+    const visitsUrl = 'https://api.counterapi.dev/v2/anthonydegeilh/visiteursuniques';
+    const downloadsUrl = 'https://api.counterapi.dev/v2/anthonydegeilh/cvdownloads';
 
-        // --- Éléments du DOM ---
-        const visitorCountEl = document.getElementById('visitor-count');
-        const downloadCountEl = document.getElementById('cv-download-count');
-        const downloadBtn = document.getElementById('download-cv-btn');
+    const visitorCountEl = document.getElementById('visitor-count');
+    const downloadCountEl = document.getElementById('cv-download-count');
+    const downloadBtn = document.getElementById('download-cv-btn');
+    const visitedFlag = 'anthonydegeilh-cv-visited-flag';
 
-        // --- Clé pour le stockage local ---
-        const visitedFlag = 'anthonydegeilh-cv-visited-flag';
+    function safeNumberFromResponse(data) {
+        if (!data) return 0;
+        // Plusieurs formes possibles renvoyées par l'API V2 :
+        // 1) {"code":"200","data":{...,"up_count":N,...}}
+        // 2) {"up_count":N} ou {"value":N} (selon endpoint/shape)
+        // On recherche les champs plausibles dans l'ordre.
+        const candidates = [
+            data.value,
+            data.count,
+            data.up_count,
+            data.data && data.data.value,
+            data.data && data.data.count,
+            data.data && data.data.up_count,
+            // parfois la réponse peut être encore plus imbriquée
+            data.data && data.data.data && data.data.data.up_count,
+            data.data && data.data.data && data.data.data.value
+        ];
+        for (const c of candidates) {
+            if (typeof c === 'number' && !Number.isNaN(c)) return c;
+            if (typeof c === 'string' && /^\d+$/.test(c)) return Number(c);
+        }
+        return 0;
+    }
 
-        // --- Logique du compteur de visites ---
+    function updateVisitorDisplayFromData(data) {
+        if (!visitorCountEl) return;
+        visitorCountEl.textContent = safeNumberFromResponse(data);
+    }
+    function updateDownloadDisplayFromData(data) {
+        if (!downloadCountEl) return;
+        downloadCountEl.textContent = safeNumberFromResponse(data);
+    }
+
+    // --- Compteur visiteurs ---
+    (function handleVisitorCounter() {
+        if (!visitorCountEl) return;
+
         if (localStorage.getItem(visitedFlag) !== 'true') {
-            // Nouvel visiteur : on incrémente, on affiche, et on stocke.
             fetch(`${visitsUrl}/up`)
                 .then(response => response.json())
                 .then(data => {
-                    visitorCountEl.textContent = data.count;
+                    updateVisitorDisplayFromData(data);
                     localStorage.setItem(visitedFlag, 'true');
                 })
-                .catch(err => console.error('Erreur incrémentation visiteurs:', err));
+                .catch(err => {
+                    console.error('Erreur incrémentation visiteurs:', err);
+                    visitorCountEl.textContent = '0';
+                });
         } else {
-            // Visiteur déjà compté : on affiche simplement la valeur actuelle.
             fetch(visitsUrl)
                 .then(response => response.json())
-                .then(data => {
-                    visitorCountEl.textContent = data.count;
-                })
-                .catch(err => console.error('Erreur récupération visiteurs:', err));
+                .then(data => updateVisitorDisplayFromData(data))
+                .catch(err => {
+                    console.error('Erreur récupération visiteurs:', err);
+                    visitorCountEl.textContent = '0';
+                });
+        }
+    })();
+
+    // --- Compteur téléchargements ---
+    (function handleDownloadCounter() {
+        if (downloadCountEl) {
+            fetch(downloadsUrl)
+                .then(response => response.json())
+                .then(data => updateDownloadDisplayFromData(data))
+                .catch(err => {
+                    console.error('Erreur récupération téléchargements:', err);
+                    downloadCountEl.textContent = '0';
+                });
         }
 
-        // --- Logique du compteur de téléchargements ---
-        // 1. Afficher la valeur actuelle au chargement de la page.
-        fetch(downloadsUrl)
-            .then(response => response.json())
-            .then(data => {
-                downloadCountEl.textContent = data.count;
-            })
-            .catch(err => console.error('Erreur récupération téléchargements:', err));
-
-        // 2. Mettre en place l'écouteur de clic pour incrémenter.
         if (downloadBtn) {
-            downloadBtn.addEventListener('click', () => {
-                fetch(`${downloadsUrl}/up`)
+            downloadBtn.addEventListener('click', (e) => {
+                const href = downloadBtn.href;
+                const openTarget = downloadBtn.target;
+
+                // incrémenter le compteur (keepalive pour les navigations)
+                fetch(`${downloadsUrl}/up`, { method: 'GET', keepalive: true })
                     .then(response => response.json())
                     .then(data => {
-                        // Mettre à jour l'affichage avec la nouvelle valeur.
-                        downloadCountEl.textContent = data.count;
+                        // la réponse contient généralement data.data.up_count
+                        updateDownloadDisplayFromData(data);
                     })
-                    .catch(err => console.error('Erreur incrémentation téléchargements:', err));
+                    .catch(err => {
+                        console.error('Erreur incrémentation téléchargements:', err);
+                    })
+                    .finally(() => {
+                        try {
+                            if (href) {
+                                if (openTarget === '_blank') {
+                                    window.open(href, '_blank', 'noopener');
+                                } else {
+                                    window.location.href = href;
+                                }
+                            }
+                        } catch (err) {
+                            console.error('Impossible d\'ouvrir le CV après incrémentation:', err);
+                        }
+                    });
+
+                e.preventDefault();
             });
         }
-    });
+    })();
+});
 </script>
+
+
 </body>
 </html>
