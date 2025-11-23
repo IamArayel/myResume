@@ -432,14 +432,12 @@
 
     <!-- Compteur de visites -->
     <span id="visitor-counter" class="p-2">
-        <i class="fa-regular fa-user fa-bounce"></i>
-        <span id="visitor-count">...</span>
+        <i class="fa-regular fa-user fa-bounce" aria-hidden="true"></i> <span id="visitor-count">...</span>
     </span> -
 
     <!-- Compteur de téléchargements -->
     <span id="cv-download-counter-display" class="p-2">
-        <i class="fa-regular fa-file-pdf fa-bounce"></i>
-        <span id="cv-download-count">...</span>
+        <i class="fa-regular fa-file-pdf fa-bounce" aria-hidden="true"></i> <span id="cv-download-count">...</span>
     </span>
 </footer>
 
@@ -998,71 +996,57 @@
 <!-- Script pour les compteurs -->
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        const slug = 'anthonydegeilh'; // Votre slug d'API
+        // --- URLs de vos compteurs publics ---
+        const visitsUrl = 'https://api.counterapi.dev/v2/anthonydegeilh/visiteursuniques';
+        const downloadsUrl = 'https://api.counterapi.dev/v2/anthonydegeilh/cvdownloads';
 
-        // --- Compteur de visites ---
-        const visitorCountElement = document.getElementById('visitor-count');
-        const visitsKey = 'visiteursuniques';
-        const visitedFlag = 'hasVisited';
-        const visitsUrl = `https://api.counterapi.dev/v2/${slug}/${visitsKey}`;
+        // --- Éléments du DOM ---
+        const visitorCountEl = document.getElementById('visitor-count');
+        const downloadCountEl = document.getElementById('cv-download-count');
+        const downloadBtn = document.getElementById('download-cv-btn');
 
-        function getVisitorCount() {
-            fetch(visitsUrl)
-                .then(res => res.json())
-                .then(data => {
-                    if (visitorCountElement) visitorCountElement.textContent = data.count || 0;
-                })
-                .catch(err => {
-                    console.error("Erreur récupération compteur visites :", err);
-                    if (visitorCountElement) visitorCountElement.textContent = 'N/A';
-                });
-        }
+        // --- Clé pour le stockage local ---
+        const visitedFlag = 'anthonydegeilh-cv-visited-flag';
 
+        // --- Logique du compteur de visites ---
         if (localStorage.getItem(visitedFlag) !== 'true') {
+            // Nouvel visiteur : on incrémente, on affiche, et on stocke.
             fetch(`${visitsUrl}/up`)
-                .then(res => res.json())
+                .then(response => response.json())
                 .then(data => {
-                    if (visitorCountElement) visitorCountElement.textContent = data.count;
+                    visitorCountEl.textContent = data.count;
                     localStorage.setItem(visitedFlag, 'true');
                 })
-                .catch(err => {
-                    console.error("Erreur incrémentation compteur visites :", err);
-                    getVisitorCount(); // Tente au moins d'afficher
-                });
+                .catch(err => console.error('Erreur incrémentation visiteurs:', err));
         } else {
-            getVisitorCount();
-        }
-
-        // --- Compteur de clics sur le CV ---
-        const downloadBtn = document.getElementById('download-cv-btn');
-        const downloadCountElement = document.getElementById('cv-download-count');
-        const cvDownloadsKey = 'cvdownloads';
-        const cvDownloadsUrl = `https://api.counterapi.dev/v2/${slug}/${cvDownloadsKey}`;
-
-        function getDownloadCount() {
-            fetch(cvDownloadsUrl)
-                .then(res => res.json())
+            // Visiteur déjà compté : on affiche simplement la valeur actuelle.
+            fetch(visitsUrl)
+                .then(response => response.json())
                 .then(data => {
-                    if (downloadCountElement) downloadCountElement.textContent = data.count || 0;
+                    visitorCountEl.textContent = data.count;
                 })
-                .catch(err => {
-                    console.error("Erreur récupération compteur CV :", err);
-                    if (downloadCountElement) downloadCountElement.textContent = 'N/A';
-                });
+                .catch(err => console.error('Erreur récupération visiteurs:', err));
         }
 
-        // Afficher le compteur de téléchargements au chargement de la page
-        getDownloadCount();
+        // --- Logique du compteur de téléchargements ---
+        // 1. Afficher la valeur actuelle au chargement de la page.
+        fetch(downloadsUrl)
+            .then(response => response.json())
+            .then(data => {
+                downloadCountEl.textContent = data.count;
+            })
+            .catch(err => console.error('Erreur récupération téléchargements:', err));
 
+        // 2. Mettre en place l'écouteur de clic pour incrémenter.
         if (downloadBtn) {
-            downloadBtn.addEventListener('click', function() {
-                fetch(`${cvDownloadsUrl}/up`)
-                    .then(res => res.json())
+            downloadBtn.addEventListener('click', () => {
+                fetch(`${downloadsUrl}/up`)
+                    .then(response => response.json())
                     .then(data => {
-                        console.log(`CV téléchargé ${data.count} fois.`);
-                        if (downloadCountElement) downloadCountElement.textContent = data.count;
+                        // Mettre à jour l'affichage avec la nouvelle valeur.
+                        downloadCountEl.textContent = data.count;
                     })
-                    .catch(err => console.error("Erreur incrémentation compteur CV :", err));
+                    .catch(err => console.error('Erreur incrémentation téléchargements:', err));
             });
         }
     });
