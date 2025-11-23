@@ -565,3 +565,11 @@ body.dark-mode .timeline-wrapper.use-colored-scrollbar::-webkit-scrollbar-thumb 
 }
 
 /* Fallback: if browser doesn't support custom scrollbars, nothing breaks */
+
+@media (max-width: 768px) {
+    .footer-counters {
+        display: block;
+        width: 100%;
+        margin-top: 0.5rem;
+    }
+}
