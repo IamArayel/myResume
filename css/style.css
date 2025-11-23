@@ -4,7 +4,7 @@ body {
 }
 body.dark-mode {
     background: #1a1a1a;
-    color: #e0e0e0;
+    color: #f5f5f5;
 }
 h1 {
     font-weight: bold;
@@ -25,7 +25,7 @@ h2, h3 {
 }
 body.dark-mode .cv-container {
     background: rgba(42, 42, 42, 0.9);
-    color: #e0e0e0;
+    color: #f5f5f5;
     box-shadow: 0 0.5rem 1.5rem rgba(0,0,0,.3);
 }
 
@@ -110,7 +110,7 @@ body.dark-mode .cv-header {
 }
 body.dark-mode .theme-toggle-btn {
     background: #2a2a2a;
-    border-color: #444;
+    border-color: #555;
     color: #ffd700;
 }
 .theme-toggle-btn:hover {
@@ -120,22 +120,22 @@ body.dark-mode .theme-toggle-btn {
 
 /* Ajustements pour le mode sombre */
 body.dark-mode .text-dark {
-    color: #e0e0e0 !important;
+    color: #f5f5f5 !important;
 }
 body.dark-mode .link-primary {
-    color: #6ea8fe !important;
+    color: #8ab4f8 !important;
 }
 body.dark-mode .border-dark-subtle {
-    border-color: #444 !important;
+    border-color: #555 !important;
 }
 body.dark-mode .btn-outline-secondary {
-    color: #e0e0e0;
-    border-color: #6c757d;
+    color: #f5f5f5;
+    border-color: #888;
 }
 body.dark-mode .btn-outline-secondary:hover {
-    background-color: #6c757d;
-    border-color: #6c757d;
-    color: #fff;
+    background-color: #888;
+    border-color: #888;
+    color: #1a1a1a;
 }
 
 /* === Personnalisation des tabs === */
@@ -147,7 +147,7 @@ body.dark-mode .btn-outline-secondary:hover {
 
 /* Mode sombre - bordure des tabs */
 body.dark-mode .nav-tabs {
-    border-bottom-color: #444;
+    border-bottom-color: #555;
 }
 
 /* Texte des onglets (body / cv-container) */
@@ -168,13 +168,13 @@ body.dark-mode .nav-tabs {
 /* Mode sombre - onglet actif */
 body.dark-mode .nav-tabs .nav-link.active {
     background-color: transparent;
-    border-color: #444;
+    border-color: #555;
     border-bottom-color: transparent;
 }
 
 /* Hover sur mes onglets inactifs */
 .nav-tabs .nav-link:not(.active):hover {
-    color: #6EA8FEFF;
+    color: #8ab4f8;
     background-color: rgba(0, 0, 0, 0.05);
     border-color: transparent;
 }

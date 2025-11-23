@@ -28,7 +28,7 @@
     </div>
 
     <!-- EN-TÊTE UNIFIÉ -->
-    <div class="cv-header">
+    <header class="cv-header">
         <div class="row align-items-center g-3">
             <!-- Photo -->
             <div class="col-12 col-md-auto text-center">
@@ -54,60 +54,62 @@
                 </a>
             </div>
         </div>
-    </div>
+    </header>
 
 
     <!-- MENU TABS -->
-    <ul class="nav nav-tabs justify-content-center g-3 m-1" role="tablist">
+    <nav aria-label="Navigation principale">
+        <ul class="nav nav-tabs justify-content-center g-3 m-1" role="tablist">
 
-        <li class="nav-item" role="presentation">
-            <button class="nav-link tab-multiline active"
-                    id="tab-recherche-btn"
-                    data-bs-toggle="tab"
-                    data-bs-target="#tab-recherche"
+            <li class="nav-item" role="presentation">
+                <button class="nav-link tab-multiline active"
+                        id="tab-recherche-btn"
+                        data-bs-toggle="tab"
+                        data-bs-target="#tab-recherche"
 
-                    role="tab"
-                    aria-controls="tab-recherche"
-                    aria-selected="true">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-binoculars-icon lucide-binoculars"><path d="M10 10h4"/><path d="M19 7V4a1 1 0 0 0-1-1h-2a1 1 0 0 0-1 1v3"/><path d="M20 21a2 2 0 0 0 2-2v-3.851c0-1.39-2-2.962-2-4.829V8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v11a2 2 0 0 0 2 2z"/><path d="M 22 16 L 2 16"/><path d="M4 21a2 2 0 0 1-2-2v-3.851c0-1.39 2-2.962 2-4.829V8a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v11a2 2 0 0 1-2 2z"/><path d="M9 7V4a1 1 0 0 0-1-1H6a1 1 0 0 0-1 1v3"/></svg>
-                <span class="tab-text">
-            <span class="tab-text-line1">Ma recherche</span>
-            <span class="tab-text-line2"> d'entreprise</span>
-        </span>
-            </button>
-        </li>
+                        role="tab"
+                        aria-controls="tab-recherche"
+                        aria-selected="true">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-binoculars-icon lucide-binoculars" aria-hidden="true"><path d="M10 10h4"/><path d="M19 7V4a1 1 0 0 0-1-1h-2a1 1 0 0 0-1 1v3"/><path d="M20 21a2 2 0 0 0 2-2v-3.851c0-1.39-2-2.962-2-4.829V8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v11a2 2 0 0 0 2 2z"/><path d="M 22 16 L 2 16"/><path d="M4 21a2 2 0 0 1-2-2v-3.851c0-1.39 2-2.962 2-4.829V8a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v11a2 2 0 0 1-2 2z"/><path d="M9 7V4a1 1 0 0 0-1-1H6a1 1 0 0 0-1 1v3"/></svg>
+                    <span class="tab-text">
+                <span class="tab-text-line1">Ma recherche</span>
+                <span class="tab-text-line2"> d'entreprise</span>
+            </span>
+                </button>
+            </li>
 
-        <li class="nav-item" role="presentation">
-            <button class="nav-link"
-                    id="tab-cv-btn"
-                    data-bs-toggle="tab"
-                    data-bs-target="#tab-cv"
+            <li class="nav-item" role="presentation">
+                <button class="nav-link"
+                        id="tab-cv-btn"
+                        data-bs-toggle="tab"
+                        data-bs-target="#tab-cv"
 
-                    role="tab"
-                    aria-controls="tab-cv"
-                    aria-selected="false">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-user-icon lucide-file-user"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"/><path d="M14 2v5a1 1 0 0 0 1 1h5"/><path d="M16 22a4 4 0 0 0-8 0"/><circle cx="12" cy="15" r="3"/></svg> Mon C.V.
-            </button>
-        </li>
+                        role="tab"
+                        aria-controls="tab-cv"
+                        aria-selected="false">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-user-icon lucide-file-user" aria-hidden="true"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"/><path d="M14 2v5a1 1 0 0 0 1 1h5"/><path d="M16 22a4 4 0 0 0-8 0"/><circle cx="12" cy="15" r="3"/></svg> Mon C.V.
+                </button>
+            </li>
 
-        <li class="nav-item tab-disabled"
-            role="presentation"
-            tabindex="0"
-            data-bs-toggle="tooltip"
-            data-bs-placement="bottom"
-            data-bs-title="Section en travaux, à venir !">
-            <button class="nav-link text-dark disabled tab-multiline"
-                    type="button"
-                    tabindex="-1"
-                    aria-disabled="true">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-folder-code-icon lucide-folder-code"><path d="M10 10.5 8 13l2 2.5"/><path d="m14 10.5 2 2.5-2 2.5"/><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2z"/></svg>
-                <span class="tab-text">
-                    <span class="tab-text-line1">Mes projets</span>
-                    <span class="tab-text-line2"> personnels</span>
-                </span>
-            </button>
-        </li>
-    </ul>
+            <li class="nav-item tab-disabled"
+                role="presentation"
+                tabindex="0"
+                data-bs-toggle="tooltip"
+                data-bs-placement="bottom"
+                data-bs-title="Section en travaux, à venir !">
+                <button class="nav-link text-dark disabled tab-multiline"
+                        type="button"
+                        tabindex="-1"
+                        aria-disabled="true">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-folder-code-icon lucide-folder-code" aria-hidden="true"><path d="M10 10.5 8 13l2 2.5"/><path d="m14 10.5 2 2.5-2 2.5"/><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2z"/></svg>
+                    <span class="tab-text">
+                        <span class="tab-text-line1">Mes projets</span>
+                        <span class="tab-text-line2"> personnels</span>
+                    </span>
+                </button>
+            </li>
+        </ul>
+    </nav>
 
     <div class="tab-content mt-3" id="tabContent">
         <!-- Ma recherche entreprise -->
@@ -117,7 +119,7 @@
              aria-labelledby="tab-recherche-btn">
             <div class="row g-0 p-5">
                 <p>Madame, Monsieur,</p>
-                <p>Initialement issu d'une formation en Génie Électrotechnique, j'ai su concrétiser ma reconversion en obtenant <span id="confettis" style="cursor: pointer">avec succès</span> ma certification de <a href="https://afpar.re/formations/developpeurse-web-et-web-mobile"  target="_blank" class="text-nowrap d-inline-block link-primary" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Consulter les infos de la formation DWWM de l'AFPAR">Développeur Web et Web Mobile</a> (Bac+2) auprès de l'AFPAR de Saint-François à la fin du mois de Juillet 2025.</p>
+                <p>Initialement issu d'une formation en Génie Électrotechnique, j'ai su concrétiser ma reconversion en obtenant <span id="confettis" style="cursor: pointer" role="button" tabindex="0">avec succès</span> ma certification de <a href="https://afpar.re/formations/developpeurse-web-et-web-mobile"  target="_blank" class="text-nowrap d-inline-block link-primary" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Consulter les infos de la formation DWWM de l'AFPAR">Développeur Web et Web Mobile</a> (Bac+2) auprès de l'AFPAR de Saint-François à la fin du mois de Juillet 2025.</p>
                 <p>Actuellement en formation <a href="https://expernet-campus.re/formation/cda-bac4/" target="_blank" class="text-nowrap d-inline-block link-primary" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Consulter les infos de la formation CDA d'Expernet">Concepteur Développeur d'Applications</a> (Bac+4) avec le <strong> Campus Expernet</strong> au Port, je suis à la recherche d'une entreprise capable de m'accueillir, de <strong>transmettre son savoir et ses connaissances</strong> sur le métier de développeur web.</p>
                 <p>En contrepartie, je m'engage à mettre à votre service mon expérience professionnelle, et à fournir <strong>sérieux</strong>, <strong>rigueur</strong> et mon <strong>entière implication</strong>. Je suis <strong>curieux</strong>, <strong>avide d'apprendre</strong> et de réussir à <strong>concrétiser les projets</strong> que nous pourrions mener ensemble au fil des mois et des années à venir.</p>
                 <p>Sans langue de bois, je sais que certaines entreprises peuvent se montrer réticentes à embaucher une personne de plus de 30 ans, mais passer par un contrat de professionnalisation pourrait permettre de dépasser les contraires relatives aux aides du contrat d'apprentissage, et vous permettrait de bénéficier de mon expérience du monde professionnel tout en formant un des futurs membres actifs de l'avenir numérique de l'Île de la Réunion.</p>
@@ -143,10 +145,10 @@
                     <div id="timeline-tooltip" role="tooltip" aria-hidden="true" class="visually-hidden"></div>
                 </div>
                 <p class="small text-dark mt-2 ms-5">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-square" viewBox="0 0 16 16">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-square" viewBox="0 0 16 16" aria-hidden="true">
                         <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"/>
                         <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0"/>
-                    </svg> Survolez un segment pour afficher le détail. Scrollez vers la droite pour en afficher plus... <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right-short" viewBox="0 0 16 16">
+                    </svg> Survolez un segment pour afficher le détail. Scrollez vers la droite pour en afficher plus... <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right-short" viewBox="0 0 16 16" aria-hidden="true">
                     <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8"/>
                 </svg></p>
 
@@ -162,7 +164,7 @@
                             allowfullscreen=""
                             loading="lazy"
                             referrerpolicy="no-referrer-when-downgrade"
-                            aria-label="Carte du Campus Expernet">
+                            title="Carte indiquant l'emplacement du Campus Expernet">
                     </iframe>
                 </div>
 
@@ -171,8 +173,7 @@
                     <img src="img/Logo-Expernet.png"
                          alt="Logo Campus Expernet"
                          width="250"
-                         class="mb-3"
-                         aria-label="Logo du Campus Expernet">
+                         class="mb-3">
 
                     <!-- Adresse du Campus -->
                     <div class="text-dark">
@@ -183,7 +184,7 @@
                     <!-- Numéro de téléphone du campus -->
                     <div class="text-dark">
                         <p><a href="tel:+262262219045" class="text-decoration-none text-dark" title="Appeler Expernet">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone-fill mx-1" viewBox="0 0 16 16">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone-fill mx-1" viewBox="0 0 16 16" aria-hidden="true">
                                 <path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z"/>
                             </svg> 02.62.21.90.45</a></p>
                     </div>
@@ -204,7 +205,7 @@
                 <aside class="col-12 col-lg-3 cv-left p-4 border-end border-dark-subtle">
                     <!-- Coordonnées et statut -->
                     <section id="coordonnees" class="mb-5">
-                        <h2 class="section-title-sm fs-6">Coordonnées</h2>
+                        <h3 class="section-title-sm fs-6">Coordonnées</h3>
                         <ul class="list-unstyled mb-0 small ms-3">
                             <li>Véhicule personnel</li>
                             <li><i class="fa-solid fa-motorcycle"></i> Permis A</li>
@@ -222,7 +223,7 @@
 
                     <!-- Profils sociaux -->
                     <section id="profils-sociaux" class="mb-5">
-                        <h2 class="section-title-sm fs-6">Profils sociaux</h2>
+                        <h3 class="section-title-sm fs-6">Profils sociaux</h3>
                         <ul class="list-unstyled mb-0 small ms-3">
                             <li><a href="https://github.com/IamArayel" target="_blank" rel="noreferrer" class="text-decoration-none text-dark"><i class="fa-brands fa-github"></i> Github <span class="link-primary">@IamArayel</span></a></li>
                             <li><a href="https://www.linkedin.com/in/anthonydegeilh" target="_blank" rel="noreferrer" class="text-decoration-none text-dark"><i class="fa-brands fa-linkedin"></i> LinkedIn <span class="link-primary">@anthonydegeilh</span></a></li>
@@ -232,7 +233,7 @@
 
                     <!-- Langues -->
                     <section id="langues" class="mb-3">
-                        <h2 class="section-title-sm fs-6"><i class="fa-solid fa-flag"></i> Langues</h2>
+                        <h3 class="section-title-sm fs-6"><i class="fa-solid fa-flag"></i> Langues</h3>
                         <ul class="list-unstyled mb-0 small ms-3">
                             <li>Français</li>
                             <li>Anglais</li>
@@ -241,7 +242,7 @@
 
                     <!-- Informatique -->
                     <section id="informatique" class="mb-3">
-                        <h2 class="section-title-sm fs-6"><i class="fa-solid fa-list"></i> Informatique</h2>
+                        <h3 class="section-title-sm fs-6"><i class="fa-solid fa-list"></i> Informatique</h3>
                         <ul class="list-unstyled mb-0 ms-3 small">
                             <li class="fw-semibold">HTML / CSS</li>
                             <li class="fw-semibold">Javascript</li>
@@ -256,10 +257,12 @@
                                 <span  class="text-secondary fw-normal">(Excel, Word, PowerPoint)</span>
                             </li>
                             <li class="fw-semibold">Suite Google
-                                <section  class="text-secondary fw-normal">(Sheets, Docs, Slides, Drive, Gmail)</section>
+                                <span class="text-secondary fw-normal">(Sheets, Docs, Slides, Drive, Gmail)</span>
                             </li>
                         </ul>
-                        <div title="Au programme de mon alternance" class="mt-3 mb-0">À venir :
+                        <section class="mt-3 mb-0" aria-labelledby="a-venir-title">
+                            <h4 class="visually-hidden" id="a-venir-title">Compétences à venir</h4>
+                            <p class="fw-semibold">À venir :</p>
                             <ul class="list-unstyled mb-0 ms-3 small">
                                 <li class="fw-semibold">Symphony</li>
                                 <li class="fw-semibold">IA/Python</li>
@@ -267,12 +270,12 @@
                                 <li class="fw-semibold">Flutter</li>
                                 <li class="fw-semibold">Conception appli mobile Androïd</li>
                             </ul>
-                        </div>
+                        </section>
                     </section>
 
                     <!-- Atouts -->
                     <section id="atouts" class="mb-5">
-                        <h2 class="section-title-sm fs-6"><i class="fa-solid fa-list"></i> Atouts</h2>
+                        <h3 class="section-title-sm fs-6"><i class="fa-solid fa-list"></i> Atouts</h3>
                         <p class="small mb-0 ms-3">
                             Patience, implication, management, rigueur, organisation, autonomie, esprit d'équipe, polyvalence, réactivité, dynamisme, adaptabilité, curiosité.
                         </p>
@@ -280,30 +283,30 @@
 
                     <!-- Centres d'intérêt -->
                     <section id="centres-interet">
-                        <h2 class="section-title-sm fs-6"><i class="fa-solid fa-list"></i> Centres d'intérêt</h2>
+                        <h3 class="section-title-sm fs-6"><i class="fa-solid fa-list"></i> Centres d'intérêt</h3>
                         <ul class="list-unstyled mb-0 small ms-3">
                             <li class="fw-semibold">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-motorbike-icon lucide-motorbike"><path d="m18 14-1-3"/><path d="m3 9 6 2a2 2 0 0 1 2-2h2a2 2 0 0 1 1.99 1.81"/><path d="M8 17h3a1 1 0 0 0 1-1 6 6 0 0 1 6-6 1 1 0 0 0 1-1v-.75A5 5 0 0 0 17 5"/><circle cx="19" cy="17" r="3"/><circle cx="5" cy="17" r="3"/></svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-motorbike-icon lucide-motorbike" aria-hidden="true"><path d="m18 14-1-3"/><path d="m3 9 6 2a2 2 0 0 1 2-2h2a2 2 0 0 1 1.99 1.81"/><path d="M8 17h3a1 1 0 0 0 1-1 6 6 0 0 1 6-6 1 1 0 0 0 1-1v-.75A5 5 0 0 0 17 5"/><circle cx="19" cy="17" r="3"/><circle cx="5" cy="17" r="3"/></svg>
                                 Balades moto</li>
 
                             <li class="fw-semibold">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mountain-icon lucide-mountain"><path d="m8 3 4 8 5-5 5 15H2L8 3z"/></svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mountain-icon lucide-mountain" aria-hidden="true"><path d="m8 3 4 8 5-5 5 15H2L8 3z"/></svg>
                                 Randonnées</li>
 
                             <li class="fw-semibold">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-drone-icon lucide-drone"><path d="M10 10 7 7"/><path d="m10 14-3 3"/><path d="m14 10 3-3"/><path d="m14 14 3 3"/><path d="M14.205 4.139a4 4 0 1 1 5.439 5.863"/><path d="M19.637 14a4 4 0 1 1-5.432 5.868"/><path d="M4.367 10a4 4 0 1 1 5.438-5.862"/><path d="M9.795 19.862a4 4 0 1 1-5.429-5.873"/><rect x="10" y="8" width="4" height="8" rx="1"/></svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-drone-icon lucide-drone" aria-hidden="true"><path d="M10 10 7 7"/><path d="m10 14-3 3"/><path d="m14 10 3-3"/><path d="m14 14 3 3"/><path d="M14.205 4.139a4 4 0 1 1 5.439 5.863"/><path d="M19.637 14a4 4 0 1 1-5.432 5.868"/><path d="M4.367 10a4 4 0 1 1 5.438-5.862"/><path d="M9.795 19.862a4 4 0 1 1-5.429-5.873"/><rect x="10" y="8" width="4" height="8" rx="1"/></svg>
                                 Drone
                                 <span  class="text-secondary fw-normal">(pilotage / prise de vue)</span>
                             </li>
 
                             <li class="fw-semibold">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-camera-icon lucide-camera"><path d="M13.997 4a2 2 0 0 1 1.76 1.05l.486.9A2 2 0 0 0 18.003 7H20a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h1.997a2 2 0 0 0 1.759-1.048l.489-.904A2 2 0 0 1 10.004 4z"/><circle cx="12" cy="13" r="3"/></svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-camera-icon lucide-camera" aria-hidden="true"><path d="M13.997 4a2 2 0 0 1 1.76 1.05l.486.9A2 2 0 0 0 18.003 7H20a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h1.997a2 2 0 0 0 1.759-1.048l.489-.904A2 2 0 0 1 10.004 4z"/><circle cx="12" cy="13" r="3"/></svg>
                                 Photographie
                                 <span  class="text-secondary fw-normal">(nature)</span>
                             </li>
 
                             <li class="fw-semibold">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-box-icon lucide-box"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-box-icon lucide-box" aria-hidden="true"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg>
                                 Impression 3D
                                 <span  class="text-secondary fw-normal">(modélisation + filament et résine)</span>
                             </li>
@@ -545,11 +548,11 @@
         }
     }
 
-    // 5. Ajoute l'écouteur d'événement au survol (mouseover)
+    // 5. Ajoute les écouteurs d'événements
     motConfetti.addEventListener('mouseover', launchConfetti);
-
-    // (Optionnel) Ajoute l'écouteur d'événement lorsque la souris quitte (mouseout)
+    motConfetti.addEventListener('focus', launchConfetti);
     motConfetti.addEventListener('mouseout', stopConfetti);
+    motConfetti.addEventListener('blur', stopConfetti);
 </script>
 
 <!-- Toggle du thème -->
