@@ -18,6 +18,9 @@
     <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
+<!-- Snow -->
+<div id="snow-container"></div>
+
 <main class="cv-container position-relative">
 <div id="particles-js"></div>
     <!-- Toggle mode clair/sombre -->
@@ -481,7 +484,7 @@
         startVelocity: 10,
         spread: 360, // Angle maximal de dispersion des confettis
         ticks: 60,
-        zIndex: 99999,
+        zIndex: 999,
         shapes: ['star']
     };
 
@@ -1116,6 +1119,29 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 
+<!-- Config de snowflakes -->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const snowContainer = document.getElementById('snow-container');
+        const numberOfSnowflakes = 50; // Vous pouvez ajuster ce nombre
+        const colors = ['red', 'blue', 'yellow', 'green'];
+
+        for (let i = 0; i < numberOfSnowflakes; i++) {
+            const snowflake = document.createElement('div');
+            snowflake.className = 'snowflake';
+            snowflake.textContent = '❄';
+            
+            snowflake.style.left = Math.random() * 100 + 'vw';
+            snowflake.style.animationDuration = (Math.random() * 10 + 5) + 's'; // Durée de 5 à 15 secondes
+            snowflake.style.animationDelay = -Math.random() * 15 + 's';
+            snowflake.style.fontSize = (Math.random() * 10 + 10) + 'px';
+            snowflake.style.opacity = Math.random();
+            snowflake.style.color = colors[Math.floor(Math.random() * colors.length)];
+
+            snowContainer.appendChild(snowflake);
+        }
+    });
+</script>
 
 </body>
 </html>
