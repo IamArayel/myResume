@@ -34,13 +34,6 @@ body.dark-mode .cv-container {
     transition: transform .2s ease-in-out, box-shadow .2s ease-in-out;
 }
 
-/* Effet de "lift" au survol de l'onglet */
-.nav-tabs .nav-item:hover .nav-link {
-    transform: translate3d(0, -.125rem, 0);
-    box-shadow: 0 .25rem .5rem rgba(0, 0, 0, .08);
-}
-
-
 .cv-left {
     background: transparent;
     min-height: 100%;
@@ -572,4 +565,178 @@ body.dark-mode .timeline-wrapper.use-colored-scrollbar::-webkit-scrollbar-thumb 
         width: 100%;
         margin-top: 0.5rem;
     }
+}
+
+/* =========================================
+   NEUMORPHISM DESIGN (Boutons & Signets)
+   ========================================= */
+
+:root {
+    /* --- Mode Clair --- */
+    --neu-light-bg: #efefef;
+    --neu-light-text: #444;
+
+    /* Ombres normales (Base) */
+    --neu-light-shadow:
+        -6px -6px 14px rgba(255, 255, 255, .7),
+        -6px -6px 10px rgba(255, 255, 255, .5),
+        6px 6px 8px rgba(255, 255, 255, .075),
+        6px 6px 10px rgba(0, 0, 0, .15);
+
+    /* Ombres Hover (Resserrement = effet "légèrement appuyé") */
+    --neu-light-shadow-hover:
+        -2px -2px 6px rgba(255, 255, 255, .6),
+        -2px -2px 4px rgba(255, 255, 255, .4),
+        2px 2px 2px rgba(255, 255, 255, .05),
+        2px 2px 4px rgba(0, 0, 0, .1);
+
+    /* Ombres Active (Inset = Enfoncé) */
+    --neu-light-shadow-active:
+        inset -2px -2px 6px rgba(255, 255, 255, .7),
+        inset -2px -2px 4px rgba(255, 255, 255, .5),
+        inset 2px 2px 2px rgba(255, 255, 255, .075),
+        inset 2px 2px 4px rgba(0, 0, 0, .15);
+
+    /* --- Mode Sombre --- */
+    --neu-dark-bg: #2a2a2a;
+    --neu-dark-text: #f5f5f5;
+
+    /* Adaptation pour le sombre (Highlights + subtils, ombres - marquées) */
+    --neu-dark-shadow:
+        -5px -5px 10px rgba(255, 255, 255, 0.05),
+        -2px -2px 5px rgba(255, 255, 255, 0.03),
+        5px 5px 10px rgba(0, 0, 0, 0.5),
+        2px 2px 5px rgba(0, 0, 0, 0.3);
+
+    --neu-dark-shadow-hover:
+        -2px -2px 5px rgba(255, 255, 255, 0.05),
+        -1px -1px 3px rgba(255, 255, 255, 0.03),
+        2px 2px 5px rgba(0, 0, 0, 0.5),
+        1px 1px 3px rgba(0, 0, 0, 0.3);
+
+    --neu-dark-shadow-active:
+        inset -2px -2px 5px rgba(255, 255, 255, 0.05),
+        inset -1px -1px 3px rgba(255, 255, 255, 0.03),
+        inset 2px 2px 5px rgba(0, 0, 0, 0.5),
+        inset 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+/* 1. Bouton de téléchargement */
+#download-cv-btn {
+    background-color: var(--neu-light-bg);
+    color: var(--neu-light-text);
+    border: none;
+    border-radius: 0.5rem;
+    box-shadow: var(--neu-light-shadow);
+    transition: all 0.2s ease-in-out;
+    font-weight: 700;
+}
+
+#download-cv-btn:hover {
+    box-shadow: var(--neu-light-shadow-hover);
+    transform: none; /* On empêche tout mouvement vertical */
+    background-color: var(--neu-light-bg);
+    color: var(--neu-light-text);
+}
+
+#download-cv-btn:active {
+    box-shadow: var(--neu-light-shadow-active);
+    transform: none;
+}
+
+/* Mode Sombre - Download */
+body.dark-mode #download-cv-btn {
+    background-color: var(--neu-dark-bg);
+    color: var(--neu-dark-text);
+    box-shadow: var(--neu-dark-shadow);
+}
+body.dark-mode #download-cv-btn:hover {
+    box-shadow: var(--neu-dark-shadow-hover);
+}
+body.dark-mode #download-cv-btn:active {
+    box-shadow: var(--neu-dark-shadow-active);
+}
+
+
+/* 2. Toggle Thème */
+.theme-toggle-btn {
+    background-color: var(--neu-light-bg);
+    color: var(--neu-light-text);
+    border: none;
+    border-radius: 50%;
+    box-shadow: var(--neu-light-shadow);
+    transition: all 0.2s ease-in-out;
+}
+.theme-toggle-btn:hover {
+    box-shadow: var(--neu-light-shadow-hover);
+    transform: none; /* Pas de scale ou translate */
+}
+.theme-toggle-btn:active {
+    box-shadow: var(--neu-light-shadow-active);
+    transform: none;
+}
+
+/* Mode Sombre - Toggle */
+body.dark-mode .theme-toggle-btn {
+    background-color: var(--neu-dark-bg);
+    color: #ffd700;
+    box-shadow: var(--neu-dark-shadow);
+}
+body.dark-mode .theme-toggle-btn:hover {
+    box-shadow: var(--neu-dark-shadow-hover);
+}
+body.dark-mode .theme-toggle-btn:active {
+    box-shadow: var(--neu-dark-shadow-active);
+}
+
+
+/* 3. Onglets (Signets) */
+.nav-tabs {
+    border-bottom: none;
+    gap: 1rem;
+    padding: 0.5rem;
+}
+
+.nav-tabs .nav-link {
+    background-color: var(--neu-light-bg);
+    color: var(--neu-light-text);
+    border: none;
+    border-radius: 0.5rem;
+    box-shadow: var(--neu-light-shadow);
+    transition: all 0.2s ease-in-out;
+    margin: 0;
+    padding: 1em 2em;
+}
+
+/* Hover : Resserrement des ombres (effet "légèrement appuyé") */
+.nav-tabs .nav-link:not(.active):hover {
+    box-shadow: var(--neu-light-shadow-hover);
+    background-color: var(--neu-light-bg);
+    color: #000;
+    transform: none;
+}
+
+/* Onglet Actif = Enfoncé (Inset) */
+.nav-tabs .nav-link.active {
+    box-shadow: var(--neu-light-shadow-active);
+    background-color: var(--neu-light-bg);
+    color: #0d6efd;
+    transform: none;
+}
+
+/* Mode Sombre - Tabs */
+body.dark-mode .nav-tabs .nav-link {
+    background-color: var(--neu-dark-bg);
+    color: #aaa;
+    box-shadow: var(--neu-dark-shadow);
+}
+body.dark-mode .nav-tabs .nav-link:not(.active):hover {
+    box-shadow: var(--neu-dark-shadow-hover);
+    color: #fff;
+    transform: none;
+}
+body.dark-mode .nav-tabs .nav-link.active {
+    box-shadow: var(--neu-dark-shadow-active);
+    color: #8ab4f8;
+    transform: none;
 }
