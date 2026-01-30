@@ -52,7 +52,7 @@ button:hover {
     box-shadow: 0 4px 3px 1px #FCFCFC, 0 6px 8px #D6D7D9, 0 -4px 4px #CECFD1, 0 -6px 4px #FEFEFE, inset 0 0 3px 3px #CECFD1;
 }
 
-button:active {
+button:active, button.active {
     box-shadow: 0 4px 3px 1px #FCFCFC, 0 6px 8px #D6D7D9, 0 -4px 4px #CECFD1, 0 -6px 4px #FEFEFE, inset 0 0 5px 3px #999, inset 0 0 30px #aaa;
 }
 
@@ -799,6 +799,7 @@ body.dark-mode .nav-tabs .nav-link.active {
 }
 
 /* 4. Boutons Tab */
+/*
 .button-tab {
     display: flex;
     align-items: center;
@@ -827,13 +828,14 @@ body.dark-mode .nav-tabs .nav-link.active {
     box-shadow: var(--neu-light-shadow-active);
     color: #0d6efd;
 }
+*/
 
 /* Mode Sombre - Boutons Tab */
+/*
 body.dark-mode .button-tab {
     background: var(--neu-dark-bg);
     color: #aaa;
     box-shadow: var(--neu-dark-shadow);
-    /* text-shadow: none; */
 }
 
 body.dark-mode .button-tab:hover {
@@ -845,6 +847,7 @@ body.dark-mode .button-tab.active {
     box-shadow: var(--neu-dark-shadow-active);
     color: #8ab4f8;
 }
+*/
 
 /* Effet Glitch */
 #glitch {
