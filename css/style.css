@@ -670,4 +670,15 @@ body.dark-mode .timeline-wrapper::-webkit-scrollbar-thumb {
     .tab-multiline {
         gap: 0.15rem;
     }
+
+    /* Correction de l'affichage des boutons de navigation sur mobile */
+    .nav-buttons-container {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .button-tab {
+        width: 90%;
+        margin: 0 auto;
+    }
 }
