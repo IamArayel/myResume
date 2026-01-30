@@ -57,10 +57,9 @@
 
     <!-- MENU TABS -->
     <nav aria-label="Navigation principale">
-        <ul class="nav nav-tabs justify-content-center g-3 m-1" role="tablist">
+        <section class="d-flex justify-content-center gap-3 m-1" role="log" aria-controls="tabContent">
 
-            <li class="nav-item" role="presentation">
-                <button class="nav-link tab-multiline active"
+            <button class="button button-tab tab-multiline active"
                         id="tab-recherche-btn"
                         data-bs-toggle="tab"
                         data-bs-target="#tab-recherche"
@@ -70,14 +69,12 @@
                         aria-selected="true">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-binoculars-icon lucide-binoculars" aria-hidden="true"><path d="M10 10h4"/><path d="M19 7V4a1 1 0 0 0-1-1h-2a1 1 0 0 0-1 1v3"/><path d="M20 21a2 2 0 0 0 2-2v-3.851c0-1.39-2-2.962-2-4.829V8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v11a2 2 0 0 0 2 2z"/><path d="M 22 16 L 2 16"/><path d="M4 21a2 2 0 0 1-2-2v-3.851c0-1.39 2-2.962 2-4.829V8a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v11a2 2 0 0 1-2 2z"/><path d="M9 7V4a1 1 0 0 0-1-1H6a1 1 0 0 0-1 1v3"/></svg>
                     <span class="tab-text">
-                <span class="tab-text-line1">Ma recherche</span>
-                <span class="tab-text-line2"> d'entreprise</span>
-            </span>
-                </button>
-            </li>
+                        <span class="tab-text-line1">Ma recherche</span>
+                        <span class="tab-text-line2"> d'entreprise</span>
+                    </span>
+            </button>
 
-            <li class="nav-item" role="presentation">
-                <button class="nav-link"
+            <button class="button button-tab tab-multiline"
                         id="tab-cv-btn"
                         data-bs-toggle="tab"
                         data-bs-target="#tab-cv"
@@ -85,17 +82,13 @@
                         role="tab"
                         aria-controls="tab-cv"
                         aria-selected="false">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-user-icon lucide-file-user" aria-hidden="true"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"/><path d="M14 2v5a1 1 0 0 0 1 1h5"/><path d="M16 22a4 4 0 0 0-8 0"/><circle cx="12" cy="15" r="3"/></svg> Mon C.V.
-                </button>
-            </li>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-user-icon lucide-file-user" aria-hidden="true"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"/><path d="M14 2v5a1 1 0 0 0 1 1h5"/><path d="M16 22a4 4 0 0 0-8 0"/><circle cx="12" cy="15" r="3"/></svg>Mon C.V.
+            </button>
 
-            <li class="nav-item tab-disabled"
-                role="presentation"
-                tabindex="0"
-                data-bs-toggle="tooltip"
-                data-bs-placement="bottom"
-                data-bs-title="Section en travaux, à venir !">
-                <button class="nav-link text-dark disabled tab-multiline"
+            <button class="button button-tab tab-multiline inactive"
+                        data-bs-toggle="tooltip"
+                        data-bs-placement="bottom"
+                        data-bs-title="Section en travaux, à venir !"
                         type="button"
                         tabindex="-1"
                         aria-disabled="true">
@@ -104,9 +97,9 @@
                         <span class="tab-text-line1">Mes projets</span>
                         <span class="tab-text-line2"> personnels</span>
                     </span>
-                </button>
-            </li>
-        </ul>
+            </button>
+
+        </section>
     </nav>
 
     <div class="tab-content mt-3" id="tabContent">
