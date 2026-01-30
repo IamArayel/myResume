@@ -1,96 +1,148 @@
+/* =========================================
+   1. POLICES & IMPORTS
+   ========================================= */
 @font-face {
     font-family: 'clean-light';
-    src: url('../fonts/clean-light.otf') format('opentype');
+    src:         url('../fonts/clean-light.otf') format('opentype');
     font-weight: normal;
-    font-style: normal;
+    font-style:  normal;
 }
 
 @font-face {
     font-family: 'RubikGlitch';
-    src: url('../fonts/RubikGlitch-Regular.ttf') format('truetype');
+    src:         url('../fonts/RubikGlitch-Regular.ttf') format('truetype');
     font-weight: normal;
-    font-style: normal;
+    font-style:  normal;
 }
 
-@font-face {
-    font-family: 'RubikDoodleShadow';
-    src: url('../fonts/RubikDoodleShadow-Regular.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
+/* =========================================
+   2. VARIABLES (CSS Custom Properties)
+   ========================================= */
+:root {
+    /* --- Couleurs de Base --- */
+    --bg-body:            #f5f5f5;
+    --text-main:          #606060;
+    --text-header:        #000;
+    --border-color:       #8F9092;
+    --highlight:          #8ab4f8;
+
+    /* --- Composants spécifiques --- */
+    --cv-container-bg:    rgba(255, 255, 255, 0.9);
+    --cv-shadow:          rgba(0, 0, 0, .08);
+
+    /* --- Timeline Colors --- */
+    --tl-bg:              #ffffff;
+    --tl-track:           #8c0000;
+    --tl-expernet:        #009BDE;
+    --tl-enterprise:      #F5C84C;
+    --tl-event-text-dark: #042033;
+    --tl-today:           #e02424;
+    --tl-tooltip-bg:      rgba(10, 25, 40, 0.95);
+    --tl-tooltip-color:   #fff;
+
+    /* --- Neumorphism Light --- */
+    --neu-bg:             #efefef;
+    --neu-text:           #444;
+    --neu-shadow:         -6px -6px 14px rgba(255, 255, 255, .7), -6px -6px 10px rgba(255, 255, 255, .5), 6px 6px 8px rgba(255, 255, 255, .075), 6px 6px 10px rgba(0, 0, 0, .15);
+    --neu-shadow-hover:   -2px -2px 6px rgba(255, 255, 255, .6), -2px -2px 4px rgba(255, 255, 255, .4), 2px 2px 2px rgba(255, 255, 255, .05), 2px 2px 4px rgba(0, 0, 0, .1);
+    --neu-shadow-active:  inset -2px -2px 6px rgba(255, 255, 255, .7), inset -2px -2px 4px rgba(255, 255, 255, .5), inset 2px 2px 2px rgba(255, 255, 255, .075), inset 2px 2px 4px rgba(0, 0, 0, .15);
+
+    /* --- Z-Index Layers --- */
+    --z-background:       -1;
+    --z-content:          1;
+    --z-timeline-event:   5;
+    --z-timeline-current: 6;
+    --z-tooltip:          9999;
 }
 
+/* --- Thème Sombre (Overrides) --- */
+body.dark-mode {
+    --bg-body:            #1a1a1a;
+    --text-main:          #e6e6e6; /* ex: #f5f5f5 */
+    --text-header:        #f5f5f5;
+    --border-color:       #555;
+
+    --cv-container-bg:    rgba(42, 42, 42, 0.9);
+    --cv-shadow:          rgba(0, 0, 0, .3);
+
+    /* Timeline Dark */
+    --tl-bg:              #0f1724;
+    --tl-track:           #18202b;
+    --tl-expernet:        #007bb8;
+    --tl-enterprise:      #e6c26a;
+    --tl-event-text-dark: #eaf6ff;
+    --tl-today:           #ff4242;
+    --tl-tooltip-bg:      rgba(230, 235, 245, 0.95);
+    --tl-tooltip-color:   #04102a;
+
+    /* Neumorphism Dark */
+    --neu-bg:             #2a2a2a;
+    --neu-text:           #f5f5f5;
+    --neu-shadow:         -5px -5px 10px rgba(255, 255, 255, 0.05), -2px -2px 5px rgba(255, 255, 255, 0.03), 5px 5px 10px rgba(0, 0, 0, 0.5), 2px 2px 5px rgba(0, 0, 0, 0.3);
+    --neu-shadow-hover:   -2px -2px 5px rgba(255, 255, 255, 0.05), -1px -1px 3px rgba(255, 255, 255, 0.03), 2px 2px 5px rgba(0, 0, 0, 0.5), 1px 1px 3px rgba(0, 0, 0, 0.3);
+    --neu-shadow-active:  inset -2px -2px 5px rgba(255, 255, 255, 0.05), inset -1px -1px 3px rgba(255, 255, 255, 0.03), inset 2px 2px 5px rgba(0, 0, 0, 0.5), inset 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+/* =========================================
+   3. STYLES DE BASE
+   ========================================= */
 body {
-    background: #f5f5f5;
+    background: var(--bg-body);
+    color:      var(--text-main);
     transition: background-color 0.3s ease, color 0.3s ease;
 }
-body.dark-mode {
-    background: #1a1a1a;
-    color: #f5f5f5;
-}
-
-button, #download-cv-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    outline: none;
-    cursor: pointer;
-    width: auto; /* Taille adaptée au contenu */
-    padding: 0 20px;
-    height: 50px;
-    background-image: linear-gradient(to top, #D8D9DB 0%, #fff 80%, #FDFDFD 100%);
-    border-radius: 30px;
-    border: 1px solid #8F9092;
-    transition: all 0.2s ease;
-    font-family: "Source Sans Pro", sans-serif;
-    font-size: 14px;
-    font-weight: 600;
-    color: #606060;
-    text-shadow: 0 1px #fff;
-    text-decoration: none;
-    gap: 10px;
-}
-
-button:hover, #download-cv-btn:hover {
-    box-shadow: 0 4px 3px 1px #FCFCFC, 0 6px 8px #D6D7D9, 0 -4px 4px #CECFD1, 0 -6px 4px #FEFEFE, inset 0 0 3px 3px #CECFD1;
-    color: #606060; /* Maintien de la couleur au survol */
-}
-
-button:active, button.active, #download-cv-btn:active, #download-cv-btn.active {
-    box-shadow: 0 4px 3px 1px #FCFCFC, 0 6px 8px #D6D7D9, 0 -4px 4px #CECFD1, 0 -6px 4px #FEFEFE, inset 0 0 5px 3px #999, inset 0 0 30px #aaa;
-}
-
-button:focus, #download-cv-btn:focus {
-    box-shadow: 0 4px 3px 1px #FCFCFC, 0 6px 8px #D6D7D9, 0 -4px 4px #CECFD1, 0 -6px 4px #FEFEFE, inset 0 0 5px 3px #999, inset 0 0 30px #aaa;
-}
-
-
 
 h1 {
-    font-weight: bold;
-    font-size: x-large;
+    font-weight:    bold;
+    font-size:      x-large;
     letter-spacing: .02rem;
-}
-h2, h3 {
-    font-weight: bold;
-    font-size: larger;
-    /*text-decoration: underline;*/
-}
-.cv-container {
-    max-width: 1200px;
-    margin: 2rem auto;
-    background: rgba(255, 255, 255, 0.9);
-    box-shadow: 0 0.5rem 1.5rem rgba(0,0,0,.08);
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-body.dark-mode .cv-container {
-    background: rgba(42, 42, 42, 0.9);
-    color: #f5f5f5;
-    box-shadow: 0 0.5rem 1.5rem rgba(0,0,0,.3);
+    color:          var(--text-header);
 }
 
-/* Animation douce des tabs */
-.nav-tabs .nav-item .nav-link {
-    transition: transform .2s ease-in-out, box-shadow .2s ease-in-out;
+h2, h3 {
+    font-weight: bold;
+    font-size:   larger;
+}
+
+/* Helpers Bootstrap Dark Mode Overrides */
+body.dark-mode .text-dark {
+    color: #f5f5f5 !important;
+}
+
+body.dark-mode .link-primary {
+    color: var(--highlight) !important;
+}
+
+body.dark-mode .border-dark-subtle {
+    border-color: #555 !important;
+}
+
+body.dark-mode .btn-outline-secondary {
+    color:        #f5f5f5;
+    border-color: #888;
+}
+
+body.dark-mode .btn-outline-secondary:hover {
+    background-color: #888;
+    border-color:     #888;
+    color:            #1a1a1a;
+}
+
+/* =========================================
+   4. LAYOUT & CONTAINERS
+   ========================================= */
+.cv-container {
+    max-width:  1200px;
+    margin:     2rem auto;
+    background: var(--cv-container-bg);
+    box-shadow: 0 0.5rem 1.5rem var(--cv-shadow);
+    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cv-header {
+    background: transparent;
+    padding:    2rem;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .cv-left {
@@ -98,163 +150,499 @@ body.dark-mode .cv-container {
     min-height: 100%;
     transition: background-color 0.3s ease;
 }
-body.dark-mode .cv-left {
-    background: transparent;
-}
+
 .photo-wrapper {
-    width: 140px;
-    height: 140px;
+    width:         140px;
+    height:        140px;
     border-radius: .5rem;
-    overflow: hidden;
-    background: #d9d9d9;
+    overflow:      hidden;
+    background:    #d9d9d9;
 }
+
+.photo-offset-top {
+    object-position: 65% 25%;
+    transform:       scale(1.2);
+}
+
 .section-title-sm {
-    font-size: .85rem;
+    font-size:      .85rem;
     text-transform: uppercase;
     letter-spacing: .06rem;
-    font-weight: 600;
-    margin-bottom: .5rem;
+    font-weight:    600;
+    margin-bottom:  .5rem;
 }
+
 .cv-main-title {
-    font-weight: 700;
+    font-weight:    700;
     letter-spacing: .02rem;
 }
+
+.content-wrapper {
+    position:         relative;
+    z-index:          var(--z-content);
+    background-color: rgba(255, 255, 255, 0.8);
+    padding:          20px;
+    border-radius:    10px;
+    animation:        fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity:   0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity:   1;
+        transform: translateY(0);
+    }
+}
+
+/* =========================================
+   5. COMPOSANTS
+   ========================================= */
+
+/* --- Boutons principaux --- */
+button, #download-cv-btn {
+    display:          flex;
+    align-items:      center;
+    justify-content:  center;
+    outline:          none;
+    cursor:           pointer;
+    width:            auto;
+    padding:          0 20px;
+    height:           50px;
+    border-radius:    30px;
+    border:           1px solid var(--border-color);
+    transition:       all 0.2s ease;
+    font-family:      "Source Sans Pro", sans-serif;
+    font-size:        14px;
+    font-weight:      600;
+    color:            var(--text-main);
+    text-shadow:      0 1px #fff;
+    text-decoration:  none;
+    gap:              10px;
+
+    /* Light Theme Gradient (par défaut) */
+    background-image: linear-gradient(to top, #D8D9DB 0%, #fff 80%, #FDFDFD 100%);
+}
+
+/* Interaction Boutons Light */
+button:hover, #download-cv-btn:hover {
+    box-shadow: 0 4px 3px 1px #FCFCFC, 0 6px 8px #D6D7D9, 0 -4px 4px #CECFD1, 0 -6px 4px #FEFEFE, inset 0 0 3px 3px #CECFD1;
+    color:      var(--text-main);
+}
+
+button:focus, #download-cv-btn:focus,
+button:active, button.active, #download-cv-btn:active, #download-cv-btn.active {
+    box-shadow: 0 4px 3px 1px #FCFCFC, 0 6px 8px #D6D7D9, 0 -4px 4px #CECFD1, 0 -6px 4px #FEFEFE, inset 0 0 5px 3px #999, inset 0 0 30px #aaa;
+}
+
+/* Adaptation Boutons Dark Mode */
+body.dark-mode button,
+body.dark-mode #download-cv-btn {
+    background-image: linear-gradient(to top, #1c1c1c 0%, #2a2a2a 80%, #2f2f2f 100%);
+    border:           1px solid #101010;
+    color:            #e6e6e6;
+    text-shadow:      0 -1px #000;
+}
+
+body.dark-mode button:hover,
+body.dark-mode #download-cv-btn:hover {
+    box-shadow: 0 4px 3px 1px #2a2a2a, 0 6px 8px #101010, 0 -4px 4px #121212, 0 -6px 4px #2f2f2f, inset 0 0 3px 3px #141414;
+    color:      #e6e6e6;
+}
+
+body.dark-mode button:focus, body.dark-mode button:active, body.dark-mode button.active,
+body.dark-mode #download-cv-btn:focus, body.dark-mode #download-cv-btn:active, body.dark-mode #download-cv-btn.active {
+    box-shadow: 0 4px 3px 1px #2a2a2a, 0 6px 8px #101010, 0 -4px 4px #121212, 0 -6px 4px #2f2f2f, inset 0 0 6px 4px #0d0d0d, inset 0 0 30px #161616;
+}
+
+/* --- Theme Toggle Button (Neumorphism Style) --- */
+.theme-toggle {
+    position: absolute;
+    top:      1rem;
+    right:    1rem;
+    z-index:  1000;
+}
+
+.theme-toggle-btn {
+    width:            50px;
+    height:           50px;
+    border-radius:    50%;
+    cursor:           pointer;
+    display:          flex;
+    align-items:      center;
+    justify-content:  center;
+    font-size:        1.5rem;
+    border:           none;
+    transition:       all 0.2s ease-in-out;
+    /* Utilisation des vars Neumorphism */
+    background-color: var(--neu-bg);
+    color:            var(--neu-text);
+    box-shadow:       var(--neu-shadow);
+}
+
+/* Dark override spécifique pour la couleur de l'icône */
+body.dark-mode .theme-toggle-btn {
+    color: #ffd700;
+}
+
+.theme-toggle-btn:hover {
+    box-shadow: var(--neu-shadow-hover);
+    transform:  none;
+}
+
+.theme-toggle-btn:active {
+    box-shadow: var(--neu-shadow-active);
+    transform:  none;
+}
+
+/* --- Tabs (Onglets / Signets) --- */
+.nav-tabs {
+    border-bottom: none;
+    gap:           1rem;
+    padding:       0.5rem;
+}
+
+.nav-tabs .nav-link {
+    transition:       all 0.2s ease-in-out;
+    margin:           0;
+    padding:          1em 2em;
+    border:           none;
+    border-radius:    0.5rem;
+    /* Neumorphism */
+    background-color: var(--neu-bg);
+    color:            var(--neu-text);
+    box-shadow:       var(--neu-shadow);
+}
+
+.nav-tabs .nav-link:not(.active):hover {
+    box-shadow:       var(--neu-shadow-hover);
+    color:            var(--text-header);
+    transform:        none;
+    background-color: var(--neu-bg);
+}
+
+.nav-tabs .nav-link.active {
+    box-shadow:       var(--neu-shadow-active);
+    color:            var(--highlight);
+    background-color: var(--neu-bg);
+    transform:        none;
+}
+
+/* --- Titres Spéciaux --- */
+#titre {
+    font-family: 'clean-light', sans-serif;
+    font-weight: normal;
+}
+
+#glitch {
+    position:    relative;
+    display:     inline-block;
+    font-family: 'RubikGlitch', sans-serif;
+    font-weight: 400;
+    color:       inherit;
+    z-index:     var(--z-content);
+}
+
+#glitch::before, #glitch::after {
+    content:  attr(data-text);
+    position: absolute;
+    top:      0;
+    left:     0;
+    width:    100%;
+    height:   100%;
+    opacity:  0.7;
+}
+
+#glitch::before {
+    color:     #ff0000;
+    z-index:   -1;
+    transform: translate(-3px, -3px);
+}
+
+#glitch::after {
+    color:     #0000ff;
+    z-index:   -2;
+    transform: translate(3px, 3px);
+}
+
+body.dark-mode #glitch::before {
+    color: #ff3333;
+}
+
+body.dark-mode #glitch::after {
+    color: #3333ff;
+}
+
+/* --- Particles --- */
+#particles-js {
+    position:         fixed;
+    width:            100%;
+    height:           100%;
+    top:              0;
+    left:             0;
+    z-index:          var(--z-background);
+    background-color: #f8f9fa;
+}
+
+body.dark-mode #particles-js {
+    background-color: #1a1a1a;
+}
+
+/* =========================================
+   6. TIMELINE COMPLEXE
+   ========================================= */
+.timeline-wrapper {
+    width:                      80%;
+    margin:                     0 auto;
+    padding:                    0.5rem 0.25rem;
+    box-sizing:                 border-box;
+    overflow-x:                 auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width:            thin;
+    scrollbar-color:            var(--tl-expernet) transparent;
+    border-radius:              0.6rem;
+    border:                     1px solid rgba(0, 0, 0, 0.03);
+    background:                 rgba(18, 24, 32, 0.04);
+}
+
+body.dark-mode .timeline-wrapper {
+    background: rgba(201, 201, 201, 0.22);
+    border:     1px solid rgba(255, 255, 255, 0.03);
+}
+
+.timeline-track {
+    position:      relative;
+    height:        120px;
+    min-height:    100px;
+    border-radius: 0.5rem;
+    background:    transparent;
+    padding:       1rem 0.5rem;
+    width:         100%;
+    margin:        0;
+}
+
+.timeline-events {
+    position:       relative;
+    height:         100%;
+    z-index:        2;
+    min-width:      800px;
+    pointer-events: none;
+}
+
+/* Central Baseline */
+.timeline-events::after {
+    content:       "";
+    position:      absolute;
+    left:          0;
+    right:         0;
+    top:           50%;
+    height:        6px;
+    transform:     translateY(-50%);
+    background:    linear-gradient(90deg, #8C0000FF, #008b17);
+    border-radius: 6px;
+    z-index:       1;
+}
+
+/* Event Segments */
+.timeline-event {
+    position:       absolute;
+    top:            50%;
+    transform:      translateY(-50%);
+    height:         38px;
+    border-radius:  8px;
+    padding:        8px 12px;
+    display:        flex;
+    align-items:    center;
+    gap:            .5rem;
+    font-size:      .92rem;
+    line-height:    1;
+    white-space:    nowrap;
+    overflow:       hidden;
+    text-overflow:  ellipsis;
+    box-shadow:     0 10px 24px rgba(2, 6, 23, 0.06);
+    cursor:         pointer;
+    pointer-events: auto;
+    transition:     transform .15s ease, box-shadow .15s ease, opacity .15s ease;
+    border:         1px solid rgba(0, 0, 0, 0.04);
+    z-index:        var(--z-timeline-event);
+}
+
+.timeline-event.row-top {
+    transform: translateY(-140%);
+}
+
+.timeline-event.row-bottom {
+    transform: translateY(40%);
+}
+
+/* Types d'événements */
+.timeline-event.type-module {
+    background:   linear-gradient(180deg, rgba(255, 255, 255, 0.96), var(--tl-expernet));
+    color:        var(--tl-event-text-dark);
+    border-color: rgba(0, 0, 0, 0.06);
+}
+
+body.dark-mode .timeline-event.type-module {
+    background:   linear-gradient(180deg, rgba(255, 255, 255, 0.03), var(--tl-expernet));
+    border-color: rgba(255, 255, 255, 0.04);
+}
+
+.timeline-event.type-entreprise {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), var(--tl-enterprise));
+    color:      var(--tl-event-text-dark);
+}
+
+body.dark-mode .timeline-event.type-entreprise {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), var(--tl-enterprise));
+}
+
+/* Markers */
+.timeline-event.current {
+    outline:    3px solid rgba(224, 36, 36, 0.12);
+    box-shadow: 0 18px 38px rgba(224, 36, 36, 0.10);
+    transform:  scale(1.03);
+    z-index:    var(--z-timeline-current);
+}
+
+.timeline-today {
+    position:      absolute;
+    top:           6px;
+    bottom:        6px;
+    width:         3px;
+    background:    var(--tl-today);
+    left:          0;
+    transform:     translateX(-50%);
+    z-index:       8;
+    box-shadow:    0 0 10px rgba(224, 36, 36, 0.8);
+    border-radius: 2px;
+}
+
+#timeline-tooltip {
+    position:       fixed;
+    z-index:        var(--z-tooltip);
+    padding:        .6rem .9rem;
+    border-radius:  .5rem;
+    background:     var(--tl-tooltip-bg);
+    color:          var(--tl-tooltip-color);
+    font-size:      .9rem;
+    max-width:      340px;
+    box-shadow:     0 10px 30px rgba(2, 6, 23, 0.25);
+    pointer-events: none;
+    opacity:        0;
+    transform:      translateY(-6px);
+    transition:     opacity .12s ease, transform .12s ease;
+}
+
+.timeline-current-badge {
+    display:        inline-block;
+    margin-left:    .75rem;
+    padding:        .18rem .55rem;
+    border-radius:  999px;
+    font-size:      .85rem;
+    font-weight:    600;
+    vertical-align: middle;
+    background:     rgba(0, 0, 0, 0.06);
+    color:          var(--tl-event-text-dark);
+    border:         1px solid rgba(0, 0, 0, 0.06);
+}
+
+body.dark-mode .timeline-current-badge {
+    background:   rgba(255, 255, 255, 0.04);
+    border-color: rgba(255, 255, 255, 0.06);
+}
+
+.timeline-event .label {
+    font-weight: 700;
+    font-size:   .92rem;
+}
+
+.timeline-event .sub {
+    font-weight: 400;
+    font-size:   .78rem;
+    opacity:     .88;
+    margin-left: .4rem;
+}
+
+/* Timeline Scrollbar (WebKit) */
+.timeline-wrapper::-webkit-scrollbar {
+    height:     10px;
+    background: transparent;
+}
+
+.timeline-wrapper::-webkit-scrollbar-track {
+    background:    transparent;
+    border-radius: 999px;
+    margin:        6px 0;
+}
+
+.timeline-wrapper::-webkit-scrollbar-thumb {
+    border-radius: 999px;
+    background:    linear-gradient(90deg, rgba(0, 0, 0, 0.12), rgba(0, 0, 0, 0.06));
+    box-shadow:    0 1px 0 rgba(255, 255, 255, 0.12) inset;
+    border:        2px solid rgba(255, 255, 255, 0.12);
+    transition:    background .18s ease, transform .12s ease;
+}
+
+body.dark-mode .timeline-wrapper::-webkit-scrollbar-thumb {
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.03));
+    border:     2px solid rgba(255, 255, 255, 0.03);
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.16) inset;
+}
+
+.timeline-wrapper:hover::-webkit-scrollbar-thumb {
+    transform: scaleY(1.06);
+}
+
+/* =========================================
+   7. MEDIA QUERIES (Mobile Adjustments)
+   ========================================= */
 @media (min-width: 992px) {
     .cv-left {
         min-height: 100%;
     }
 }
-.photo-offset-top {
-    object-position: 65% 25%;
-    transform: scale(1.2);
-}
 
-/* Section en-tête unifiée */
-.cv-header {
-    background: transparent;
-    padding: 2rem;
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-body.dark-mode .cv-header {
-    background: transparent;
-}
-
-/* Toggle mode sombre */
-.theme-toggle {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    z-index: 1000;
-}
-.theme-toggle-btn {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    border: 2px solid #dee2e6;
-    background: #fff;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.5rem;
-    transition: all 0.3s ease;
-    box-shadow: 0 2px 5px rgba(0,0,0,.1);
-}
-body.dark-mode .theme-toggle-btn {
-    background: #2a2a2a;
-    border-color: #555;
-    color: #ffd700;
-}
-.theme-toggle-btn:hover {
-    transform: scale(1.1);
-    box-shadow: 0 3px 8px rgba(0,0,0,.2);
-}
-
-/* Ajustements pour le mode sombre */
-body.dark-mode .text-dark {
-    color: #f5f5f5 !important;
-}
-body.dark-mode .link-primary {
-    color: #8ab4f8 !important;
-}
-body.dark-mode .border-dark-subtle {
-    border-color: #555 !important;
-}
-body.dark-mode .btn-outline-secondary {
-    color: #f5f5f5;
-    border-color: #888;
-}
-body.dark-mode .btn-outline-secondary:hover {
-    background-color: #888;
-    border-color: #888;
-    color: #1a1a1a;
-}
-
-/* === Personnalisation des tabs === */
-
-/* Container des tabs */
-.nav-tabs {
-    border-bottom: 1px solid #dee2e6;
-}
-
-/* Mode sombre - bordure des tabs */
-body.dark-mode .nav-tabs {
-    border-bottom-color: #555;
-}
-
-/* Texte des onglets (body / cv-container) */
-.nav-tabs .nav-link,
-.nav-tabs .nav-link.disabled {
-    color: inherit;
-}
-
-/* Onglet actif */
-.nav-tabs .nav-link.active {
-    color: inherit;
-    background-color: transparent;
-    border: 1px solid #dee2e6;
-    border-bottom-color: transparent;
-    margin-bottom: -1px; /* Oui je triche pour retirer la bordure du bas, pourquoi tu fouines ? 👀 */
-}
-
-/* Mode sombre - onglet actif */
-body.dark-mode .nav-tabs .nav-link.active {
-    background-color: transparent;
-    border-color: #555;
-    border-bottom-color: transparent;
-}
-
-/* Hover sur mes onglets inactifs */
-.nav-tabs .nav-link:not(.active):hover {
-    color: #8ab4f8;
-    background-color: rgba(0, 0, 0, 0.05);
-    border-color: transparent;
-}
-
-/* Hover sur mes onglets inactifs - mode sombre */
-body.dark-mode .nav-tabs .nav-link:not(.active):hover {
-    background-color: rgba(255, 255, 255, 0.05);
-}
-
-/* === Tabs Bootstrap : affichage empilé sur la version mobile === */
-@media (max-width: 596px) {
-
-    /* On autorise le retour à la ligne et on centre le contenu */
-    .nav-tabs .nav-link,
-    .nav-tabs .nav-link.disabled {
-        white-space: normal;          /* override du nowrap Bootstrap */
-        display: flex;
-        flex-direction: column;       /* icône au-dessus du texte */
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        gap: 0.25rem;
-        font-size: 0.9rem;
-        padding-top: 0.5rem;
-        /*padding-bottom: 0.5rem;*/
+@media (max-width: 768px) {
+    .timeline-track {
+        height: 180px;
     }
 
-    /* Les items prennent 100 % de largeur => 1 onglet par ligne */
+    .timeline-event {
+        font-size:     .82rem;
+        height:        44px;
+        padding:       8px 10px;
+        border-radius: 10px;
+    }
+
+    .timeline-event.row-top {
+        transform: translateY(-180%);
+    }
+
+    .timeline-event.row-bottom {
+        transform: translateY(80%);
+    }
+
+    .footer-counters {
+        display:    block;
+        width:      100%;
+        margin-top: 0.5rem;
+    }
+}
+
+@media (max-width: 596px) {
+    .nav-tabs .nav-link, .nav-tabs .nav-link.disabled {
+        white-space:    normal;
+        display:        flex;
+        flex-direction: column;
+        align-items:    center;
+        text-align:     center;
+        gap:            0.25rem;
+        font-size:      0.9rem;
+        padding-top:    0.5rem;
+    }
+
     .nav-tabs.nav-justified {
         flex-wrap: wrap;
     }
@@ -263,643 +651,23 @@ body.dark-mode .nav-tabs .nav-link:not(.active):hover {
         flex: 0 0 100%;
     }
 
-    /* Légère réduction de la taille des SVG sur mobile */
     .nav-tabs .nav-link svg {
-        width: 18px;
+        width:  18px;
         height: 18px;
     }
 }
 
-/* === Tabs Bootstrap : mise en forme fine des labels de tabs sur très petit écran === */
 @media (max-width: 480px) {
-
-    /* Pour les tabs marqués .tab-multiline :
-       - chaque ligne de texte devient un bloc => 2 lignes de texte sous l'icône */
-    .tab-multiline .tab-text-line1,
-    .tab-multiline .tab-text-line2 {
+    .tab-multiline .tab-text-line1, .tab-multiline .tab-text-line2 {
         display: block;
     }
 
-    /* Optionnel : légère réduction de la taille de police pour éviter les retours intempestifs */
     .tab-multiline .tab-text {
-        font-size: 0.85rem;
+        font-size:   0.85rem;
         line-height: 1.1;
     }
 
-    /* Optionnel : un petit espace entre icône et bloc texte si besoin */
     .tab-multiline {
         gap: 0.15rem;
     }
-}
-/*===================== Gestion des particules */
-/*mode clair*/
-#particles-js {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    z-index: -1;
-    background-color: #f8f9fa;
-}
-/*mode sombre*/
-body.dark-mode #particles-js {
-    background-color: #1a1a1a;
-}
-.content-wrapper {
-    position: relative;
-    z-index: 1;
-    background-color: rgba(255, 255, 255, 0.8);
-    padding: 20px;
-    border-radius: 10px;
-    animation: fadeIn 1s ease-in-out;
-}
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-/*==================== Gestion de la timeline */
-:root {
-    --tl-bg: #ffffff;
-    --tl-track: #8c0000;
-    --tl-expernet: #009BDE; /* bleu demandé */
-    --tl-enterprise: #F5C84C; /* jaune neutre demandé */
-    --tl-event-text-dark: #042033;
-    --tl-today: #e02424;
-    --tl-tooltip-bg: rgba(10, 25, 40, 0.95);
-    --tl-tooltip-color: #fff;
-}
-
-body.dark-mode {
-    --tl-bg: #0f1724;
-    --tl-track: #18202b;
-    --tl-expernet: #007bb8; /* légèrement atténué en mode sombre */
-    --tl-enterprise: #e6c26a;
-    --tl-event-text-dark: #eaf6ff;
-    --tl-today: #ff4242;
-    --tl-tooltip-bg: rgba(230, 235, 245, 0.95);
-    --tl-tooltip-color: #04102a;
-}
-
-/* -------- TIMELINE (responsive, scroll horizontal) - 80% width -------- */
-.timeline-wrapper {
-    width: 80%;               /* <-- occupy 80% of parent container */
-    margin: 0 auto;           /* center inside parent */
-    background: transparent;
-    padding: 0.5rem 0.25rem;
-    box-sizing: border-box;
-    overflow-x: auto;               /* scroll horizontal */
-    -webkit-overflow-scrolling: touch;
-}
-
-/* Track qui contient l'inner wide rail */
-.timeline-track {
-    position: relative;
-    height: 120px;
-    min-height: 100px;
-    border-radius: 0.5rem;
-    background: transparent;
-    padding: 1rem 0.5rem;
-    width: 100%; /* <-- MODIFICATION: Occupe 100% de son parent .timeline-wrapper */
-    margin: 0;
-}
-
-/* Events container becomes the wide rail */
-.timeline-events {
-    position: relative;
-    height: 100%;
-    z-index: 2;
-    min-width: 800px; /* fallback; JS will override width according to timeline span */
-    pointer-events: none;
-}
-
-/* central baseline - MODIFICATION: Appliquée à .timeline-events au lieu de .timeline-track */
-.timeline-events::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 50%;
-    height: 6px;
-    transform: translateY(-50%);
-    background: linear-gradient(90deg, #8C0000FF, #008b17);
-    border-radius: 6px;
-    z-index: 1;
-}
-
-/* one event segment (rectangular style) */
-.timeline-event {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    height: 38px;
-    border-radius: 8px;
-    padding: 8px 12px;
-    display: flex;
-    align-items: center;
-    gap: .5rem;
-    font-size: .92rem;
-    line-height: 1;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    box-shadow: 0 10px 24px rgba(2,6,23,0.06);
-    cursor: pointer;
-    pointer-events: auto;
-    transition: transform .15s ease, box-shadow .15s ease, opacity .15s ease;
-    border: 1px solid rgba(0,0,0,0.04);
-    z-index: 5; /* S'assure que les événements sont au-dessus de la barre ::after */
-}
-
-/* Top row vs bottom row for readability (modules top, entreprise bottom) */
-.timeline-event.row-top {
-    transform: translateY(-140%);
-}
-.timeline-event.row-bottom {
-    transform: translateY(40%);
-}
-
-/* Colors: Expernet (haut) and Entreprise (bas) */
-.timeline-event.type-module { /* campus / modules -> bleu */
-    background: linear-gradient(180deg, rgba(255,255,255,0.96), var(--tl-expernet));
-    color: var(--tl-event-text-dark);
-    border-color: rgba(0,0,0,0.06);
-}
-
-body.dark-mode .timeline-event.type-module {
-    background: linear-gradient(180deg, rgba(255,255,255,0.03), var(--tl-expernet));
-    color: var(--tl-event-text-dark);
-    border-color: rgba(255,255,255,0.04);
-}
-
-.timeline-event.type-entreprise { /* entreprise -> jaune neutre */
-    background: linear-gradient(180deg, rgba(255,255,255,0.96), var(--tl-enterprise));
-    color: var(--tl-event-text-dark);
-    border-color: rgba(0,0,0,0.06);
-}
-
-body.dark-mode .timeline-event.type-entreprise {
-    background: linear-gradient(180deg, rgba(255,255,255,0.03), var(--tl-enterprise));
-    color: var(--tl-event-text-dark);
-    border-color: rgba(0,0,0,0.06);
-}
-
-/* current marker on the segment */
-.timeline-event.current {
-    outline: 3px solid rgba(224,36,36,0.12);
-    box-shadow: 0 18px 38px rgba(224,36,36,0.10);
-    transform: scale(1.03);
-    z-index: 6;
-}
-
-/* today vertical line */
-.timeline-today {
-    position: absolute;
-    top: 6px;
-    bottom: 6px;
-    width: 3px;
-    background: var(--tl-today);
-    left: 0;
-    transform: translateX(-50%);
-    z-index: 8;
-    box-shadow: 0 0 10px rgba(224,36,36,0.8);
-    border-radius: 2px;
-}
-
-/* tooltip */
-#timeline-tooltip {
-    position: fixed;
-    z-index: 9999;
-    padding: .6rem .9rem;
-    border-radius: .5rem;
-    background: var(--tl-tooltip-bg);
-    color: var(--tl-tooltip-color);
-    font-size: .9rem;
-    max-width: 340px;
-    box-shadow: 0 10px 30px rgba(2,6,23,0.25);
-    pointer-events: none;
-    opacity: 0;
-    transform: translateY(-6px);
-    transition: opacity .12s ease, transform .12s ease;
-}
-
-/* badge "Actuellement" (inseré sous le h2) */
-.timeline-current-badge {
-    display: inline-block;
-    margin-left: .75rem;
-    padding: .18rem .55rem;
-    border-radius: 999px;
-    font-size: .85rem;
-    font-weight: 600;
-    vertical-align: middle;
-    background: rgba(0,0,0,0.06);
-    color: var(--tl-event-text-dark);
-    border: 1px solid rgba(0,0,0,0.06);
-}
-
-body.dark-mode .timeline-current-badge {
-    background: rgba(255,255,255,0.04);
-    border-color: rgba(255,255,255,0.06);
-    color: var(--tl-event-text-dark);
-}
-
-/* small visual helpers */
-.timeline-event .label {
-    font-weight: 700;
-    font-size: .92rem;
-}
-.timeline-event .sub {
-    font-weight: 400;
-    font-size: .78rem;
-    opacity: .88;
-    margin-left: .4rem;
-}
-
-/* responsive adjustments */
-@media (max-width: 768px) {
-    .timeline-track { height: 180px; }
-    .timeline-event { font-size: .82rem; height: 44px; padding: 8px 10px; border-radius: 10px; }
-    .timeline-event.row-top { transform: translateY(-180%); }
-    .timeline-event.row-bottom { transform: translateY(80%); }
-}
-
-
-/* ===== Scrollbar styling for timeline-wrapper (WebKit + Firefox) ===== */
-
-/* General: make the scrollbar thin and overlay-like */
-/* Wrapper (80% width) with semi-transparent grey background */
-.timeline-wrapper {
-    width: 80%;               /* conserve la contrainte 80% */
-    margin: 0 auto;           /* center inside parent */
-    background: rgba(18, 24, 32, 0.04); /* gris transparent discret */
-    padding: 0.5rem 0.25rem;
-    box-sizing: border-box;
-    overflow-x: auto;               /* scroll horizontal */
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: thin; /* Firefox */
-    scrollbar-color: var(--tl-expernet) transparent; /* Firefox */
-    border-radius: 0.6rem;
-    border: 1px solid rgba(0,0,0,0.03);
-}
-/* Dark mode: slightly darker transparent background */
-body.dark-mode .timeline-wrapper {
-    background: rgba(201, 201, 201, 0.22);
-    border: 1px solid rgba(255,255,255,0.03);
-}
-
-/* WebKit browsers (Chrome, Edge, Safari desktop) */
-.timeline-wrapper::-webkit-scrollbar {
-    height: 10px;              /* horizontal scrollbar height */
-    background: transparent;   /* track background (makes it overlay-like) */
-}
-
-.timeline-wrapper::-webkit-scrollbar-track {
-    background: transparent;
-    border-radius: 999px;
-    margin: 6px 0;             /* optional spacing from edges */
-}
-
-.timeline-wrapper::-webkit-scrollbar-thumb {
-    border-radius: 999px;
-    background: linear-gradient(90deg, rgba(0,0,0,0.12), rgba(0,0,0,0.08));
-    box-shadow: 0 1px 0 rgba(255,255,255,0.12) inset;
-    border: 2px solid rgba(255,255,255,0.12); /* subtle outline to separate from content */
-    transition: background .18s ease, transform .12s ease;
-}
-
-/* Thumb color using your variables — light mode */
-.timeline-wrapper::-webkit-scrollbar-thumb {
-    background: linear-gradient(90deg, rgba(0,0,0,0.12), rgba(0,0,0,0.06));
-}
-
-/* Thumb hover/active feedback */
-.timeline-wrapper:hover::-webkit-scrollbar-thumb,
-.timeline-wrapper::-webkit-scrollbar-thumb:hover {
-    transform: scaleY(1.06);
-    background: linear-gradient(90deg, rgba(0,0,0,0.18), rgba(0,0,0,0.10));
-}
-
-/* Dark mode: adapt colors with variables */
-body.dark-mode .timeline-wrapper::-webkit-scrollbar-thumb {
-    background: linear-gradient(90deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
-    border: 2px solid rgba(255,255,255,0.03);
-    box-shadow: 0 1px 0 rgba(0,0,0,0.16) inset;
-}
-body.dark-mode .timeline-wrapper:hover::-webkit-scrollbar-thumb {
-    background: linear-gradient(90deg, rgba(255,255,255,0.10), rgba(255,255,255,0.05));
-}
-
-/* Optional: a more visible colored thumb (expernet blue) if you prefer */
-.timeline-wrapper.use-colored-scrollbar::-webkit-scrollbar-thumb {
-    background: linear-gradient(90deg, var(--tl-expernet), rgba(0,0,0,0.06));
-    border: 2px solid rgba(255,255,255,0.06);
-}
-body.dark-mode .timeline-wrapper.use-colored-scrollbar::-webkit-scrollbar-thumb {
-    background: linear-gradient(90deg, var(--tl-expernet), rgba(255,255,255,0.02));
-}
-
-/* Optional: hide scrollbar until hover (very clean) */
-.timeline-wrapper.scrollbar-on-hover::-webkit-scrollbar {
-    height: 0;
-}
-.timeline-wrapper.scrollbar-on-hover:hover::-webkit-scrollbar {
-    height: 10px;
-}
-
-/* Keep firefox consistent when using colored thumb */
-.timeline-wrapper.use-colored-scrollbar {
-    scrollbar-color: var(--tl-expernet) transparent;
-}
-
-/* Accessibility: ensure contrast when focused */
-.timeline-wrapper:focus-within::-webkit-scrollbar-thumb {
-    outline: 2px solid rgba(0,0,0,0.08);
-}
-
-/* Fallback: if browser doesn't support custom scrollbars, nothing breaks */
-
-@media (max-width: 768px) {
-    .footer-counters {
-        display: block;
-        width: 100%;
-        margin-top: 0.5rem;
-    }
-}
-
-/* =========================================
-   NEUMORPHISM DESIGN (Boutons & Signets)
-   ========================================= */
-
-:root {
-    /* --- Mode Clair --- */
-    --neu-light-bg: #efefef;
-    --neu-light-text: #444;
-
-    /* Ombres normales (Base) */
-    --neu-light-shadow:
-        -6px -6px 14px rgba(255, 255, 255, .7),
-        -6px -6px 10px rgba(255, 255, 255, .5),
-        6px 6px 8px rgba(255, 255, 255, .075),
-        6px 6px 10px rgba(0, 0, 0, .15);
-
-    /* Ombres Hover (Resserrement = effet "légèrement appuyé") */
-    --neu-light-shadow-hover:
-        -2px -2px 6px rgba(255, 255, 255, .6),
-        -2px -2px 4px rgba(255, 255, 255, .4),
-        2px 2px 2px rgba(255, 255, 255, .05),
-        2px 2px 4px rgba(0, 0, 0, .1);
-
-    /* Ombres Active (Inset = Enfoncé) */
-    --neu-light-shadow-active:
-        inset -2px -2px 6px rgba(255, 255, 255, .7),
-        inset -2px -2px 4px rgba(255, 255, 255, .5),
-        inset 2px 2px 2px rgba(255, 255, 255, .075),
-        inset 2px 2px 4px rgba(0, 0, 0, .15);
-
-    /* --- Mode Sombre --- */
-    --neu-dark-bg: #2a2a2a;
-    --neu-dark-text: #f5f5f5;
-
-    /* Adaptation pour le sombre (Highlights + subtils, ombres - marquées) */
-    --neu-dark-shadow:
-        -5px -5px 10px rgba(255, 255, 255, 0.05),
-        -2px -2px 5px rgba(255, 255, 255, 0.03),
-        5px 5px 10px rgba(0, 0, 0, 0.5),
-        2px 2px 5px rgba(0, 0, 0, 0.3);
-
-    --neu-dark-shadow-hover:
-        -2px -2px 5px rgba(255, 255, 255, 0.05),
-        -1px -1px 3px rgba(255, 255, 255, 0.03),
-        2px 2px 5px rgba(0, 0, 0, 0.5),
-        1px 1px 3px rgba(0, 0, 0, 0.3);
-
-    --neu-dark-shadow-active:
-        inset -2px -2px 5px rgba(255, 255, 255, 0.05),
-        inset -1px -1px 3px rgba(255, 255, 255, 0.03),
-        inset 2px 2px 5px rgba(0, 0, 0, 0.5),
-        inset 1px 1px 3px rgba(0, 0, 0, 0.3);
-}
-
-/* Bouton de téléchargement */
-/* #download-cv-btn { */
-/*     background-color: var(--neu-light-bg); */
-/*     color: var(--neu-light-text); */
-/*     border: none; */
-/*     border-radius: 0.5rem; */
-/*     box-shadow: var(--neu-light-shadow); */
-/*     transition: all 0.2s ease-in-out; */
-/*     font-weight: 700; */
-/* } */
-
-/* #download-cv-btn:hover { */
-/*     box-shadow: var(--neu-light-shadow-hover); */
-/*     transform: none; !* On empêche tout mouvement vertical *! */
-/*     background-color: var(--neu-light-bg); */
-/*     color: var(--neu-light-text); */
-/* } */
-
-/* #download-cv-btn:active { */
-/*     box-shadow: var(--neu-light-shadow-active); */
-/*     transform: none; */
-/* } */
-
-
-/* Mode Sombre - Download */
-/*
-body.dark-mode #download-cv-btn {
-    background-color: var(--neu-dark-bg);
-    color: var(--neu-dark-text);
-    box-shadow: var(--neu-dark-shadow);
-}
-body.dark-mode #download-cv-btn:hover {
-    box-shadow: var(--neu-dark-shadow-hover);
-}
-body.dark-mode #download-cv-btn:active {
-    box-shadow: var(--neu-dark-shadow-active);
-}
-*/
-
-
-/* 2. Toggle Thème */
-.theme-toggle-btn {
-    background-color: var(--neu-light-bg);
-    color: var(--neu-light-text);
-    border: none;
-    border-radius: 50%;
-    box-shadow: var(--neu-light-shadow);
-    transition: all 0.2s ease-in-out;
-}
-.theme-toggle-btn:hover {
-    box-shadow: var(--neu-light-shadow-hover);
-    transform: none; /* Pas de scale ou translate */
-}
-.theme-toggle-btn:active {
-    box-shadow: var(--neu-light-shadow-active);
-    transform: none;
-}
-
-/* Mode Sombre - Toggle */
-body.dark-mode .theme-toggle-btn {
-    background-color: var(--neu-dark-bg);
-    color: #ffd700;
-    box-shadow: var(--neu-dark-shadow);
-}
-body.dark-mode .theme-toggle-btn:hover {
-    box-shadow: var(--neu-dark-shadow-hover);
-}
-body.dark-mode .theme-toggle-btn:active {
-    box-shadow: var(--neu-dark-shadow-active);
-}
-
-
-/* 3. Onglets (Signets) */
-.nav-tabs {
-    border-bottom: none;
-    gap: 1rem;
-    padding: 0.5rem;
-}
-
-.nav-tabs .nav-link {
-    background-color: var(--neu-light-bg);
-    color: var(--neu-light-text);
-    border: none;
-    border-radius: 0.5rem;
-    box-shadow: var(--neu-light-shadow);
-    transition: all 0.2s ease-in-out;
-    margin: 0;
-    padding: 1em 2em;
-}
-
-/* Hover : Resserrement des ombres (effet "légèrement appuyé") */
-.nav-tabs .nav-link:not(.active):hover {
-    box-shadow: var(--neu-light-shadow-hover);
-    background-color: var(--neu-light-bg);
-    color: #000;
-    transform: none;
-}
-
-/* Onglet Actif = Enfoncé (Inset) */
-.nav-tabs .nav-link.active {
-    box-shadow: var(--neu-light-shadow-active);
-    background-color: var(--neu-light-bg);
-    color: #0d6efd;
-    transform: none;
-}
-
-/* Mode Sombre - Tabs */
-body.dark-mode .nav-tabs .nav-link {
-    background-color: var(--neu-dark-bg);
-    color: #aaa;
-    box-shadow: var(--neu-dark-shadow);
-}
-body.dark-mode .nav-tabs .nav-link:not(.active):hover {
-    box-shadow: var(--neu-dark-shadow-hover);
-    color: #fff;
-    transform: none;
-}
-body.dark-mode .nav-tabs .nav-link.active {
-    box-shadow: var(--neu-dark-shadow-active);
-    color: #8ab4f8;
-    transform: none;
-}
-
-/* 4. Boutons Tab */
-/*
-.button-tab {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    padding: 0 15px;
-    color: var(--neu-light-text);
-    background: var(--neu-light-bg);
-    border: none;
-    border-radius: 30px;
-    cursor: pointer;
-    font-weight: 600;
-    box-shadow: var(--neu-light-shadow);
-    transition: all 0.2s ease-in-out;
-    width: auto;
-    min-width: 150px;
-    height: 50px;
-}
-
-.button-tab:hover {
-    box-shadow: var(--neu-light-shadow-hover);
-    color: #000;
-}
-
-.button-tab.active {
-    box-shadow: var(--neu-light-shadow-active);
-    color: #0d6efd;
-}
-*/
-
-/* Mode Sombre - Boutons Tab */
-/*
-body.dark-mode .button-tab {
-    background: var(--neu-dark-bg);
-    color: #aaa;
-    box-shadow: var(--neu-dark-shadow);
-}
-
-body.dark-mode .button-tab:hover {
-    box-shadow: var(--neu-dark-shadow-hover);
-    color: #fff;
-}
-
-body.dark-mode .button-tab.active {
-    box-shadow: var(--neu-dark-shadow-active);
-    color: #8ab4f8;
-}
-*/
-
-/* Effet Glitch */
-#glitch {
-    position: relative;
-    display: inline-block;
-    font-family: 'RubikGlitch', sans-serif;
-    font-weight: 400; /* Regular */
-    color: inherit;
-    z-index: 1; /* Assure que le texte est au-dessus du fond */
-}
-
-#glitch::before,
-#glitch::after {
-    content: attr(data-text);
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0.7;
-}
-
-/* Couche rouge décalée */
-#glitch::before {
-    color: #ff0000;
-    z-index: -1;
-    transform: translate(-3px, -3px);
-}
-
-/* Couche bleue décalée */
-#glitch::after {
-    color: #0000ff;
-    z-index: -2;
-    transform: translate(3px, 3px);
-}
-
-/* Mode sombre : ajustement des couleurs si nécessaire pour la lisibilité */
-body.dark-mode #glitch::before {
-    color: #ff3333;
-}
-body.dark-mode #glitch::after {
-    color: #3333ff;
-}
-
-/* Police Clean Light pour le sous-titre */
-#titre {
-    font-family: 'clean-light', sans-serif;
-    font-weight: normal;
 }
