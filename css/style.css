@@ -28,14 +28,14 @@ body.dark-mode {
     color: #f5f5f5;
 }
 
-/* From Uiverse.io by lenfear23 */
-button {
+button, #download-cv-btn {
     display: flex;
     align-items: center;
     justify-content: center;
     outline: none;
     cursor: pointer;
-    width: 150px;
+    width: auto; /* Taille adaptée au contenu */
+    padding: 0 20px;
     height: 50px;
     background-image: linear-gradient(to top, #D8D9DB 0%, #fff 80%, #FDFDFD 100%);
     border-radius: 30px;
@@ -46,17 +46,20 @@ button {
     font-weight: 600;
     color: #606060;
     text-shadow: 0 1px #fff;
+    text-decoration: none;
+    gap: 10px;
 }
 
-button:hover {
+button:hover, #download-cv-btn:hover {
     box-shadow: 0 4px 3px 1px #FCFCFC, 0 6px 8px #D6D7D9, 0 -4px 4px #CECFD1, 0 -6px 4px #FEFEFE, inset 0 0 3px 3px #CECFD1;
+    color: #606060; /* Maintien de la couleur au survol */
 }
 
-button:active, button.active {
+button:active, button.active, #download-cv-btn:active, #download-cv-btn.active {
     box-shadow: 0 4px 3px 1px #FCFCFC, 0 6px 8px #D6D7D9, 0 -4px 4px #CECFD1, 0 -6px 4px #FEFEFE, inset 0 0 5px 3px #999, inset 0 0 30px #aaa;
 }
 
-button:focus {
+button:focus, #download-cv-btn:focus {
     box-shadow: 0 4px 3px 1px #FCFCFC, 0 6px 8px #D6D7D9, 0 -4px 4px #CECFD1, 0 -6px 4px #FEFEFE, inset 0 0 5px 3px #999, inset 0 0 30px #aaa;
 }
 
@@ -678,30 +681,32 @@ body.dark-mode .timeline-wrapper.use-colored-scrollbar::-webkit-scrollbar-thumb 
         inset 1px 1px 3px rgba(0, 0, 0, 0.3);
 }
 
-/* 1. Bouton de téléchargement */
-#download-cv-btn {
-    background-color: var(--neu-light-bg);
-    color: var(--neu-light-text);
-    border: none;
-    border-radius: 0.5rem;
-    box-shadow: var(--neu-light-shadow);
-    transition: all 0.2s ease-in-out;
-    font-weight: 700;
-}
+/* Bouton de téléchargement */
+/* #download-cv-btn { */
+/*     background-color: var(--neu-light-bg); */
+/*     color: var(--neu-light-text); */
+/*     border: none; */
+/*     border-radius: 0.5rem; */
+/*     box-shadow: var(--neu-light-shadow); */
+/*     transition: all 0.2s ease-in-out; */
+/*     font-weight: 700; */
+/* } */
 
-#download-cv-btn:hover {
-    box-shadow: var(--neu-light-shadow-hover);
-    transform: none; /* On empêche tout mouvement vertical */
-    background-color: var(--neu-light-bg);
-    color: var(--neu-light-text);
-}
+/* #download-cv-btn:hover { */
+/*     box-shadow: var(--neu-light-shadow-hover); */
+/*     transform: none; !* On empêche tout mouvement vertical *! */
+/*     background-color: var(--neu-light-bg); */
+/*     color: var(--neu-light-text); */
+/* } */
 
-#download-cv-btn:active {
-    box-shadow: var(--neu-light-shadow-active);
-    transform: none;
-}
+/* #download-cv-btn:active { */
+/*     box-shadow: var(--neu-light-shadow-active); */
+/*     transform: none; */
+/* } */
+
 
 /* Mode Sombre - Download */
+/*
 body.dark-mode #download-cv-btn {
     background-color: var(--neu-dark-bg);
     color: var(--neu-dark-text);
@@ -713,6 +718,7 @@ body.dark-mode #download-cv-btn:hover {
 body.dark-mode #download-cv-btn:active {
     box-shadow: var(--neu-dark-shadow-active);
 }
+*/
 
 
 /* 2. Toggle Thème */
