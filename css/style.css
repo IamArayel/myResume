@@ -1,3 +1,17 @@
+@font-face {
+    font-family: 'clean-light';
+    src: url('../fonts/clean-light.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'RubikGlitch';
+    src: url('../fonts/RubikGlitch-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 body {
     background: #f5f5f5;
     transition: background-color 0.3s ease, color 0.3s ease;
@@ -24,7 +38,6 @@ button {
     font-size: 14px;
     font-weight: 600;
     color: #606060;
-    text-shadow: 0 1px #fff;
 }
 
 button:hover {
@@ -418,6 +431,7 @@ body.dark-mode .timeline-event.type-module {
 body.dark-mode .timeline-event.type-entreprise {
     background: linear-gradient(180deg, rgba(255,255,255,0.03), var(--tl-enterprise));
     color: var(--tl-event-text-dark);
+    border-color: rgba(0,0,0,0.06);
 }
 
 /* current marker on the segment */
@@ -822,4 +836,47 @@ body.dark-mode .button-tab:hover {
 body.dark-mode .button-tab.active {
     box-shadow: var(--neu-dark-shadow-active);
     color: #8ab4f8;
+}
+
+/* Effet Glitch */
+#glitch {
+    position: relative;
+    display: inline-block;
+    font-family: 'RubikGlitch', sans-serif;
+    font-weight: 400; /* Regular */
+    color: inherit;
+    z-index: 1; /* Assure que le texte est au-dessus du fond */
+}
+
+#glitch::before,
+#glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 105%;
+    height: 105%;
+    opacity: 0.7;
+}
+
+/* Couche rouge décalée */
+#glitch::before {
+    color: #ff0000;
+    z-index: -1;
+    transform: translate(-5px, -5px);
+}
+
+/* Couche bleue décalée */
+#glitch::after {
+    color:     #0033ff;
+    z-index:   -2;
+    transform: translate(5px, 5px);
+}
+
+/* Mode sombre : ajustement des couleurs si nécessaire pour la lisibilité */
+body.dark-mode #glitch::before {
+    color: #ff3333;
+}
+body.dark-mode #glitch::after {
+    color: #2dfaf0;
 }
