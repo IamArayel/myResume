@@ -57,13 +57,12 @@
 
     <!-- MENU TABS -->
     <nav aria-label="Navigation principale">
-        <section class="d-flex justify-content-center gap-3 m-1" role="log" aria-controls="tabContent">
+        <section class="d-flex justify-content-center gap-3 m-1" role="tablist" aria-controls="tabContent">
 
             <button class="button button-tab tab-multiline active"
-                        id="tab-recherche-btn"
+                        id="btn-recherche"
                         data-bs-toggle="tab"
                         data-bs-target="#tab-recherche"
-
                         role="tab"
                         aria-controls="tab-recherche"
                         aria-selected="true">
@@ -75,10 +74,9 @@
             </button>
 
             <button class="button button-tab tab-multiline"
-                        id="tab-cv-btn"
+                        id="btn-cv"
                         data-bs-toggle="tab"
                         data-bs-target="#tab-cv"
-
                         role="tab"
                         aria-controls="tab-cv"
                         aria-selected="false">
@@ -86,12 +84,12 @@
             </button>
 
             <button class="button button-tab tab-multiline inactive"
-                        data-bs-toggle="tooltip"
-                        data-bs-placement="bottom"
-                        data-bs-title="Section en travaux, à venir !"
-                        type="button"
-                        tabindex="-1"
-                        aria-disabled="true">
+                        id="btn-projets"
+                        data-bs-toggle="tab"
+                        data-bs-target="#tab-projets"
+                        role="tab"
+                        aria-controls="tab-projets"
+                        aria-selected="false">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-folder-code-icon lucide-folder-code" aria-hidden="true"><path d="M10 10.5 8 13l2 2.5"/><path d="m14 10.5 2 2.5-2 2.5"/><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2z"/></svg>
                     <span class="tab-text">
                         <span class="tab-text-line1">Mes projets</span>
@@ -107,7 +105,7 @@
         <div class="tab-pane fade show active"
              id="tab-recherche"
              role="tabpanel"
-             aria-labelledby="tab-recherche-btn">
+             aria-labelledby="btn-recherche">
             <div class="row g-0 p-5">
                 <p>Madame, Monsieur,</p>
                 <p>Initialement issu d'une formation en Génie Électrotechnique, j'ai su concrétiser ma reconversion en obtenant <span id="confettis" style="cursor: pointer" role="button" tabindex="0">avec succès</span> ma certification de <a href="https://afpar.re/formations/developpeurse-web-et-web-mobile"  target="_blank" class="text-nowrap d-inline-block link-primary" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Consulter les infos de la formation DWWM de l'AFPAR">Développeur Web et Web Mobile</a> (Bac+2) auprès de l'AFPAR de Saint-François à la fin du mois de Juillet 2025.</p>
@@ -189,7 +187,7 @@
         <div class="tab-pane fade"
              id="tab-cv"
              role="tabpanel"
-             aria-labelledby="tab-cv-btn">
+             aria-labelledby="btn-cv">
             <div class="row g-0">
 
                 <!-- COLONNE GAUCHE (mes infos) -->
@@ -407,6 +405,18 @@
                         </div>
                     </section>
                 </div>
+            </div>
+        </div>
+
+        <!-- Mes projets personnels -->
+        <div class="tab-pane fade"
+             id="tab-projets"
+             role="tabpanel"
+             aria-labelledby="btn-projets">
+            <div class="p-5 text-center">
+                <h2 class="h4">Section en travaux</h2>
+                <p>Cette section est actuellement en cours de développement. Revenez bientôt pour découvrir mes projets personnels !</p>
+                <i class="fa-solid fa-person-digging fa-3x mt-3 text-secondary"></i>
             </div>
         </div>
     </div>

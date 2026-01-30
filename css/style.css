@@ -811,7 +811,7 @@ body.dark-mode .button-tab {
     background: var(--neu-dark-bg);
     color: #aaa;
     box-shadow: var(--neu-dark-shadow);
-    text-shadow: none;
+    /* text-shadow: none; */
 }
 
 body.dark-mode .button-tab:hover {
