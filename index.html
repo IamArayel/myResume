@@ -123,14 +123,11 @@
              aria-labelledby="btn-recherche">
             <div class="row g-0 p-4 text-justify" style="text-align: justify;">
                 <p>Madame, Monsieur,</p>
-                <p>Initialement issu d'une formation en Génie Électrotechnique, j'ai su concrétiser ma reconversion en obtenant <span id="confettis" style="cursor: pointer" role="button" tabindex="0">avec succès</span> ma certification de <a href="https://afpar.re/formations/developpeurse-web-et-web-mobile"  target="_blank" class="text-decoration-none link-primary" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Consulter les infos de la formation DWWM de l'AFPAR">Développeur Web et Web Mobile</a> (Bac+2) auprès de l'AFPAR de Saint-François à la fin du mois de Juillet 2025.</p>
-                <p>Actuellement en formation <a href="https://expernet-campus.re/formation/cda-bac4/" target="_blank" class="text-decoration-none link-primary" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Consulter les infos de la formation CDA d'Expernet">Concepteur Développeur d'Applications</a> (Bac+4) avec le <strong> Campus Expernet</strong> au Port, je suis à la recherche d'une entreprise capable de m'accueillir, de <strong>transmettre son savoir et ses connaissances</strong> sur le métier de développeur web.</p>
-                <p>En contrepartie, je m'engage à mettre à votre service mon expérience professionnelle, et à fournir <strong>sérieux</strong>, <strong>rigueur</strong> et mon <strong>entière implication</strong>. Je suis <strong>curieux</strong>, <strong>avide d'apprendre</strong> et de réussir à <strong>concrétiser les projets</strong> que nous pourrions mener ensemble au fil des mois et des années à venir.</p>
-                <p>Sans langue de bois, je sais que certaines entreprises peuvent se montrer réticentes à embaucher une personne de plus de 30 ans, mais passer par un contrat de professionnalisation pourrait permettre de dépasser les contraires relatives aux aides du contrat d'apprentissage, et vous permettrait de bénéficier de mon expérience du monde professionnel tout en formant un des futurs membres actifs de l'avenir numérique de l'Île de la Réunion.</p>
-                <p>N'hésitez pas à jeter un œil à mon C.V., à me contacter par mail ou via LinkedIn, et tâchons d'organiser au plus tôt un entretien au cours duquel je répondrai au mieux à vos questions et saurai vous démontrer mon sérieux.</p>
-                <div>Vous pouvez également contacter Madame <a href="mailto:&#101;&#46;&#110;&#101;&#114;&#105;&#110;&#97;&#64;&#101;&#120;&#112;&#101;&#114;&#110;&#101;&#116;&#46;&#114;&#101;?subject=Contrat%20d'alternance%20pour%20monsieur%20Anthony%20DEGEILH%20(CDA9)&cc=anthony.degeilh%40gmail.com" class="link-primary">Emma NERINA</a>, notre conseillère en formation chez Expernet, qui saura répondre aux diverses questions administratives relatives à la prise d'un alternant.</div>
+                <p>Initialement issu d'une formation en Génie Électrotechnique, j'ai su concrétiser ma reconversion en obtenant <span id="confettis" style="cursor: pointer" role="button" tabindex="0">avec succès</span> ma certification de <a href="https://afpar.re/formations/developpeurse-web-et-web-mobile"  target="_blank" class="text-decoration-none link-primary" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Consulter les infos de la formation DWWM de l'AFPAR">Développeur Web et Web Mobile</a> (Bac+2) auprès de l'AFPAR de Saint-François à la fin du mois de juillet 2025.</p>
+                <p>Actuellement en formation <a href="https://expernet-campus.re/formation/cda-bac4/" target="_blank" class="text-decoration-none link-primary" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Consulter les infos de la formation CDA d'Expernet">Concepteur Développeur d'Applications</a> (Bac+4) avec le <strong> Campus Expernet</strong> au Port, j'ai le plaisir de travailler pour le studio de développement web <a href="https://www.linkedin.com/company/alixir-web-studio/" target="_blank" class="text-decoration-none link-primary" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Consulter la page LinkedIn d'Alixir">Alixir</a>, avec qui je passerai à minima les 2 prochaines années à apprendre, en étant je l'espère un renfort fiable, un acteur clé de de l'entreprise, et en apportant un vrai plus aux projets portés par le studio.</p>
 
-                <p class="mt-4">Merci pour le temps que vous m'accorderez,<br>
+                <p class="mt-4">Merci pour votre passage sur mon site,<br>
+                    Au plaisir d'une éventuelle future collaboration,<br>
                     Bien cordialement,</p>
                 <p class="fs-5">Anthony DÉGEILH</p>
             </div>
@@ -1132,6 +1129,14 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 
+<!-- Empêcher le clic droit sur les images -->
+<script>
+    document.addEventListener('contextmenu', function (e) {
+        if (e.target.tagName === 'IMG') {
+            e.preventDefault();
+        }
+    });
+</script>
 
 </body>
 </html>
