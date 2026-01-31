@@ -16,7 +16,7 @@
     <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
-<main class="cv-container position-relative">
+<main class="cv-container position-relative w-75 rounded-5 mx-auto">
 <div id="particles-js"></div>
     <!-- Toggle mode clair/sombre -->
     <div class="theme-toggle">
@@ -29,26 +29,41 @@
     <header class="cv-header">
         <div class="row align-items-center g-3">
             <!-- Photo -->
-            <div class="col-12 col-md-auto text-center">
+            <div class="col-12 col-lg-auto text-center">
                 <div class="photo-wrapper border border-bottom-0 rounded-circle border-secondary shadow-4-strong shadow mx-auto">
                     <img src="img/cv_photo.png" alt="Photo d'Anthony Dégeilh" class="img-fluid h-100 w-100 object-fit-cover photo-offset-top">
                 </div>
             </div>
 
             <!-- Nom et titre -->
-            <div class="col-12 col-md">
-                <h1 class="cv-main-title h1 mb-1">ANTHONY DÉGEILH</h1>
-                <p class="lead fs-1 mb-2">Concepteur Développeur d'Applications</p>
-                <p class="fst-italic mb-0" style="width: 70%; margin: 0 auto ; text-align: justify;">
+            <div class="col-12 col-lg text-center text-lg-start">
+                <h1 class="cv-main-title h1 mb-1 text-center" style="justify-content: center;">
+                    <span class="name d-block d-lg-inline" data-text="Anthony">Anthony</span>
+                    <span class="name d-block d-lg-inline" data-text="DÉGEILH">DÉGEILH</span>
+                </h1>
+                <p class="lead fs-1 mb-2 text-center" id="titre" style="justify-content: center;">
+                    <span class="cda-wrapper">
+                        <span class="cda-word"><strong class="cda-letter">C</strong>oncepteur</span>
+                        <span class="cda-word"><strong class="cda-letter">D</strong>éveloppeur</span>
+                        <span class="cda-word">
+                            <span class="cda-prefix">d'</span><strong class="cda-letter">A</strong>pplications
+                        </span>
+                    </span>
+                </p>
+                <p class="fst-italic mb-0" style="width: 90%; margin: 0 auto ; text-align: justify;">
                     "Développeur web en formation ayant recentré sa carrière technique après une longue expérience industrielle.
                     J'apporte rigueur, capacité d'analyse fonctionnelle et maîtrise des outils modernes (Git, Docker, Laravel et Filament)."
                 </p>
             </div>
 
             <!-- Bouton téléchargement -->
-            <div class="col-12 col-md-auto text-center">
-                <a href="CV_ANTHONY_DEGEILH_CDA.pdf" target="_blank" class="btn btn-outline-secondary btn-sm" style="width: 8rem;" id="download-cv-btn">
-                    <i class="fa-solid fa-download"></i> Télécharger mon C.V. en PDF
+            <div class="col-12 col-lg-auto text-center">
+                <a href="CV_ANTHONY_DEGEILH_CDA.pdf" target="_blank" id="download-cv-btn">
+                    <i class="fa-solid fa-download fs-4"></i>
+                    <span class="ms-2 text-center lh-1">
+                        Télécharger mon CV en PDF
+<!--                        <span class="ms-2 text-center lh-1">en PDF</span>-->
+                    </span>
                 </a>
             </div>
         </div>
@@ -57,56 +72,47 @@
 
     <!-- MENU TABS -->
     <nav aria-label="Navigation principale">
-        <ul class="nav nav-tabs justify-content-center g-3 m-1" role="tablist">
+        <section class="d-flex justify-content-center gap-3 mx-3 nav-buttons-container" role="tablist" aria-controls="tabContent">
 
-            <li class="nav-item" role="presentation">
-                <button class="nav-link tab-multiline active"
-                        id="tab-recherche-btn"
+            <button class="button button-tab tab-multiline active"
+                        id="btn-recherche"
                         data-bs-toggle="tab"
                         data-bs-target="#tab-recherche"
-
                         role="tab"
                         aria-controls="tab-recherche"
                         aria-selected="true">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-binoculars-icon lucide-binoculars" aria-hidden="true"><path d="M10 10h4"/><path d="M19 7V4a1 1 0 0 0-1-1h-2a1 1 0 0 0-1 1v3"/><path d="M20 21a2 2 0 0 0 2-2v-3.851c0-1.39-2-2.962-2-4.829V8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v11a2 2 0 0 0 2 2z"/><path d="M 22 16 L 2 16"/><path d="M4 21a2 2 0 0 1-2-2v-3.851c0-1.39 2-2.962 2-4.829V8a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v11a2 2 0 0 1-2 2z"/><path d="M9 7V4a1 1 0 0 0-1-1H6a1 1 0 0 0-1 1v3"/></svg>
                     <span class="tab-text">
-                <span class="tab-text-line1">Ma recherche</span>
-                <span class="tab-text-line2"> d'entreprise</span>
-            </span>
-                </button>
-            </li>
+                        <span class="tab-text-line1">Mon parcours</span>
+<!--                        <span class="tab-text-line2"> d'entreprise</span>-->
+                    </span>
+            </button>
 
-            <li class="nav-item" role="presentation">
-                <button class="nav-link"
-                        id="tab-cv-btn"
+            <button class="button button-tab tab-multiline"
+                        id="btn-cv"
                         data-bs-toggle="tab"
                         data-bs-target="#tab-cv"
-
                         role="tab"
                         aria-controls="tab-cv"
                         aria-selected="false">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-user-icon lucide-file-user" aria-hidden="true"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"/><path d="M14 2v5a1 1 0 0 0 1 1h5"/><path d="M16 22a4 4 0 0 0-8 0"/><circle cx="12" cy="15" r="3"/></svg> Mon C.V.
-                </button>
-            </li>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-user-icon lucide-file-user" aria-hidden="true"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"/><path d="M14 2v5a1 1 0 0 0 1 1h5"/><path d="M16 22a4 4 0 0 0-8 0"/><circle cx="12" cy="15" r="3"/></svg>Mon C.V.
+            </button>
 
-            <li class="nav-item tab-disabled"
-                role="presentation"
-                tabindex="0"
-                data-bs-toggle="tooltip"
-                data-bs-placement="bottom"
-                data-bs-title="Section en travaux, à venir !">
-                <button class="nav-link text-dark disabled tab-multiline"
-                        type="button"
-                        tabindex="-1"
-                        aria-disabled="true">
+            <button class="button button-tab tab-multiline"
+                        id="btn-projets"
+                        data-bs-toggle="tab"
+                        data-bs-target="#tab-projets"
+                        role="tab"
+                        aria-controls="tab-projets"
+                        aria-selected="false">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-folder-code-icon lucide-folder-code" aria-hidden="true"><path d="M10 10.5 8 13l2 2.5"/><path d="m14 10.5 2 2.5-2 2.5"/><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2z"/></svg>
                     <span class="tab-text">
                         <span class="tab-text-line1">Mes projets</span>
                         <span class="tab-text-line2"> personnels</span>
                     </span>
-                </button>
-            </li>
-        </ul>
+            </button>
+
+        </section>
     </nav>
 
     <div class="tab-content mt-3" id="tabContent">
@@ -114,25 +120,25 @@
         <div class="tab-pane fade show active"
              id="tab-recherche"
              role="tabpanel"
-             aria-labelledby="tab-recherche-btn">
-            <div class="row g-0 p-5">
+             aria-labelledby="btn-recherche">
+            <div class="row g-0 p-4 text-justify" style="text-align: justify;">
                 <p>Madame, Monsieur,</p>
-                <p>Initialement issu d'une formation en Génie Électrotechnique, j'ai su concrétiser ma reconversion en obtenant <span id="confettis" style="cursor: pointer" role="button" tabindex="0">avec succès</span> ma certification de <a href="https://afpar.re/formations/developpeurse-web-et-web-mobile"  target="_blank" class="text-nowrap d-inline-block link-primary" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Consulter les infos de la formation DWWM de l'AFPAR">Développeur Web et Web Mobile</a> (Bac+2) auprès de l'AFPAR de Saint-François à la fin du mois de Juillet 2025.</p>
-                <p>Actuellement en formation <a href="https://expernet-campus.re/formation/cda-bac4/" target="_blank" class="text-nowrap d-inline-block link-primary" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Consulter les infos de la formation CDA d'Expernet">Concepteur Développeur d'Applications</a> (Bac+4) avec le <strong> Campus Expernet</strong> au Port, je suis à la recherche d'une entreprise capable de m'accueillir, de <strong>transmettre son savoir et ses connaissances</strong> sur le métier de développeur web.</p>
-                <p>En contrepartie, je m'engage à mettre à votre service mon expérience professionnelle, et à fournir <strong>sérieux</strong>, <strong>rigueur</strong> et mon <strong>entière implication</strong>. Je suis <strong>curieux</strong>, <strong>avide d'apprendre</strong> et de réussir à <strong>concrétiser les projets</strong> que nous pourrions mener ensemble au fil des mois et des années à venir.</p>
-                <p>Sans langue de bois, je sais que certaines entreprises peuvent se montrer réticentes à embaucher une personne de plus de 30 ans, mais passer par un contrat de professionnalisation pourrait permettre de dépasser les contraires relatives aux aides du contrat d'apprentissage, et vous permettrait de bénéficier de mon expérience du monde professionnel tout en formant un des futurs membres actifs de l'avenir numérique de l'Île de la Réunion.</p>
-                <p>N'hésitez pas à jeter un œil à mon C.V., à me contacter par mail ou via LinkedIn, et tâchons d'organiser au plus tôt un entretien au cours duquel je répondrai au mieux à vos questions et saurai vous démontrer mon sérieux.</p>
-                <div>Vous pouvez également contacter Madame <a href="mailto:&#101;&#46;&#110;&#101;&#114;&#105;&#110;&#97;&#64;&#101;&#120;&#112;&#101;&#114;&#110;&#101;&#116;&#46;&#114;&#101;?subject=Contrat%20d'alternance%20pour%20monsieur%20Anthony%20DEGEILH%20(CDA9)&cc=anthony.degeilh%40gmail.com" class="link-primary">Emma NERINA</a>, notre conseillère en formation chez Expernet, qui saura répondre aux diverses questions administratives relatives à la prise d'un alternant.</div>
+                <p>Initialement issu d'une formation en Génie Électrotechnique, j'ai su concrétiser ma reconversion en obtenant <span id="confettis" style="cursor: pointer" role="button" tabindex="0">avec succès</span> ma certification de <a href="https://afpar.re/formations/developpeurse-web-et-web-mobile"  target="_blank" class="text-decoration-none link-primary" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Consulter les infos de la formation DWWM de l'AFPAR">Développeur Web et Web Mobile</a> (Bac+2) auprès de l'AFPAR de Saint-François à la fin du mois de juillet 2025.</p>
+                <p>Actuellement en formation <a href="https://expernet-campus.re/formation/cda-bac4/" target="_blank" class="text-decoration-none link-primary" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Consulter les infos de la formation CDA d'Expernet">Concepteur Développeur d'Applications</a> (Bac+4) avec le <strong> Campus Expernet</strong> au Port, j'ai le plaisir de travailler pour le studio de développement web <a href="https://www.linkedin.com/company/alixir-web-studio/" target="_blank" class="text-decoration-none link-primary" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Consulter la page LinkedIn d'Alixir"><strong>Alixir</strong></a>, avec qui je passerai a minima les 2 prochaines années à apprendre, en étant je l'espère un renfort fiable, un acteur clé de l'entreprise, et en amenant une vraie valeur ajoutée aux projets portés par le studio.</p>
 
-                <p class="mt-4">Merci pour le temps que vous m'accorderez,<br>
+                <p class="mt-4">Merci pour votre passage sur mon site,<br>
+                    Au plaisir d'une éventuelle future collaboration,<br>
                     Bien cordialement,</p>
                 <p class="fs-5">Anthony DÉGEILH</p>
+<!--                <div class="">-->
+<!--                    <img src="img/Signature.png" alt="Signature" class="signature-img">-->
+<!--                </div>-->
             </div>
 
             <!-- Timeline de la formation -->
             <section id="formation-timeline" class="mb-4">
 
-                <h2 class="h5 ms-1 fs-1 ms-5">Évolution du planning de la formation</h2>
+                <h2 class="h5 fs-1 m-4">Évolution du planning de la formation</h2>
                 <div class="timeline-wrapper mt-3" aria-live="polite" aria-label="Timeline de la formation">
 <!--        Conteneur de la barre de timeline-->
                     <div class="timeline-track" role="presentation">
@@ -146,9 +152,12 @@
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-square" viewBox="0 0 16 16" aria-hidden="true">
                         <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"/>
                         <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0"/>
-                    </svg> Survolez un segment pour afficher le détail. Scrollez vers la droite pour en afficher plus... <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right-short" viewBox="0 0 16 16" aria-hidden="true">
-                    <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8"/>
-                </svg></p>
+                    </svg>
+                    Survolez un segment pour afficher le détail. Faites défiler vers la droite pour en afficher plus...
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right-short" viewBox="0 0 16 16" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8"/>
+                    </svg>
+                </p>
 
             </section>
 
@@ -176,7 +185,7 @@
                     <!-- Adresse du Campus -->
                     <div class="text-dark">
                         <p class="text-decoration-underline">Expernet Campus Informatique et Marketing Digital</p>
-                        <p class="mt-3">3 Rue Theodore Drouhet, Le Port 97420, La Réunion</p>
+                        <p class="mt-3">3 Rue Théodore Drouhet, Le Port 97420, La Réunion</p>
                     </div>
 
                     <!-- Numéro de téléphone du campus -->
@@ -196,7 +205,7 @@
         <div class="tab-pane fade"
              id="tab-cv"
              role="tabpanel"
-             aria-labelledby="tab-cv-btn">
+             aria-labelledby="btn-cv">
             <div class="row g-0">
 
                 <!-- COLONNE GAUCHE (mes infos) -->
@@ -223,7 +232,7 @@
                     <section id="profils-sociaux" class="mb-5">
                         <h3 class="section-title-sm fs-6">Profils sociaux</h3>
                         <ul class="list-unstyled mb-0 small ms-3">
-                            <li><a href="https://github.com/IamArayel" target="_blank" rel="noreferrer" class="text-decoration-none text-dark"><i class="fa-brands fa-github"></i> Github <span class="link-primary">@IamArayel</span></a></li>
+                            <li><a href="https://github.com/IamArayel" target="_blank" rel="noreferrer" class="text-decoration-none text-dark"><i class="fa-brands fa-github"></i> GitHub <span class="link-primary">@IamArayel</span></a></li>
                             <li><a href="https://www.linkedin.com/in/anthonydegeilh" target="_blank" rel="noreferrer" class="text-decoration-none text-dark"><i class="fa-brands fa-linkedin"></i> LinkedIn <span class="link-primary">@anthonydegeilh</span></a></li>
                         </ul>
                         <hr class="mt-5">
@@ -245,11 +254,12 @@
                             <li class="fw-semibold">HTML / CSS</li>
                             <li class="fw-semibold">Javascript</li>
                             <li class="fw-semibold">PHP</li>
+                            <li class="fw-semibold">Symfony</li>
                             <li class="fw-semibold">MySQL
                                 <span  class="text-secondary fw-normal">(gestion de BDD)</span>
                             </li>
-                            <li class="fw-semibold">Git / Github</li>
-                            <li class="fw-semibold">VSCode</li>
+                            <li class="fw-semibold">Git / GitHub</li>
+                            <li class="fw-semibold">VSCode / PhpStorm</li>
                             <li class="fw-semibold">Docker</li>
                             <li class="fw-semibold">Suite Office
                                 <span  class="text-secondary fw-normal">(Excel, Word, PowerPoint)</span>
@@ -262,11 +272,10 @@
                             <h4 class="visually-hidden" id="a-venir-title">Compétences à venir</h4>
                             <p class="fw-semibold">À venir :</p>
                             <ul class="list-unstyled mb-0 ms-3 small">
-                                <li class="fw-semibold">Symphony</li>
                                 <li class="fw-semibold">IA/Python</li>
                                 <li class="fw-semibold">DevOps</li>
                                 <li class="fw-semibold">Flutter</li>
-                                <li class="fw-semibold">Conception appli mobile Androïd</li>
+                                <li class="fw-semibold">Conception appli mobile Android</li>
                             </ul>
                         </section>
                     </section>
@@ -414,6 +423,18 @@
                         </div>
                     </section>
                 </div>
+            </div>
+        </div>
+
+        <!-- Mes projets personnels -->
+        <div class="tab-pane fade"
+             id="tab-projets"
+             role="tabpanel"
+             aria-labelledby="btn-projets">
+            <div class="p-5 text-center">
+                <h2 class="h4">Section en travaux</h2>
+                <p>Cette section est actuellement en cours de développement. Revenez bientôt pour découvrir mes projets personnels !</p>
+                <i class="fa-solid fa-person-digging fa-3x mt-3 text-secondary"></i>
             </div>
         </div>
     </div>
@@ -1114,6 +1135,14 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 
+<!-- Empêcher le clic droit sur les images -->
+<script>
+    document.addEventListener('contextmenu', function (e) {
+        if (e.target.tagName === 'IMG') {
+            e.preventDefault();
+        }
+    });
+</script>
 
 </body>
 </html>
