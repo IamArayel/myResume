@@ -372,7 +372,7 @@ body.dark-mode .theme-toggle-btn {
 .name::before {
     color:     #ff0000;
     z-index:   -1;
-    transform: translateX(-1px, 0px);
+    transform: translate(-1px, 0px);
 }
 
 .name::after {
