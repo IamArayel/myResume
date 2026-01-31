@@ -175,6 +175,8 @@ body.dark-mode .btn-outline-secondary:hover {
 .cv-main-title {
     font-weight:    700;
     letter-spacing: .02rem;
+    font-size:      4.5rem;
+    line-height:    1.1;
 }
 
 .content-wrapper {
@@ -336,16 +338,16 @@ body.dark-mode .theme-toggle-btn {
     font-weight: normal;
 }
 
-#glitch {
+.glitch-text {
     position:    relative;
     display:     inline-block;
     font-family: 'RubikGlitch', sans-serif;
-    font-weight: 400;
+    font-weight: 300;
     color:       inherit;
     z-index:     var(--z-content);
 }
 
-#glitch::before, #glitch::after {
+.glitch-text::before, .glitch-text::after {
     content:  attr(data-text);
     position: absolute;
     top:      0;
@@ -355,24 +357,34 @@ body.dark-mode .theme-toggle-btn {
     opacity:  0.7;
 }
 
-#glitch::before {
+.glitch-text::before {
     color:     #ff0000;
     z-index:   -1;
     transform: translate(-3px, -3px);
 }
 
-#glitch::after {
+.glitch-text::after {
     color:     #0000ff;
     z-index:   -2;
     transform: translate(3px, 3px);
 }
 
-body.dark-mode #glitch::before {
+body.dark-mode .glitch-text::before {
     color: #ff3333;
 }
 
-body.dark-mode #glitch::after {
-    color: #3333ff;
+body.dark-mode .glitch-text::after {
+    color: #33e0ff;
+}
+
+.cda-letter:hover {
+    text-shadow:
+            0 0 5px rgba(255, 0, 0, 0.75),
+            0 0 10px rgba(255, 0, 0, 0.75),
+            0 0 20px rgba(255, 0, 0, 0.75),
+            0 0 40px rgba(255, 0, 0, 0.75),
+            0 0 80px rgba(255, 0, 0, 0.75);
+
 }
 
 /* --- Particles --- */
@@ -647,6 +659,15 @@ body.dark-mode .timeline-wrapper::-webkit-scrollbar-thumb {
         padding-left: 1.2em; /* Espace réservé pour l'alignement */
         position: relative;
     }
+    .cda-letter {
+        text-shadow:
+                0 0 5px rgba(255, 0, 0, 0.75),
+                0 0 10px rgba(255, 0, 0, 0.75),
+                0 0 20px rgba(255, 0, 0, 0.75),
+                0 0 40px rgba(255, 0, 0, 0.75),
+                0 0 80px rgba(255, 0, 0, 0.75);
+
+    }
 
     .cda-prefix {
         position: absolute;
@@ -654,6 +675,13 @@ body.dark-mode .timeline-wrapper::-webkit-scrollbar-thumb {
         top: 0;
         width: 1.1em;
         text-align: right;
+    }
+
+    /* Augmentation de la taille du titre sur mobile/tablette */
+    .cv-main-title {
+        font-size: 3rem; /* Agrandissement significatif */
+        line-height: 1.1;
+        margin-bottom: 1rem;
     }
 }
 

@@ -36,14 +36,17 @@
             </div>
 
             <!-- Nom et titre -->
-            <div class="col-12 col-md">
-                <h1 class="cv-main-title h1 mb-1" id="glitch" data-text="ANTHONY DÉGEILH">ANTHONY DÉGEILH</h1>
+            <div class="col-12 col-md text-center text-md-start">
+                <h1 class="cv-main-title h1 mb-1 text-center" style="justify-content: center;">
+                    <span class="glitch-text d-block d-md-inline" data-text="ANTHONY">ANTHONY</span>
+                    <span class="glitch-text d-block d-md-inline" data-text="DÉGEILH">DÉGEILH</span>
+                </h1>
                 <p class="lead fs-1 mb-2" id="titre">
                     <span class="cda-wrapper">
-                        <span class="cda-word"><strong>C</strong>oncepteur</span>
-                        <span class="cda-word"><strong>D</strong>éveloppeur</span>
+                        <span class="cda-word"><strong class="cda-letter">C</strong>oncepteur</span>
+                        <span class="cda-word"><strong class="cda-letter">D</strong>éveloppeur</span>
                         <span class="cda-word">
-                            <span class="cda-prefix">d'</span><strong>A</strong>pplications
+                            <span class="cda-prefix">d'</span><strong class="cda-letter">A</strong>pplications
                         </span>
                     </span>
                 </p>
@@ -56,7 +59,11 @@
             <!-- Bouton téléchargement -->
             <div class="col-12 col-md-auto text-center">
                 <a href="CV_ANTHONY_DEGEILH_CDA.pdf" target="_blank" id="download-cv-btn">
-                    <i class="fa-solid fa-download"></i> Télécharger mon C.V. en PDF
+                    <i class="fa-solid fa-download fs-4"></i>
+                    <span class="ms-2 text-center lh-1">
+                        Télécharger<br>
+                        <span class="ms-2 text-center lh-1">mon C.V. en PDF</span>
+                    </span>
                 </a>
             </div>
         </div>
@@ -65,7 +72,7 @@
 
     <!-- MENU TABS -->
     <nav aria-label="Navigation principale">
-        <section class="d-flex justify-content-center gap-3 m-1 nav-buttons-container" role="tablist" aria-controls="tabContent">
+        <section class="d-flex justify-content-center gap-3 mx-3 nav-buttons-container" role="tablist" aria-controls="tabContent">
 
             <button class="button button-tab tab-multiline active"
                         id="btn-recherche"
@@ -114,10 +121,10 @@
              id="tab-recherche"
              role="tabpanel"
              aria-labelledby="btn-recherche">
-            <div class="row g-0 p-4">
+            <div class="row g-0 p-4 text-justify" style="text-align: justify;">
                 <p>Madame, Monsieur,</p>
-                <p>Initialement issu d'une formation en Génie Électrotechnique, j'ai su concrétiser ma reconversion en obtenant <span id="confettis" style="cursor: pointer" role="button" tabindex="0">avec succès</span> ma certification de <a href="https://afpar.re/formations/developpeurse-web-et-web-mobile"  target="_blank" class="d-inline-block link-primary" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Consulter les infos de la formation DWWM de l'AFPAR">Développeur Web et Web Mobile</a> (Bac+2) auprès de l'AFPAR de Saint-François à la fin du mois de Juillet 2025.</p>
-                <p>Actuellement en formation <a href="https://expernet-campus.re/formation/cda-bac4/" target="_blank" class="d-inline-block link-primary" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Consulter les infos de la formation CDA d'Expernet">Concepteur Développeur d'Applications</a> (Bac+4) avec le <strong> Campus Expernet</strong> au Port, je suis à la recherche d'une entreprise capable de m'accueillir, de <strong>transmettre son savoir et ses connaissances</strong> sur le métier de développeur web.</p>
+                <p>Initialement issu d'une formation en Génie Électrotechnique, j'ai su concrétiser ma reconversion en obtenant <span id="confettis" style="cursor: pointer" role="button" tabindex="0">avec succès</span> ma certification de <a href="https://afpar.re/formations/developpeurse-web-et-web-mobile"  target="_blank" class="text-decoration-none link-primary" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Consulter les infos de la formation DWWM de l'AFPAR">Développeur Web et Web Mobile</a> (Bac+2) auprès de l'AFPAR de Saint-François à la fin du mois de Juillet 2025.</p>
+                <p>Actuellement en formation <a href="https://expernet-campus.re/formation/cda-bac4/" target="_blank" class="text-decoration-none link-primary" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Consulter les infos de la formation CDA d'Expernet">Concepteur Développeur d'Applications</a> (Bac+4) avec le <strong> Campus Expernet</strong> au Port, je suis à la recherche d'une entreprise capable de m'accueillir, de <strong>transmettre son savoir et ses connaissances</strong> sur le métier de développeur web.</p>
                 <p>En contrepartie, je m'engage à mettre à votre service mon expérience professionnelle, et à fournir <strong>sérieux</strong>, <strong>rigueur</strong> et mon <strong>entière implication</strong>. Je suis <strong>curieux</strong>, <strong>avide d'apprendre</strong> et de réussir à <strong>concrétiser les projets</strong> que nous pourrions mener ensemble au fil des mois et des années à venir.</p>
                 <p>Sans langue de bois, je sais que certaines entreprises peuvent se montrer réticentes à embaucher une personne de plus de 30 ans, mais passer par un contrat de professionnalisation pourrait permettre de dépasser les contraires relatives aux aides du contrat d'apprentissage, et vous permettrait de bénéficier de mon expérience du monde professionnel tout en formant un des futurs membres actifs de l'avenir numérique de l'Île de la Réunion.</p>
                 <p>N'hésitez pas à jeter un œil à mon C.V., à me contacter par mail ou via LinkedIn, et tâchons d'organiser au plus tôt un entretien au cours duquel je répondrai au mieux à vos questions et saurai vous démontrer mon sérieux.</p>
@@ -244,11 +251,12 @@
                             <li class="fw-semibold">HTML / CSS</li>
                             <li class="fw-semibold">Javascript</li>
                             <li class="fw-semibold">PHP</li>
+                            <li class="fw-semibold">Symphony</li>
                             <li class="fw-semibold">MySQL
                                 <span  class="text-secondary fw-normal">(gestion de BDD)</span>
                             </li>
                             <li class="fw-semibold">Git / Github</li>
-                            <li class="fw-semibold">VSCode</li>
+                            <li class="fw-semibold">VSCode / PHPStorm</li>
                             <li class="fw-semibold">Docker</li>
                             <li class="fw-semibold">Suite Office
                                 <span  class="text-secondary fw-normal">(Excel, Word, PowerPoint)</span>
@@ -261,7 +269,6 @@
                             <h4 class="visually-hidden" id="a-venir-title">Compétences à venir</h4>
                             <p class="fw-semibold">À venir :</p>
                             <ul class="list-unstyled mb-0 ms-3 small">
-                                <li class="fw-semibold">Symphony</li>
                                 <li class="fw-semibold">IA/Python</li>
                                 <li class="fw-semibold">DevOps</li>
                                 <li class="fw-semibold">Flutter</li>
