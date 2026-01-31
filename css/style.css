@@ -629,6 +629,32 @@ body.dark-mode .timeline-wrapper::-webkit-scrollbar-thumb {
         width:      100%;
         margin-top: 0.5rem;
     }
+
+    /* Alignement CDA sur tablette et mobile */
+    .cda-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        width: fit-content;
+        margin: 0 auto;
+        line-height: 1.4;
+    }
+
+    .cda-word {
+        display: inline-block;
+        width: 100%;
+        text-align: left;
+        padding-left: 1.2em; /* Espace réservé pour l'alignement */
+        position: relative;
+    }
+
+    .cda-prefix {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 1.1em;
+        text-align: right;
+    }
 }
 
 @media (max-width: 596px) {
@@ -657,7 +683,7 @@ body.dark-mode .timeline-wrapper::-webkit-scrollbar-thumb {
     }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 600px) {
     .tab-multiline .tab-text-line1, .tab-multiline .tab-text-line2 {
         display: block;
     }
