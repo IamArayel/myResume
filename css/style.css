@@ -9,8 +9,8 @@
 }
 
 @font-face {
-    font-family: 'RubikGlitch';
-    src:         url('../fonts/RubikGlitch-Regular.ttf') format('truetype');
+    font-family: 'Aleona';
+    src:         url('../fonts/aleona-regular.otf') format('opentype');
     font-weight: normal;
     font-style:  normal;
 }
@@ -203,6 +203,18 @@ body.dark-mode .btn-outline-secondary:hover {
    5. COMPOSANTS
    ========================================= */
 
+/* --- Signature --- */
+.signature-img {
+    width: 140px;
+    height: auto;
+    /* display: inline; */
+    margin: 0 auto;
+}
+
+body.dark-mode .signature-img {
+    filter: invert(1);
+}
+
 /* --- Boutons principaux --- */
 button, #download-cv-btn {
     display:          flex;
@@ -338,16 +350,16 @@ body.dark-mode .theme-toggle-btn {
     font-weight: normal;
 }
 
-.glitch-text {
+.name {
     position:    relative;
     display:     inline-block;
-    font-family: 'RubikGlitch', sans-serif;
-    font-weight: 300;
+    font-family: 'Aleona', sans-serif;
+    font-weight: 250;
     color:       inherit;
     z-index:     var(--z-content);
 }
 
-.glitch-text::before, .glitch-text::after {
+.name::before, .name::after {
     content:  attr(data-text);
     position: absolute;
     top:      0;
@@ -357,23 +369,23 @@ body.dark-mode .theme-toggle-btn {
     opacity:  0.7;
 }
 
-.glitch-text::before {
+.name::before {
     color:     #ff0000;
     z-index:   -1;
-    transform: translate(-3px, -3px);
+    transform: translateX(-1px, 0px);
 }
 
-.glitch-text::after {
-    color:     #0000ff;
+.name::after {
+    color:     #33e0ff;
     z-index:   -2;
-    transform: translate(3px, 3px);
+    transform: translate(0px, -1px);
 }
 
-body.dark-mode .glitch-text::before {
+body.dark-mode .name::before {
     color: #ff3333;
 }
 
-body.dark-mode .glitch-text::after {
+body.dark-mode .name::after {
     color: #33e0ff;
 }
 
@@ -736,3 +748,4 @@ body.dark-mode .timeline-wrapper::-webkit-scrollbar-thumb {
         margin: 0 auto;
     }
 }
+
