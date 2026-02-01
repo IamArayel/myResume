@@ -53,6 +53,12 @@
     --z-timeline-event:   5;
     --z-timeline-current: 6;
     --z-tooltip:          9999;
+
+    /* --- Popover Colors --- */
+    --popover-bg:         #ffffff;
+    --popover-text:       #212529;
+    --popover-border:     rgba(0,0,0,0.175);
+    --popover-header-bg:  #f0f0f0;
 }
 
 /* --- Thème Sombre (Overrides) --- */
@@ -81,6 +87,12 @@ body.dark-mode {
     --neu-shadow:         -5px -5px 10px rgba(255, 255, 255, 0.05), -2px -2px 5px rgba(255, 255, 255, 0.03), 5px 5px 10px rgba(0, 0, 0, 0.5), 2px 2px 5px rgba(0, 0, 0, 0.3);
     --neu-shadow-hover:   -2px -2px 5px rgba(255, 255, 255, 0.05), -1px -1px 3px rgba(255, 255, 255, 0.03), 2px 2px 5px rgba(0, 0, 0, 0.5), 1px 1px 3px rgba(0, 0, 0, 0.3);
     --neu-shadow-active:  inset -2px -2px 5px rgba(255, 255, 255, 0.05), inset -1px -1px 3px rgba(255, 255, 255, 0.03), inset 2px 2px 5px rgba(0, 0, 0, 0.5), inset 1px 1px 3px rgba(0, 0, 0, 0.3);
+
+    /* Popover Dark */
+    --popover-bg:         #2a2a2a;
+    --popover-text:       #e6e6e6;
+    --popover-border:     #555;
+    --popover-header-bg:  #1c1c1c;
 }
 
 /* =========================================
@@ -723,4 +735,36 @@ body.dark-mode .timeline-wrapper::-webkit-scrollbar-thumb {
         width: 90%;
         margin: 0 auto;
     }
+}
+
+/* =========================================
+   8. POPOVER CUSTOMIZATION
+   ========================================= */
+.popover {
+    background-color: var(--popover-bg);
+    border-color:     var(--popover-border);
+}
+
+.popover-header {
+    background-color: var(--popover-header-bg);
+    color:            var(--popover-text);
+    border-bottom:    1px solid var(--popover-border);
+    text-align:       center;
+}
+
+.popover-body {
+    color:      var(--popover-text);
+    text-align: justify; /* Justifier le texte */
+}
+
+/* Centrer uniquement l'image dans le corps du popover */
+.popover-body img {
+    display: block;
+    width: 150px;
+    margin:  0 auto 0.5rem auto;
+}
+
+.popover-arrow::after {
+    border-top-color:    var(--popover-bg) !important;
+    border-bottom-color: var(--popover-bg) !important;
 }
