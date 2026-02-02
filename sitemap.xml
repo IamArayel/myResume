@@ -4,12 +4,4 @@
     <loc>https://anthonydegeilh.fr/</loc>
     <priority>1.00</priority>
   </url>
-  <url>
-    <loc>https://anthonydegeilh.fr/index.html</loc>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://anthonydegeilh.fr/legal.html</loc>
-    <priority>0.50</priority>
-  </url>
 </urlset>
