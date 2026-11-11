@@ -12,22 +12,22 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
 
     <!-- Canonical -->
-    <link rel="canonical" href="https://anthonydegeilh.fr/">
+    <link rel="canonical" href="https://anthonydegeilh.dev/">
 
     <!-- Open Graph -->
     <meta property="og:site_name" content="Anthony DÉGEILH">
     <meta property="og:title" content="Anthony DÉGEILH - Concepteur Développeur d'Applications">
     <meta property="og:description" content="CV en ligne d'Anthony DEGEILH, Concepteur Développeur d'Applications à La Réunion.">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://anthonydegeilh.fr/">
-    <meta property="og:image" content="https://anthonydegeilh.fr/img/cv_photo.png">
+    <meta property="og:url" content="https://anthonydegeilh.dev/">
+    <meta property="og:image" content="https://anthonydegeilh.dev/img/cv_photo.png">
     <meta property="og:updated_time" content="2025-02-01T19:06:26.503Z">
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Anthony DÉGEILH - Concepteur Développeur d'Applications">
     <meta name="twitter:description" content="CV en ligne d'Anthony DEGEILH, Concepteur Développeur d'Applications à La Réunion.">
-    <meta name="twitter:image" content="https://anthonydegeilh.fr/img/cv_photo.png">
+    <meta name="twitter:image" content="https://anthonydegeilh.dev/img/cv_photo.png">
 
     <!-- Favicons & Manifest -->
     <link rel="icon" type="image/svg+xml" href="img/favicon.svg">
@@ -42,8 +42,8 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "name": "Anthony DÉGEILH",
-      "url": "https://anthonydegeilh.fr/",
-      "image": "https://anthonydegeilh.fr/img/cv_photo.png",
+      "url": "https://anthonydegeilh.dev/",
+      "image": "https://anthonydegeilh.dev/img/cv_photo.png",
       "jobTitle": "Concepteur Développeur d'Applications",
       "worksFor": {
         "@type": "Organization",
@@ -492,7 +492,7 @@
 
     <span class="p-2">
         Copyright &copy; <script>document.write(new Date().getFullYear())</script>
-        <a class="text-dark" href="https://anthonydegeilh.fr/">Anthony DÉGEILH</a>
+        <a class="text-dark" href="https://anthonydegeilh.dev/">Anthony DÉGEILH</a>
     </span>
 
     <div class="footer-counters">
@@ -1062,8 +1062,9 @@
 <!-- Script pour les compteurs (corrigé v2) -->
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    const visitsUrl = 'https://api.counterapi.dev/v2/anthonydegeilh/visiteursuniques';
-    const downloadsUrl = 'https://api.counterapi.dev/v2/anthonydegeilh/cvdownloads';
+    // Proxy nginx du VPS vers api.counterapi.dev (les appels directs depuis anthonydegeilh.dev reçoivent un 503)
+    const visitsUrl = '/counter/visiteursuniques';
+    const downloadsUrl = '/counter/cvdownloads';
 
     const visitorCountEl = document.getElementById('visitor-count');
     const downloadCountEl = document.getElementById('cv-download-count');

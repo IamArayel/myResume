@@ -4,4 +4,4 @@ Allow: /
 Disallow: /img/
 Disallow: /CV_ANTHONY_DEGEILH_CDA.pdf
 
-Sitemap: https://anthonydegeilh.fr/sitemap.xml
+Sitemap: https://anthonydegeilh.dev/sitemap.xml
